@@ -1,52 +1,50 @@
 # Montage
-<pre>
-CPSC 455
-Team Members:
-Andy Huang, q9h2b
-Aure Ma, q1c3b
-Ziyue Hu, x5g3b
-Hongtao Zhu, e0g3b
+CPSC 455<br />
+Team Members:<br />
+Andy Huang, q9h2b<br />
+Aure Ma, q1c3b<br />
+Ziyue Hu, x5g3b<br />
+Hongtao Zhu, e0g3b<br />
 
-GitHub Repository:
+**GitHub Repository**:<br />
 https://github.com/MonsieurRadiant/Montage/tree/main
 
-Projection Description:
-	The project “Montage” is a website made for general movie audiences. It is a website that stores titles, posters, descriptions, ratings, other information such as genres of different movies and preferences of different users. In this website, users could rate, review, and search movies based on categories. The website also provides functionalities such as notification of upcoming movies. Information about movies would be uploaded(added) and edited by the manager of the website. Users would then be able to interact with this data by providing their rating and reviews of different movies.
-	If time is enough, additional functionalities such as unique recommendation of movies based upon user preferences would be added.
-Project Task Requirements:
-	Minimal Requirements:
-		-Users can view the titles, posters, and descriptions of different movies.
-		-Users can post reviews to a movie.
-		-Users can rate a movie.
--Users can add categories(genres) to a movie.
-	Standard Requirement:
-		-Users can sign up and log in with username and password.
-		-Users can set up their personal preferences.
-		-Users can search movies based on the general information of the movie, such as 		categories and rating.
-		-The manager of the website can upload new movies.
-		-The manager of the website can edit information of movies.
-	Stretch Requirement:
--Users can get notification of the upcoming movies they selected.
-		-Users can get recommendation of movies based upon their personal preferences 		stored in the website.
+**Projection Description**:<br />
+&nbsp; &nbsp; &nbsp; &nbsp;The project “Montage” is a website made for general movie audiences. It is a website that stores titles, posters, descriptions, ratings, other information such as genres of different movies and preferences of different users. In this website, users could rate, review, and search movies based on categories. The website also provides functionalities such as notification of upcoming movies. Information about movies would be uploaded(added) and edited by the manager of the website. Users would then be able to interact with this data by providing their rating and reviews of different movies.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;If time is enough, additional functionalities such as unique recommendation of movies based upon user preferences would be added.
+**Project Task Requirements**:<br />
+&nbsp; &nbsp; &nbsp; &nbsp;Minimal Requirements:<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can view the titles, posters, and descriptions of different movies.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can post reviews to a movie.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can rate a movie.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can add categories(genres) to a movie.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;Standard Requirement:<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can sign up and log in with username and password.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can set up their personal preferences.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can search movies based on the general information of the movie, such as categories and rating.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-The manager of the website can upload new movies.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-The manager of the website can edit information of movies.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;Stretch Requirement:<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can get notification of the upcoming movies they selected.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can get recommendation of movies based upon their personal preferences stored in the website.<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp;Division of minimal requirements:<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can view the titles, posters, and descriptions of different movies.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;1. Titles, posters and descriptions are stored and can be read from database.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;2. User interface is built to display this information.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;3. Data can be loaded onto the website from database.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can post reviews to a movie.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;1. The database of reviews for different movies is established.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;2. Users can write reviews with a user interface.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;3. The reviews can be sent to the server and stored in database.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;4. Reviews in the database can be fetched onto the website.<br />
 
-	Division of minimal requirements:
-		-Users can view the titles, posters, and descriptions of different movies.
-			1. Titles, posters and descriptions are stored and can be read from database.
-			2. User interface is built to display this information.
-			3. Data can be loaded onto the website from database.
-		-Users can post reviews to a movie.
-			1. The database of reviews for different movies is established.
-			2. Users can write reviews with a user interface.
-			3. The reviews can be sent to the server and stored in database.
-			4. Reviews in the database can be fetched onto the website.
-</pre>
-
-Sketched Prototypes:
-User Login:
+**Sketched Prototypes**:<br />
+User Login:<br />
 ![image](https://user-images.githubusercontent.com/69447562/170618948-47426200-68e0-4971-a547-0d779977d4ac.png)
-recommendation:
+recommendation:<br />
 ![image](https://user-images.githubusercontent.com/69447562/170619042-d6c630d5-361b-42a4-ae08-d6c7e9fb1601.png)
-Movie Information, rating, and review:
+Movie Information, rating, and review:<br />
 ![image](https://user-images.githubusercontent.com/69447562/170619096-d6b5cf2a-ede0-420c-8e55-a5a81df09832.png)
 
 
