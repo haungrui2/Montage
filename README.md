@@ -12,6 +12,7 @@ https://github.com/MonsieurRadiant/Montage/tree/main<br />
 **Projection Description**:<br />
 &nbsp; &nbsp; &nbsp; &nbsp;The project “Montage” is a website made for general movie audiences. It is a website that stores titles, posters, descriptions, ratings, other information such as genres of different movies and preferences of different users. In this website, users could rate, review, and search movies based on categories. The website also provides functionalities such as notification of upcoming movies. Information about movies would be uploaded(added) and edited by the manager of the website. Users would then be able to interact with this data by providing their rating and reviews of different movies.<br />
 &nbsp; &nbsp; &nbsp; &nbsp;If time is enough, additional functionalities such as unique recommendation of movies based upon user preferences would be added.<br />
+<br />
 **Project Task Requirements**:<br />
 &nbsp; &nbsp; &nbsp; &nbsp;Minimal Requirements:<br />
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can view the titles, posters, and descriptions of different movies.<br />
