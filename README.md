@@ -1,4 +1,5 @@
 # Montage
+<pre>
 CPSC 455
 Team Members:
 Andy Huang, q9h2b
@@ -46,6 +47,7 @@ recommendation:
 ![image](https://user-images.githubusercontent.com/69447562/170619042-d6c630d5-361b-42a4-ae08-d6c7e9fb1601.png)
 Movie Information, rating, and review:
 ![image](https://user-images.githubusercontent.com/69447562/170619096-d6b5cf2a-ede0-420c-8e55-a5a81df09832.png)
+</pre>
 
 
 
