@@ -7,7 +7,7 @@ Ziyue Hu, x5g3b<br />
 Hongtao Zhu, e0g3b<br />
 
 **GitHub Repository**:<br />
-https://github.com/MonsieurRadiant/Montage/tree/main
+https://github.com/MonsieurRadiant/Montage/tree/main<br />
 
 **Projection Description**:<br />
 &nbsp; &nbsp; &nbsp; &nbsp;The project “Montage” is a website made for general movie audiences. It is a website that stores titles, posters, descriptions, ratings, other information such as genres of different movies and preferences of different users. In this website, users could rate, review, and search movies based on categories. The website also provides functionalities such as notification of upcoming movies. Information about movies would be uploaded(added) and edited by the manager of the website. Users would then be able to interact with this data by providing their rating and reviews of different movies.<br />
@@ -42,7 +42,7 @@ https://github.com/MonsieurRadiant/Montage/tree/main
 **Sketched Prototypes**:<br />
 User Login:<br />
 ![image](https://user-images.githubusercontent.com/69447562/170618948-47426200-68e0-4971-a547-0d779977d4ac.png)
-recommendation:<br />
+Recommendation:<br />
 ![image](https://user-images.githubusercontent.com/69447562/170619042-d6c630d5-361b-42a4-ae08-d6c7e9fb1601.png)
 Movie Information, rating, and review:<br />
 ![image](https://user-images.githubusercontent.com/69447562/170619096-d6b5cf2a-ede0-420c-8e55-a5a81df09832.png)
