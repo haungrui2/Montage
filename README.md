@@ -46,7 +46,7 @@ User Login:<br />
 Recommendation:<br />
 ![image](https://user-images.githubusercontent.com/69447562/170619042-d6c630d5-361b-42a4-ae08-d6c7e9fb1601.png)
 Movie Information, rating, and review:<br />
-![image](https://user-images.githubusercontent.com/69447562/170619096-d6b5cf2a-ede0-420c-8e55-a5a81df09832.png)
+![image](https://user-images.githubusercontent.com/69447562/170621654-2fb1dc5a-f133-4c5f-a5cc-746c8f945f20.png)
 
 
 
