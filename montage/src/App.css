@@ -36,3 +36,87 @@
     transform: rotate(360deg);
   }
 }
+
+/********************************************************************/
+.navbar {
+  background-color: #ffffff;
+  border: 3px;
+  border-style: solid;
+  border-color: rgb(0,79,139);
+  height: 60px;
+  width: 100vw;
+}
+
+.SearchContainer {
+  height: 50px;
+  width: 300px;
+  }
+
+.SearchForm {
+  position: absolute;
+  top: 10px;
+  left: 37%;
+}
+
+.SearchText {
+  position: absolute;
+  width: 350px;
+  height: 40px;
+  border-radius: 30px;
+  border: 2px;
+  border-style: solid;
+  border-color: rgb(0,79,139);
+  padding-left: 30px;
+  }
+
+#SearchButton {
+  position: absolute;
+  top: 10px;
+  left: 340px;
+  background-color: transparent;
+  border-color: transparent;
+
+}
+
+#MainButton {
+  position: absolute;
+  left: 0px;
+  height: 60px;
+  width: 120px;
+  background-color: transparent;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 3px;
+  border-style: solid;
+  border-color: rgb(0,79,139);
+}
+
+#MoviesButton {
+  position: absolute;
+  left: 120px;
+  height: 60px;
+  width: 120px;
+  background-color: transparent;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right: 3px;
+  border-style: solid;
+  border-color: rgb(0,79,139);
+}
+
+#Login {
+  position: absolute;
+  top: 3px;
+  right: 0px;
+  height: 60px;
+  width: 120px;
+  background-color: transparent;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-left: 3px;
+  border-right: 0px;
+  border-style: solid;
+  border-color: rgb(0,79,139);
+}
