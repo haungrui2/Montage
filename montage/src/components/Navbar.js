@@ -7,7 +7,12 @@ export default function Navbar() {
             <button id = "MainButton" >MainButton</button>
             {/* this will later be replaced by an image of the logo */}
             <button id = "MoviesButton">MoviesButton</button>
-            <button id = "SearchButton">SearchButton</button>
+            <div class = "SearchContainer">
+                <form class = "SearchForm">
+                    <input type = "text" class = "SearchText" placeholder = "Search"></input>
+                    <button id = "SearchButton">Q</button>
+                </form>
+            </div>
             <button id = "Login">Login</button>
         </div>
     )
