@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import MovieInfo from "./components/MovieInfo";
 import {Login} from "./components/Login/Login";
 import {Register} from "./components/Login/Register";
+import CoverPage from "./components/CoverPage";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <MovieInfo />
       <Login />
+      <CoverPage />
     </div>
   );
 }
