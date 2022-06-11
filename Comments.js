@@ -1,0 +1,1 @@
+/* this is the area that display comments, including comments and ratings */
