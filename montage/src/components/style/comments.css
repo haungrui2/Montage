@@ -1,0 +1,87 @@
+textarea{
+    margin-left: 10%;
+    margin-right: 10%;
+    resize: none;
+    width: 80%;
+    height: 7vw;
+}
+
+#comments_frame {
+    position: relative;
+    top: 5vw;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+#comments {
+    border-radius: 2rem;
+    position: absolute;
+    width: 100%;
+    border-style: solid;
+    border-color: rgb(0,79,139);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#comment_input{
+    position: relative;
+    width: 95%;
+    margin: 1.25%;
+    padding: 1.25%;
+}
+#comment_button{
+    position: relative;
+    background: green;
+    padding: 0.5vw;
+    color: white;
+    float: right;
+    border: none;
+    margin-right: 10%;
+}
+#comment_button:hover{
+    background: #004600;
+}
+
+#rate{
+    position: relative;
+    background: green;
+    padding: 0.5vw;
+    color: white;
+    float: left;
+    border: none;
+    margin-left: 10%;
+}
+
+#rate_button{
+    position: relative;
+    float: left;
+}
+#rate_button button{
+    font-size: small;
+    width: 2vw;
+}
+
+.comment {
+    word-wrap: break-word;
+    position: relative;
+    width: 95%;
+    margin: 1.25%;
+    padding: 1.25%;
+    display: block;
+}
+
+.comment h3{
+    position: relative;
+
+}
+
+.comment p{
+    position: relative;
+}
+
+.comment:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+
+
