@@ -15,15 +15,15 @@ export default function CoverPage() {
 
     return (
         
-        <div class = "CoverPage">
-            <div class = "CoverPageDateContainer">
+        <div className = "CoverPage">
+            <div className = "CoverPageDateContainer">
                 <div id = "Year">{year}</div>
                 <div id = "Month">{month}</div>
                 <div id = "Date">{date}</div>
                 <div id = "Day">{day}</div>
             </div>
-            <img class = "CoverPagePoster" src={ require('../images/poster2.png') } alt="poster2"/>
-            <div class = "CoverPageCommentContainer">
+            <img className = "CoverPagePoster" src={ require('../images/poster2.png') } alt="poster2"/>
+            <div className = "CoverPageCommentContainer">
                 <p id = "CoverPageComment1">Einmal ist Keinmal</p>
                 <p id = "CoverPageComment2"></p>
             </div>

@@ -1,4 +1,5 @@
 .App {
+  background-color: rgb(253, 250, 241);
 }
 
 .App-logo {
@@ -38,7 +39,7 @@
 
 /********************************************************************/
 .navbar {
-  background-color: #ffffff;
+  background-color: transparent;
   border: 3px;
   border-style: solid;
   border-color: rgb(0,79,139);
@@ -74,7 +75,6 @@
   left: 340px;
   background-color: transparent;
   border-color: transparent;
-
 }
 
 #MainButton {
@@ -125,9 +125,9 @@
   position: absolute;
   top: 100px;
   left: 0px;
-  height: 800px;
+  height: 700px;
   width: 900px;
-  display: none;
+  display: block;
 }
 
 .MovieInfoPoster{
@@ -178,6 +178,7 @@
 .CoverPage{
   max-height: 100%;
   max-width: 100%;
+  display: none;
 }
 
 .CoverPageDateContainer{
