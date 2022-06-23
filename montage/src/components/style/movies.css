@@ -1,0 +1,25 @@
+.Movies{
+    position: absolute;
+    top: 100px;
+    left: 250px;
+    width: 1000px;
+    display: block;
+    background-color: aqua;
+}
+
+.MovieCard{
+    float:left;
+    position: relative;
+}
+
+.MovieCardPoster{
+    position: relative;
+    height: 280px;
+    width: 210px;
+}
+
+.MovieCardTitle{
+    margin:0;
+	padding:0;
+    position: relative;
+}
