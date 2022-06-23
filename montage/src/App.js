@@ -4,14 +4,17 @@ import MovieInfo from "./components/MovieInfo";
 import {Login} from "./components/Login/Login";
 import {Register} from "./components/Login/Register";
 import CoverPage from "./components/CoverPage";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <MovieInfo />
-      <Login />
       <CoverPage />
+      <Routes>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Movie" element={<MovieInfo />} />
+      </Routes>
     </div>
   );
 }
