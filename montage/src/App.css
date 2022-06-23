@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(253, 250, 241);
 }
 
 .App-logo {
@@ -39,12 +46,13 @@
 
 /********************************************************************/
 .navbar {
-  background-color: #ffffff;
+  background-color: transparent;
   border: 3px;
   border-style: solid;
   border-color: rgb(0,79,139);
   height: 60px;
   width: 100vw;
+  position: relative;
 }
 
 .SearchContainer {
@@ -75,7 +83,6 @@
   left: 340px;
   background-color: transparent;
   border-color: transparent;
-
 }
 
 #MainButton {
@@ -119,4 +126,119 @@
   border-right: 0px;
   border-style: solid;
   border-color: rgb(0,79,139);
+}
+
+.MovieInfo {
+  position: absolute;
+  top: 100px;
+  left: 0px;
+  height: 700px;
+  width: 900px;
+  display: block;
+}
+
+.MovieInfoPoster{
+  position: absolute;
+  left: 250px;
+  top: 100px;
+  height: 320px;
+  width: 240px;
+  display:block;
+}
+
+.TitleYearContainer{
+  position: absolute;
+  left: 250px;
+  top: 0px;
+}
+
+.MovieInfoTitle{
+  position: relative;
+  font-size: 30px;
+}
+
+.MovieInfoYear{
+  position: absolute;
+  top: 60px;
+  left: 5px;
+  font-size: 15px;
+}
+
+.GeneralInfoContainer{
+  position: absolute;
+  top: 100px;
+  left: 520px;
+}
+
+.MovieInfoRating{
+  position: absolute;
+  left: 800px;
+  top: 20px;
+}
+
+.MovieInfoDescription{
+  position: absolute;
+  top: 430px;
+  left: 250px;
+}
+
+.CoverPage{
+  max-height: 100%;
+  max-width: 100%;
+  display: none;
+}
+
+.CoverPageDateContainer{
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  height: 100px;
+  width: 100px;
+}
+
+#Date{
+  position: absolute;
+  font-size: 90px;
+}
+
+#Month{
+  position: absolute;
+  left: 120px;
+  top: 30px;
+  font-size: 22px;
+}
+
+#Year{
+  position: absolute;
+  left: 170px;
+  top: 30px;
+  font-size: 22px;
+}
+
+#Day{
+  position: absolute;
+  left: 120px;
+  top: 68px;
+  font-size: 22px;
+}
+
+.CoverPagePoster{
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  height: 480px;
+  width: 360px;
+  display:block;
+}
+
+.CoverPageCommentContainer{
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+}
+
+#CoverPageComment1{
+  font-size: 30px;
 }
