@@ -12,7 +12,6 @@ function App() {
       <Navbar />
       <MovieInfo />
       <Login />
-      <CoverPage />
       <Movies />
     </div>
   );
