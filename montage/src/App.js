@@ -1,17 +1,26 @@
 import './App.css';
 import Navbar from "./components/Navbar";
 import MovieInfo from "./components/MovieInfo";
-import {Login} from "./components/Login/Login";
-import {Register} from "./components/Login/Register";
+import {LoginIndex} from "./components/Login/LoginIndex";
+import {Register} from "./components/Login/RegisterForm";
 import CoverPage from "./components/CoverPage";
 import Comments from "./components/Comments";
 import Movies from "./components/Movies";
+
+
+import {Routes, Route, useNavigate} from 'react-router-dom';
+
 function App() {
   return (
     <div className="App">
         <Navbar/>
         <MovieInfo/>
         <Movies/>
+      <CoverPage />
+      <Routes>
+        <Route path="/Login" element={<LoginIndex />} />
+      </Routes>
+
     </div>
   );
 }

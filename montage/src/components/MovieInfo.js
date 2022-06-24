@@ -4,11 +4,13 @@ import {useSelector} from 'react-redux';
 import "./style/movieInfo.css"
 import Comments from "./Comments";
 
+
 export default function MovieInfo() {
     const visibility = useSelector(state => state.others.navbar);
     const movie = useSelector(state => state.movies.selectedMovie);
     const comments = useSelector(state => state.comments.moviesComments);
     const movieRate = comments.totalRate/comments.commentList.length
+
 
 
     return (
@@ -26,6 +28,7 @@ export default function MovieInfo() {
                 </div>
 
                 <p className = "MovieInfoRating">{movieRate} / 10 ★</p>
+
                 <p className = "MovieInfoDescription">Movie Description: {movie.MovieDescription}</p>
             </div>
             <Comments/>
