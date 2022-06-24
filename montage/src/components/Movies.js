@@ -14,7 +14,7 @@ export default function Movies() {
 
     let a = movies.map((movie, index) => (
         <div className="MovieCard">
-            <img className = "MovieCardPoster" alt={movie.MovieTitle}/>
+            <img className = "MovieCardPoster" src = {"http://localhost:3001/images/" + movie.src} alt={movie.MovieTitle}/>
             <p className = "MovieCardTitle">{movie.MovieTitle}</p>
         </div>
     ));
