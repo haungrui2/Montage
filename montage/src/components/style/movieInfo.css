@@ -6,6 +6,12 @@
     width: 1300px;
     display: none;
   }
+
+
+.MovieInfoContainer{
+  position: relative;
+}
+
   
   .MovieInfoPoster{
     position: absolute;

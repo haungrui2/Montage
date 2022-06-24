@@ -5,7 +5,6 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { OpenLogin, OpenMovies, CloseMoviesInfo } from '../actions/index.js'
 
-
 export default function Navbar() {
     const dispatch = useDispatch();
   
