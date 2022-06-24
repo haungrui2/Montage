@@ -1,28 +1,27 @@
 import "./style/movies.css"
-import {useSelector} from 'react-redux';
+import {getMoviesAsync}  from '../reducers/movies/thunks';
+import {useSelector, useDispatch} from 'react-redux';
+import React, { useEffect } from 'react';
 
 export default function Movies() {
-    const visibility = useSelector(state => state.navbar);
+    const visibility = useSelector(state => state.others.navbar);
+    const movies = useSelector(state => state.movies.movies);
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(getMoviesAsync());
+    }, []);
+
     let a = movies.map((movie, index) => (
         <div className="MovieCard">
-            <img className = "MovieCardPoster" src={ require("../images/poster.png") } alt={movie.MovieTitle}/>
+            <img className = "MovieCardPoster" src = {"http://localhost:3001/images/" + movie.src} alt={movie.MovieTitle}/>
             <p className = "MovieCardTitle">{movie.MovieTitle}</p>
         </div>
     ));
     return (
-        <div className = "Movies"style={{display: visibility.movies}}>
+        <div className = "Movies" style={{display: visibility.movies}}>
             {a}
         </div>
     )
 }
 
-const movies = [
-    {MovieTitle:"となりのトトロ", MovieYear:"1988", MovieDirector:"Hayao Miyazaki", 
-    MovieWriter: "Hayao Miyazaki", MovieGenre: "Animation/Comedy/Family", MovieRating: "10",
-    MovieDescription: "The adventure story of two girls and forest spirits", src: "../images/poster.png"},
-    {MovieTitle:"The Unbearable Lightness of Being", MovieYear:"1988", MovieDirector:"Philip Kaufman", 
-    MovieWriter: "Milan Kundera, Jean-Claude Carrière, Philip Kaufman", MovieGenre: "Drama/Romance", MovieRating: "7",
-    MovieDescription: "A lovely story between a Czech doctor who has active sex life and a woman who wants monogamy.",
-    src: "../images/poster1.png"},
-    
-  ];
