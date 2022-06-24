@@ -9,10 +9,7 @@ import Movies from "./components/Movies";
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <MovieInfo />
-      <Login />
-      <Movies />
+        <Comments/>
     </div>
   );
 }
