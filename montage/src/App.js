@@ -1,8 +1,8 @@
 import './App.css';
 import Navbar from "./components/Navbar";
 import MovieInfo from "./components/MovieInfo";
-import {Login} from "./components/Login/Login";
-import {Register} from "./components/Login/Register";
+import {LoginIndex} from "./components/Login/LoginIndex";
+import {Register} from "./components/Login/RegisterForm";
 import CoverPage from "./components/CoverPage";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
@@ -12,8 +12,7 @@ function App() {
       <Navbar />
       <CoverPage />
       <Routes>
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Movie" element={<MovieInfo />} />
+        <Route path="/Login" element={<LoginIndex />} />
       </Routes>
     </div>
   );

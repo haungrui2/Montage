@@ -10,15 +10,11 @@ export default function Navbar() {
     navigate('/Login');
   };
 
-  const jumpToMovie = () => {
-    navigate('/Movie');
-  };
-
     return (
         <div className = "navbar">
             <button id = "MainButton">MainButton</button>
             {/* this will later be replaced by an image of the logo */}
-            <button id = "MoviesButton" onClick={jumpToMovie}>MoviesButton</button>
+            <button id = "MoviesButton">MoviesButton</button>
             <div className = "SearchContainer">
                 <form className = "SearchForm">
                     <input type = "text" className = "SearchText" placeholder = "Search"></input>
