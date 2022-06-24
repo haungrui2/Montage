@@ -14,9 +14,17 @@ const movies = [
     src: "Crayon_Shin-chan_Shrouded_in_Mystery!_The_Flowers_of_Tenkasu_Academy"},
   ];
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send(movies);
 });
+
+router.get('/:movieSrc', function (req, res, next) {
+    const foundUser = movies.find(movie => movie.src === req.params.movieSrc);
+    return res
+      .setHeader('Content-Type', 'application/json')
+      .send(foundUser);
+});
+  
+  
 
 module.exports = router;
