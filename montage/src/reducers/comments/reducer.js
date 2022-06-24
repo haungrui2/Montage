@@ -3,7 +3,7 @@ import { REQUEST_STATE } from '../utils';
 import {addCommentAsync, getCommentsAsync} from './thunks';
 
 const INITIAL_STATE = {
-  moviesComments: {MovieTitle:"My_Neighbor_Totoro", commentList: []},
+  moviesComments: {MovieTitle:"", commentList: [], totalRate: 0},
   getComments: REQUEST_STATE.IDLE,
   addComments: REQUEST_STATE.IDLE,
   error: null

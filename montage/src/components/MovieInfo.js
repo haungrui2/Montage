@@ -2,10 +2,13 @@
 rating, director, writer, genre, and description */
 import {useSelector} from 'react-redux';
 import "./style/movieInfo.css"
+import Comments from "./Comments";
 
 export default function MovieInfo() {
     const visibility = useSelector(state => state.others.navbar);
     const movie = useSelector(state => state.movies.selectedMovie);
+    const comments = useSelector(state => state.comments.moviesComments);
+    const movieRate = comments.totalRate/comments.commentList.length
 
 
     return (
@@ -22,9 +25,10 @@ export default function MovieInfo() {
                     <p className = "MovieInfoGenre">Genre: {movie.MovieGenre}</p>
                 </div>
 
-                <p className = "MovieInfoRating">{movie.MovieRating} / 10 ★</p>
+                <p className = "MovieInfoRating">{movieRate} / 10 ★</p>
                 <p className = "MovieInfoDescription">Movie Description: {movie.MovieDescription}</p>
             </div>
+            <Comments/>
         </div>
     )
 }

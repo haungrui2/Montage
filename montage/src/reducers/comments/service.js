@@ -1,5 +1,5 @@
 const getComments = async (movieTitle) => {
-    const response = await fetch('http://localhost:3001/comments/:' + movieTitle, {
+    const response = await fetch('http://localhost:3001/comments/' + movieTitle, {
       method: 'GET'
     });
     return response.json();
