@@ -4,6 +4,10 @@ import MovieInfo from "./components/MovieInfo";
 import {LoginIndex} from "./components/Login/LoginIndex";
 import {Register} from "./components/Login/RegisterForm";
 import CoverPage from "./components/CoverPage";
+import Comments from "./components/Comments";
+import Movies from "./components/Movies";
+
+
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function App() {
