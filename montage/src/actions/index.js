@@ -18,3 +18,24 @@ export const OpenMovies = visibility => {
         payload: visibility
     };
 }
+
+export const CloseMovies = visibility => {
+    return {
+        type: 'CloseMovies',
+        payload: visibility
+    };
+}
+
+export const OpenMoviesInfo = visibility => {
+    return {
+        type: 'OpenMoviesInfo',
+        payload: visibility
+    };
+}
+
+export const CloseMoviesInfo = visibility => {
+    return {
+        type: 'CloseMoviesInfo',
+        payload: visibility
+    };
+}
