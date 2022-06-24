@@ -4,3 +4,17 @@ export const addComment = comment => {
         payload: comment
     };
 }
+
+export const OpenLogin = visibility => {
+    return {
+        type: 'OpenLogin',
+        payload: visibility
+    };
+}
+
+export const OpenMovies = visibility => {
+    return {
+        type: 'OpenMovies',
+        payload: visibility
+    };
+}
