@@ -4,7 +4,10 @@ const path = require('path');
 const allComments = [
     {MovieId:"My_Neighbor_Totoro", commentList: [], totalRate: 0},
     {MovieId:"The_Unbearable_Lightness_of_Being", commentList: [], totalRate: 0},
-    {MovieId:"Crayon_Shin-chan_Shrouded_in_Mystery!_The_Flowers_of_Tenkasu_Academy", commentList: [], totalRate: 0}
+    {MovieId:"Crayon_Shin-chan_Shrouded_in_Mystery!_The_Flowers_of_Tenkasu_Academy", commentList: [], totalRate: 0},
+    {MovieId:"Birdman", commentList: [], totalRate: 0},
+    {MovieId:"Ghost_in_the_Shell", commentList: [], totalRate: 0},
+    {MovieId:"Evangelion_3.0+1.01_Thrice_Upon_a_Time", commentList: [], totalRate: 0},
 ];
 
 /* GET users listing. */
