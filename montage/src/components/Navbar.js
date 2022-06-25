@@ -12,7 +12,7 @@ export default function Navbar() {
 
   const jumpToLogin = () => {
     navigate('/Login');
-
+}
     return (
         <div className = "navbar">
             <button id = "MainButton">MainButton</button>
