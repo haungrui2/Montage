@@ -32,3 +32,17 @@ export const CloseMoviesInfo = visibility => {
         payload: visibility
     };
 }
+
+export const OpenCoverPage = visibility => {
+    return {
+        type: 'OpenCoverPage',
+        payload: visibility
+    };
+}
+
+export const CloseCoverPage = visibility => {
+    return {
+        type: 'CloseCoverPage',
+        payload: visibility
+    };
+}

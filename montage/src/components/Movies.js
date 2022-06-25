@@ -16,9 +16,9 @@ export default function Movies() {
     }, []);
 
     let a = movies.map((movie, index) => (
-        <div className="MovieCard" onClick={() => {dispatch(CloseMovies()); dispatch(OpenMoviesInfo()); dispatch(getMovieAsync(movie.src)); dispatch(getCommentsAsync(movie.src));}}>
+        <div className="MovieCard" onClick={() => {dispatch(CloseMovies()); dispatch(OpenMoviesInfo()); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}}>
 
-            <img className = "MovieCardPoster" src = {"http://localhost:3001/images/" + movie.src} alt={movie.MovieTitle}/>
+            <img className = "MovieCardPoster" src = {"http://localhost:3001/images/" + movie.movieId} alt={movie.MovieTitle}/>
             <p className = "MovieCardTitle">{movie.MovieTitle}</p>
         </div>
     ));

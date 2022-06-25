@@ -1,4 +1,5 @@
 .MovieInfo {
+  text-align: left;
     position: absolute;
     top: 100px;
     left: 0px;
@@ -6,7 +7,6 @@
     width: 1300px;
     display: none;
   }
-
 
 .MovieInfoContainer{
   position: relative;
@@ -30,7 +30,7 @@
   
   .MovieInfoTitle{
     position: relative;
-    font-size: 30px;
+    font-size: 25px;
     max-width: 1200px;
   }
   
@@ -58,8 +58,4 @@
     max-width: 750px;
     top: 430px;
     left: 250px;
-  }
-
-  p{
-    text-align: left;
   }
