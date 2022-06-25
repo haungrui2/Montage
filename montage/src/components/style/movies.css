@@ -4,7 +4,6 @@
     left: 250px;
     width: 1000px;
     display: block;
-    background-color: aqua;
 }
 
 .MovieCard{
@@ -27,4 +26,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: left;
 }

@@ -1,8 +1,10 @@
 /* this is the cover page, including the date, poster, and a recommendation comment */
 import { useState, useEffect } from "react";
+import {useSelector} from 'react-redux';
+import "./style/coverPage.css"
 export default function CoverPage() {
     const [dateTime, setDateTime] = useState(new Date());
-
+    const visibility = useSelector(state => state.others.navbar.coverPage);
     useEffect(() => {setDateTime(new Date());}, []);
 
     const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
@@ -15,7 +17,7 @@ export default function CoverPage() {
 
     return (
         
-        <div className = "CoverPage">
+        <div className = "CoverPage" style={{display: visibility}}>
             <div className = "CoverPageDateContainer">
                 <div id = "Year">{year}</div>
                 <div id = "Month">{month}</div>
