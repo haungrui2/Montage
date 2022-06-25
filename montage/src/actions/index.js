@@ -1,10 +1,3 @@
-export const addComment = comment => {
-    return {
-        type: 'ADD_COMMENT',
-        payload: comment
-    };
-}
-
 export const OpenLogin = visibility => {
     return {
         type: 'OpenLogin',
@@ -36,6 +29,20 @@ export const OpenMoviesInfo = visibility => {
 export const CloseMoviesInfo = visibility => {
     return {
         type: 'CloseMoviesInfo',
+        payload: visibility
+    };
+}
+
+export const OpenCoverPage = visibility => {
+    return {
+        type: 'OpenCoverPage',
+        payload: visibility
+    };
+}
+
+export const CloseCoverPage = visibility => {
+    return {
+        type: 'CloseCoverPage',
         payload: visibility
     };
 }

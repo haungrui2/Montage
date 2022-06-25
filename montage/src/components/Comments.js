@@ -1,21 +1,20 @@
 /* this is the area that display comments, including comments and ratings */
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from "react";
-import {addComment} from "../actions";
 import "./style/comments.css"
 import {addCommentAsync, getCommentsAsync} from "../reducers/comments/thunks";
 
 export default function Comments() {
     const comments = useSelector(state => state.comments.moviesComments)
     const dispatch = useDispatch()
-    const movieTitle = "My_Neighbor_Totoro"
+    const selectedMovie = useSelector(state => state.movies.selectedMovie)
+    const movieId = selectedMovie.movieId
     const user = "default user"
 
     useEffect(() => {
-        dispatch(getCommentsAsync(movieTitle));
+        dispatch(getCommentsAsync(movieId));
     }, []);
 
-    console.log(comments)
     const commentsDisplay = comments.commentList.map((comment) =>
         <div className= "comment">
             <h3>{comment.user}:</h3>
@@ -25,15 +24,14 @@ export default function Comments() {
     )
     const [commentContent, setCommentContent] = useState("")
     const [commentRate, setCommentRate] = useState(0)
-    return(<div>
-
+    return(<div id = "movie_comment">
             <div id = "comment_input">
                 <textarea name="commentInput" value ={commentContent} placeholder="..." onChange={(e) => setCommentContent(e.target.value)}/><br/>
                 <button id="rate">rate:{commentRate}</button>
                 <button id = "comment_button" onClick={() => {if(commentContent !== "") dispatch(
                     addCommentAsync({
                         commentsContent: handleAddComment(user, commentContent, commentRate),
-                        movieTitle: movieTitle
+                        movieId: movieId
                     }));
                     setCommentContent("")}}>comment</button>
                 <div id= "rate_button">

@@ -13,11 +13,14 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+        <Navbar/>
+        <MovieInfo/>
+        <Movies/>
       <CoverPage />
       <Routes>
         <Route path="/Login" element={<LoginIndex />} />
       </Routes>
+
     </div>
   );
 }

@@ -1,7 +1,8 @@
 let visibility = {
     login: "none",
     movies: "none",
-    movieInfo: "none"
+    movieInfo: "none",
+    coverPage: "none"
 }
 
 const navbar = (initialState = visibility, action) => {
@@ -16,6 +17,10 @@ const navbar = (initialState = visibility, action) => {
             return {...initialState, movieInfo: "block"};
         case 'CloseMoviesInfo':
             return {...initialState, movieInfo: "none"};
+        case 'OpenCoverPage':
+                return {...initialState, coverPage: "block"};
+        case 'CloseCoverPage':
+            return {...initialState, coverPage: "none"};
         default:
             return initialState;
     }
