@@ -27,4 +27,5 @@ export default function Navbar() {
             <button id = "Login" onClick={jumpToLogin}>Login</button>
         </div>
     )
+ }
 }
