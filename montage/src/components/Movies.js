@@ -13,12 +13,12 @@ export default function Movies() {
   
     useEffect(() => {
       dispatch(getMoviesAsync());
-    }, []);
+    });
 
     let a = movies.map((movie, index) => (
         <div className="MovieCard" onClick={() => {dispatch(CloseMovies()); dispatch(OpenMoviesInfo()); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}}>
 
-            <img className = "MovieCardPoster" src = {"http://localhost:3001/images/" + movie.movieId} alt={movie.MovieTitle}/>
+            <img className = "MovieCardPoster" src = {movie.imageData} alt={movie.MovieTitle}/>
             <p className = "MovieCardTitle">{movie.MovieTitle}</p>
         </div>
     ));

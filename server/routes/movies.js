@@ -3,7 +3,6 @@ var router = express.Router();
 var path = require('path');
 const mongoose = require('mongoose');
 var generateMovieData = require('./generateData/movieData');
-var generateMovieImageData = require('./generateData/movieImageData');
 const movieQueries = require('./queries/movieQueries');
 let movies = [];
 
@@ -12,7 +11,6 @@ main().catch(err => console.log(err));
 async function main() {
   await mongoose.connect('mongodb+srv://montage2022:cpsc455montage@cluster0.d2rpjlf.mongodb.net/montage');
   // generateMovieData();
-  // generateMovieImageData();
 }
 
 router.get('/', async function(req, res, next) {

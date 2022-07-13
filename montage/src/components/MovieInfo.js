@@ -20,7 +20,7 @@ export default function MovieInfo() {
                     <p className = "MovieInfoTitle">{movie.MovieTitle}</p>
                     <p className = "MovieInfoYear">{movie.MovieYear}</p>
                 </div>
-                <img className = "MovieInfoPoster" src={"http://localhost:3001/images/" + movie.movieId} alt="poster"/>
+                <img className = "MovieInfoPoster" src={movie.imageData} alt="poster"/>
                 <div className = "GeneralInfoContainer">
                     <p className = "MovieInfoDirector">Director: {movie.MovieDirector}</p>
                     <p className = "MovieInfoWriter">Writer: {movie.MovieWriter}</p>
