@@ -14,7 +14,7 @@ export default function MovieInfo() {
 
 
     return (
-        <div className = "MovieInfo" style={{display: visibility.movieInfo}}>
+        <div className = "MovieInfo">
             <div className = "MovieInfoContainer">
                 <div className="TitleYearContainer">
                     <p className = "MovieInfoTitle">{movie.MovieTitle}</p>

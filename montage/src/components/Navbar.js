@@ -13,11 +13,14 @@ export default function Navbar() {
   const jumpToLogin = () => {
     navigate('/Login');
 }
+const jumpToMovies = () => {
+    navigate('/Movies');
+}
     return (
         <div className = "navbar">
             <button id = "MainButton" onClick={() => { dispatch(CloseMoviesInfo()); dispatch(CloseMovies()); dispatch(OpenCoverPage())}}>MainButton</button>
             {/* this will later be replaced by an image of the logo */}
-            <button id = "MoviesButton" onClick={() => { dispatch(CloseMoviesInfo()); dispatch(OpenMovies()); dispatch(CloseCoverPage())}}>MoviesButton</button>
+            <button id = "MoviesButton" onClick={() => {jumpToMovies(); dispatch(CloseMoviesInfo()); dispatch(CloseCoverPage())}}>MoviesButton</button>
             <div className = "SearchContainer">
                 <form className = "SearchForm">
                     <input type = "text" className = "SearchText" placeholder = "Search"></input>

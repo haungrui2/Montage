@@ -14,10 +14,11 @@ function App() {
   return (
     <div className="App">
         <Navbar/>
-        <MovieInfo/>
-        <Movies/>
+        
       <CoverPage />
       <Routes>
+      <Route path="/MovieInfo" element={<MovieInfo />} />
+      <Route path="/Movies" element={<Movies />} />
         <Route path="/Login" element={<LoginIndex />} />
       </Routes>
 
