@@ -7,15 +7,14 @@ import CoverPage from "./components/CoverPage";
 import Comments from "./components/Comments";
 import Movies from "./components/Movies";
 
-
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-        <Navbar/>
-        <MovieInfo/>
-        <Movies/>
+      <Navbar/>
+      <MovieInfo/>
+      <Movies/>
       <CoverPage />
       <Routes>
         <Route path="/Login" element={<LoginIndex />} />

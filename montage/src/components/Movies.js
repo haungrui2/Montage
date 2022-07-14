@@ -10,7 +10,7 @@ export default function Movies() {
     const visibility = useSelector(state => state.others.navbar);
     const movies = useSelector(state => state.movies.movies);
     const dispatch = useDispatch();
-  
+
     useEffect(() => {
       dispatch(getMoviesAsync());
     }, []);
@@ -28,4 +28,3 @@ export default function Movies() {
         </div>
     )
 }
-

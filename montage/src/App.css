@@ -63,6 +63,7 @@
   border-right: 3px;
   border-style: solid;
   border-color: rgb(0,79,139);
+  cursor: pointer;
 }
 
 #MoviesButton {
@@ -77,6 +78,7 @@
   border-right: 3px;
   border-style: solid;
   border-color: rgb(0,79,139);
+  cursor: pointer;
 }
 
 #Login {
@@ -92,4 +94,5 @@
   border-right: 0px;
   border-style: solid;
   border-color: rgb(0,79,139);
+  cursor: pointer;
 }

@@ -7,7 +7,7 @@ import { OpenMovies, CloseMoviesInfo, OpenCoverPage, CloseCoverPage, CloseMovies
 
 export default function Navbar() {
     const dispatch = useDispatch();
-  
+
     const navigate = useNavigate();
 
   const jumpToLogin = () => {
