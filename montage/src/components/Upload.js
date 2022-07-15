@@ -5,14 +5,15 @@ import {handleOnChangeMovieTitle, handleOnChangeMovieYear,
     handleOnChangeMovieGenre, handleOnChangeMovieId,
     handleOnChangeMovieDescription, handleOnChangeMovieImage} from '../actions/index.js';
 import {useSelector, useDispatch} from 'react-redux';
+import {addMovieAsync} from "../reducers/movies/thunks";
 
 export default function Upload() {
     const uploadState = useSelector(state => state.others.upload);
     const genres = ["Action", "Adventure", "Comedy", "Crime", "Drama", "Epics", "Horror",
     "Musicals", "Science Fiction", "War", "Westerns", "Detective", "Mystery", "Biographical",
     "Disaster", "Fantasy", "Road", "Romance", "Sports", "Superhero", "Documentary",
-    "Animation"]
-    let a = genres.map((genre) => (
+    "Animation", "Family"]
+    let checkboxs = genres.map((genre) => (
         <div className = "checkBoxContainer">
             <input className = "genreCheckBox" type="checkbox" id={genre} value={genre} onChange={(e) => dispatch(handleOnChangeMovieGenre(genre))}></input>
             <label className = "checkBoxLabel" for={genre}>{genre}</label><br></br>
@@ -34,11 +35,11 @@ export default function Upload() {
             <input className = "shortInputBox uploadMovieDirector" placeholder="Movie Director" onChange={(e) => dispatch(handleOnChangeMovieDirector(e.target.value))}></input>
             <input className = "shortInputBox uploadMovieWriter" placeholder="Movie Writer" onChange={(e) => dispatch(handleOnChangeMovieWriter(e.target.value))}></input>
             <div className = "genreCheckBoxs">
-                {a}
+                {checkboxs}
             </div>
             <input className = "uploadMovieDescription" placeholder="Movie Description" onChange={(e) => dispatch(handleOnChangeMovieDescription(e.target.value))}></input>
             <div>
-            <button className="uploadButton">Upload</button>
+            <button className="uploadButton" onClick={() => dispatch(addMovieAsync(uploadState))}>Upload</button>
             </div>
         </div>
     )
