@@ -73,4 +73,40 @@ export const SubmitButton = styled.button`
   &:hover {
     filter: brightness(1.14);
   }
+
+  &:disabled {
+    filter: contrast(0.7);
+  }
+`;
+
+export const FieldContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FieldError = styled.span`
+  color: red;
+  font-size: 14px;
+  min-height: -20px;
+  margin-bottom: 22px;
+`;
+
+export const FieldErrorLogin = styled.span`
+  color: red;
+  font-size: 14px;
+  margin-bottom: 24px;
+`;
+
+export const FormSuccess = styled.span`
+  color: #28a828;
+  font-size: 15px;
+  min-height: 20px;
+`;
+
+export const FormError = styled.span`
+  color: red;
+  font-size: 15px;
+  min-height: 20px;
+  z-index:10;
 `;

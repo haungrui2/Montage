@@ -9,6 +9,7 @@ import Movies from "./components/Movies";
 import Upload from "./components/Upload";
 import Search from "./components/Search";
 
+
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function App() {
