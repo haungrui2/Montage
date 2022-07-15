@@ -8,13 +8,14 @@ import Comments from "./components/Comments";
 import Movies from "./components/Movies";
 import Upload from "./components/Upload";
 
+
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <Navbar/>
-        
+
       <CoverPage />
       <Routes>
       <Route path="/Upload" element={<Upload />} />
