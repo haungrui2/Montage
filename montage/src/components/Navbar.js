@@ -1,6 +1,6 @@
 /* This is the navbar for all windows, including the logo (main button, which sends
 you back to the main page), the menu, the search bar, and user login option.*/
-
+import "./style/navbar.css"
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import { OpenMovies, CloseMoviesInfo, OpenCoverPage, CloseCoverPage, CloseMovies } from '../actions/index.js'
