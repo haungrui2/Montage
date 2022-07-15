@@ -14,17 +14,17 @@ export default function MovieInfo() {
 
 
     return (
-        <div className = "MovieInfo" style={{display: visibility.movieInfo}}>
+        <div className = "MovieInfo">
             <div className = "MovieInfoContainer">
                 <div className="TitleYearContainer">
                     <p className = "MovieInfoTitle">{movie.MovieTitle}</p>
                     <p className = "MovieInfoYear">{movie.MovieYear}</p>
                 </div>
-                <img className = "MovieInfoPoster" src={"http://localhost:3001/images/" + movie.movieId} alt="poster"/>
+                <img className = "MovieInfoPoster" src={movie.imageData} alt="poster"/>
                 <div className = "GeneralInfoContainer">
                     <p className = "MovieInfoDirector">Director: {movie.MovieDirector}</p>
                     <p className = "MovieInfoWriter">Writer: {movie.MovieWriter}</p>
-                    <p className = "MovieInfoGenre">Genre: {movie.MovieGenre}</p>
+                    <p className = "MovieInfoGenre">Genre: {movie.MovieGenre.map((genre) => (genre + "/"))}</p>
                 </div>
 
                 <p className = "MovieInfoRating">{movieRate} / 10 ★</p>

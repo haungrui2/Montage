@@ -6,6 +6,8 @@ import {Register} from "./components/Login/RegisterForm";
 import CoverPage from "./components/CoverPage";
 import Comments from "./components/Comments";
 import Movies from "./components/Movies";
+import Upload from "./components/Upload";
+
 
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
@@ -13,10 +15,12 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <MovieInfo/>
-      <Movies/>
+
       <CoverPage />
       <Routes>
+      <Route path="/Upload" element={<Upload />} />
+      <Route path="/MovieInfo" element={<MovieInfo />} />
+      <Route path="/Movies" element={<Movies />} />
         <Route path="/Login" element={<LoginIndex />} />
       </Routes>
 

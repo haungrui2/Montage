@@ -15,3 +15,10 @@ export const getMovieAsync = createAsyncThunk(
     return await MoviesService.getMovie(movie);
   }
 );
+
+export const addMovieAsync = createAsyncThunk(
+  actionTypes.ADD_MOVIE,
+  async (movie) => {
+    return await MoviesService.addMovie(movie);
+  }
+);
