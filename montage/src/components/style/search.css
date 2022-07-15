@@ -1,0 +1,17 @@
+.genre-tag {
+
+}
+
+li{
+	display:inline-block;
+    border-right:2px solid #ddd;
+    width:auto;
+    padding-left:1em;
+    padding-right:1em;
+    margin-bottom:.5em
+}
+
+.genre-tag:hover {
+    color:blue;
+    background-color: #ddd;
+}
