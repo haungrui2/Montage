@@ -10,13 +10,6 @@ router.get('/', (req, res) => {
 
 //SUBMIT A User info -- Sign Up
 router.post(`/signup`, (req, res) => {
-  // const { body } = req;
-  // const {
-  //   name,
-  //   password
-  // } = body;
-  //
-  // let {email} = body;
   const {fullName, password} = req.body;
   let {email} = req.body;
 
@@ -51,17 +44,14 @@ router.post(`/signup`, (req, res) => {
         message: 'Error: Server error'
       });
     } else if (previousUsers.length > 0) {
-      return res.send({
-        success: false,
-        message: 'Error: This email has been used.'
-      });
+      return res.status(409).json({message: "User with email already exists!"});
     }
 
     // Save the new User info -- using userModel
     const newUser = new userModel();
     newUser.fullName = fullName;
     newUser.email = email;
-    newUser.password = newUser.generateHash(password);
+    newUser.password = password;
     const savedUser = newUser.save()
     .catch((error) => {
       console.log("Error: ", error);
@@ -74,52 +64,28 @@ router.post(`/signup`, (req, res) => {
 });
 
 // Sign In
-router.post(`/signin`, (req, res) => {
-  const { body } = req;
-  const {password} = body;
-  let {email} = body;
-
-  if (!email) {
-    return res.send({
-      success: false,
-      message: 'Error: Email cannot be blank.'
-    });
-  }
-  if (!password) {
-    return res.send({
-      success: false,
-      message: 'Error: Password cannot be blank.'
-    });
-  }
+router.post(`/signin`, async (req, res) => {
+  const {password} = req.body;
+  let {email} = req.body;
 
   email = email.toLowerCase();
 
-  userModel.find({
-    email: email
-  }, (error, users) => {
-    if (error) {
-      console.log("error 2:", error);
-      return res.send({
-        success: false,
-        message: 'Error: Server error'
-      });
+  const userWithEmail = await userModel.find({email: email})
+    .catch((error) => {
+      console.log("Error :", error);
+    });
+
+    console.log(userWithEmail);
+    console.log(userWithEmail[0].password);
+    if (!userWithEmail) {
+      return res.status(400).json({message: "Email or Password does not match!"});
     }
-    if (users.length != 1) {
-      return res.send({
-        success: false,
-        message: 'Error: Found more than one user.'
-      });
+    if (userWithEmail[0].password !== password) {
+      return res.status(400).json({message: "Email or Password does not match!"});
     }
 
-    const user = users[0];
-    if (!user.validPassword(password)) { // valid the password
-      return res.send({
-        success: false,
-        message: 'Error: Invalid password.'
-      });
-    }
     const userSession = new userSessionModel(); // correct user using userSession
-    userSession.userId = user._id;
+    userSession.userId = userWithEmail._id;
     userSession.save((error, doc) => {
       if (error) {
         console.log(error);
@@ -134,7 +100,6 @@ router.post(`/signin`, (req, res) => {
       });
     });
   });
-});
 
 // Get the token for easy login
 router.get(`/verify`, (req, res) => {

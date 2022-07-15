@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {BoxContainer, FormContainer, BoldLink, MutedLink, Input, SubmitButton,
-FieldContainer, FieldError, FormSuccess} from "./Common";
+FieldContainer, FieldError, FormSuccess, FormError} from "./Common";
 import {LoginContext} from "./LoginContext";
 import {useFormik} from "formik";
 import * as yup from "yup";
@@ -21,17 +21,21 @@ const validationSchema = yup.object({
 export function RegisterForm(props) {
   const {switchToLogin} = useContext(LoginContext);
   const [success, setSuccess] = useState(null);
+  const [error, setError] = useState(null);
 
   const onSubmit = async (values) => {
     const {confirmPassword, ...data} = values;
     const response = await axios.post('http://localhost:3001/users/signup', data)
     .catch((error) => {
       if (error && error.response) {
-        console.log("Error: ", error);
+        setError(error.response.data.message);
+        setSuccess(null);
       }
     });
     if (response && response.data) {
+      setError(null);
       setSuccess(response.data.message);
+      formik.resetForm();
     }
   };
 
@@ -89,8 +93,10 @@ export function RegisterForm(props) {
           </FieldError>
         </FieldContainer>
 
-        <SubmitButton type="submit">Sign Up</SubmitButton>
-        <FormSuccess>{success ? success : ""}</FormSuccess>
+        <SubmitButton type="submit" disabled={!formik.isValid}>Sign Up</SubmitButton>
+        {!error && <FormSuccess>{success ? success : ""}</FormSuccess>}
+        {!success && <FormError>{error ? error : ""}</FormError>}
+        <FormError>{}</FormError>
       </FormContainer>
       <MutedLink href="#">
         Already have an account?
