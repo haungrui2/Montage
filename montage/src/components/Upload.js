@@ -27,7 +27,6 @@ export default function Upload() {
     };
     return (
         <div className="upload">
-            <p>{uploadState.imageData}</p>
             <input className = "shortInputBox uploadPoster" type="file" accept="image/png, image/jpeg" onChange={(e) => reader.readAsDataURL(e.target.files[0])}></input>
             <input className= "uploadMovieTitle" placeholder="Movie Title" onChange={(e) => dispatch(handleOnChangeMovieTitle(e.target.value))}></input>
             <input className = "shortInputBox uploadMovieId" placeholder="Movie Id" onChange={(e) => dispatch(handleOnChangeMovieId(e.target.value))}></input>
