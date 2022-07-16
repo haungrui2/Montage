@@ -15,7 +15,7 @@ export default function Movies() {
 
     useEffect(() => {
       dispatch(getMoviesAsync());
-    });
+    }, []);
     const jumpToMovieInfo = () => {
         navigate('/MovieInfo');
     }

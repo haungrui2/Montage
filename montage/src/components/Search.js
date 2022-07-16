@@ -17,7 +17,7 @@ export default function Search() {
     ))
 
     let yearList = years.map((year) => (
-        <li className="genre-tag">
+        <li className="genre-tag" name="choice">
             {year}
         </li>
     ))
@@ -31,7 +31,13 @@ export default function Search() {
 
             <div className="yearListContainer">
             <ul>
-            {yearList}    
+            {yearList}
+            <li className="genre-tag" name="choice">
+            <label>Other:</label>
+            <div className="yearInputContainer">
+            <input type="number" className="yearInputBox" max="2100" min="1800"></input>
+            </div>
+            </li> 
             </ul>
             </div>
         </div>

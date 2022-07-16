@@ -5,6 +5,7 @@
 li{
 	display:inline-block;
     border-right:2px solid #ddd;
+    height: 25px;
     width:auto;
     padding-left:1em;
     padding-right:1em;
@@ -15,3 +16,4 @@ li{
     color:blue;
     background-color: #ddd;
 }
+
