@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <Search />
+      
       <CoverPage />
       <Routes>
       <Route path="/Upload" element={<Upload />} />
