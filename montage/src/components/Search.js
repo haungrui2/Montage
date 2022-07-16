@@ -1,3 +1,4 @@
+import { notInitialized } from "react-redux/es/utils/useSyncExternalStore";
 import "./style/search.css"
 
 export default function Search() {
@@ -17,9 +18,9 @@ export default function Search() {
     ))
 
     let yearList = years.map((year) => (
-        <li className="genre-tag" name="choice">
+        <button className="genre-tag" name="choice" style={{color: "#0000ff", backgroundColor: "#ddd"}}>
             {year}
-        </li>
+        </button>
     ))
     return (
         <div className = "Search">

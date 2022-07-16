@@ -23,7 +23,7 @@ export default function MovieInfo() {
                 <div className = "GeneralInfoContainer">
                     <p className = "MovieInfoDirector">Director: {movie.MovieDirector}</p>
                     <p className = "MovieInfoWriter">Writer: {movie.MovieWriter}</p>
-                    <p className = "MovieInfoGenre">Genre: {movie.MovieGenre}</p>
+                    <p className = "MovieInfoGenre">Genre: {movie.MovieGenre.map((genre) => (genre + "/"))}</p>
                 </div>
 
                 <p className = "MovieInfoRating">{movieRate} / 10 ★</p>

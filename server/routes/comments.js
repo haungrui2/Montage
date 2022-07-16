@@ -23,7 +23,7 @@ const Comment = mongoose.model('comment', commentSchema);
 
 const uri = "mongodb+srv://montage2022:cpsc455montage@cluster0.d2rpjlf.mongodb.net/montage";
 
-connectDb().catch(err => console.log(err));
+// connectDb().catch(err => console.log(err));
 async function connectDb() {
     await mongoose.connect(uri);
 }
