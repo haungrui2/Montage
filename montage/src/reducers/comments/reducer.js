@@ -22,6 +22,7 @@ const usersSlice = createSlice({
       .addCase(getCommentsAsync.fulfilled, (state, action) => {
         state.getComments = REQUEST_STATE.FULFILLED;
         state.moviesComments = action.payload;
+        console.log(action.payload)
       })
       .addCase(getCommentsAsync.rejected, (state, action) => {
         state.getComments = REQUEST_STATE.REJECTED;

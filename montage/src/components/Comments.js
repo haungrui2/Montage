@@ -10,10 +10,11 @@ export default function Comments() {
     const selectedMovie = useSelector(state => state.movies.selectedMovie)
     const movieId = selectedMovie.movieId
     const user = "default user"
+    console.log(comments)
 
-    useEffect(() => {
-        dispatch(getCommentsAsync(movieId));
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getCommentsAsync(movieId));
+    // }, []);
 
     const commentsDisplay = comments.commentList.map((comment) =>
         <div className= "comment">

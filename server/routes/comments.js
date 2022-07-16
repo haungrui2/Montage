@@ -19,9 +19,9 @@ const commentSchema = new mongoose.Schema({
 });
 
 // create model
-const Comment = mongoose.model('recipe', commentSchema);
+const Comment = mongoose.model('comment', commentSchema);
 
-const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.lvcanmq.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://montage2022:cpsc455montage@cluster0.d2rpjlf.mongodb.net/montage";
 
 connectDb().catch(err => console.log(err));
 async function connectDb() {
@@ -30,8 +30,9 @@ async function connectDb() {
 /* GET users listing. */
 router.get('/:movieId', async function(req, res, next) {
     //const foundMovieComment = allComments.find(movieComments => movieComments.MovieId === req.params.movieId);
-    const foundMovieComment = await Comment.find({"MovieId": req.params.movieId});
-    if(foundMovieComment === {}){
+    const foundMovieComment = await Comment.findOne({"MovieId": req.params.movieId});
+    console.log(foundMovieComment);
+    if(!foundMovieComment){
         await Comment.insertMany({
             MovieId: req.params.movieId,
             commentList: [],
@@ -52,7 +53,7 @@ router.post('/', async function (req, res, next) {
     const commentsContent = req.body.commentsContent;
     comments.commentList.push(commentsContent);
     comments.totalRate += commentsContent.rate;
-    await Comment.updateOne({MovieId: commentsContent.movieId},{$set:{commentList: comments.commentList, totalRate: comments.totalRate}})
+    await Comment.updateOne({MovieId: req.body.movieId},{$set:{commentList: comments.commentList, totalRate: comments.totalRate}})
     return res.send(comments);
     // const foundMovieIndex = allComments.findIndex(movieComments => movieComments.MovieId === req.body.movieId);
     // allComments[foundMovieIndex].commentList.push(commentsContent);
