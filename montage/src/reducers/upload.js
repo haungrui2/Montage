@@ -22,7 +22,7 @@ const upload = (initialState = movieInformation, action) => {
         case 'OnChangeMovieDescription':
             return {...initialState, MovieDescription: action.payload};
         case 'OnChangeMovieId':
-            return {...initialState, MovieId: action.payload};
+            return {...initialState, movieId: action.payload};
         case 'OnChangeMovieImage':
             return {...initialState, imageData: action.payload};
         case 'OnChangeMovieGenre':
