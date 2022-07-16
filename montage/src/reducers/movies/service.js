@@ -28,8 +28,25 @@ const getMovie = async (movie) => {
     return data;
   };
 
+  const editMovie = async (movie) => {
+    const response = await fetch('http://localhost:3001/movies/', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(movie)
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const errorMsg = data?.message;
+      throw new Error(errorMsg)
+    }
+    return data;
+  };
+
   export default {
     getMovies,
     getMovie,
-    addMovie
+    addMovie,
+    editMovie
   };

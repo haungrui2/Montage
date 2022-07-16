@@ -5,7 +5,7 @@ import {handleOnChangeMovieTitle, handleOnChangeMovieYear,
     handleOnChangeMovieGenre, handleOnChangeMovieId,
     handleOnChangeMovieDescription, handleOnChangeMovieImage} from '../actions/index.js';
 import {useSelector, useDispatch} from 'react-redux';
-import {addMovieAsync} from "../reducers/movies/thunks";
+import {addMovieAsync, editMovieAsync} from "../reducers/movies/thunks";
 
 export default function Upload() {
     const uploadState = useSelector(state => state.others.upload);
@@ -39,6 +39,7 @@ export default function Upload() {
             <input className = "uploadMovieDescription" placeholder="Movie Description" onChange={(e) => dispatch(handleOnChangeMovieDescription(e.target.value))}></input>
             <div>
             <button className="uploadButton" onClick={() => dispatch(addMovieAsync(uploadState))}>Upload</button>
+            <button className="editButton" onClick={() => dispatch(editMovieAsync(uploadState))}>Edit</button>
             </div>
         </div>
     )
