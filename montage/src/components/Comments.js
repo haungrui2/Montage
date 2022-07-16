@@ -8,7 +8,7 @@ export default function Comments() {
     const comments = useSelector(state => state.comments.moviesComments)
     const dispatch = useDispatch()
     const selectedMovie = useSelector(state => state.movies.selectedMovie)
-    const movieId = selectedMovie.src
+    const movieId = selectedMovie.movieId
     const user = "default user"
 
     useEffect(() => {

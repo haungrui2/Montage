@@ -1,0 +1,54 @@
+.upload{
+    position: relative;
+    width: 1000px;
+}
+
+.shortInputBox{
+    width: 500px;
+}
+
+.uploadMovieTitle{
+    width: 500px;
+}
+
+.uploadMovieDescription{
+    height: 150px;
+    width: 800px;
+}
+
+.uploadButton{
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    right: 300px;
+}
+
+.genreCheckBoxs{
+    position: relative;
+    width: 900px;
+    background-color: brown;
+}
+
+.checkBoxContainer{
+    position: relative;
+    float: left;
+    height: 30px;
+    width: 160px;
+}
+
+.checkBoxContainer:hover{
+    background-color: rgb(209, 209, 209);
+}
+
+.genreCheckBox{
+    position: absolute;
+    left: 0px;
+    height: 15px;
+    width: 15px;
+}
+
+.checkBoxLabel{
+    position: absolute;
+    left: 0px;
+    font-size: 15px;
+}
