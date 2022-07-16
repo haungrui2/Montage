@@ -33,7 +33,16 @@ router.post('/', async function(req, res, next) {
     return res.send(movies);
 });
 });
-  
+
+router.put('/', async function (req, res, next) {
+  await movieQueries.editOneMovie(req.body).then(
+    () => {
+      let index = movies.findIndex(e => e.movieId === req.body.recipe.movieId)
+      movies[index] = req.body;
+      return res.send(movies);
+    }
+  )
+});
   
 
 module.exports = router;

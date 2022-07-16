@@ -18,9 +18,10 @@ export default function Search() {
     ))
 
     let yearList = years.map((year) => (
-        <button className="genre-tag" name="choice" style={{color: "#0000ff", backgroundColor: "#ddd"}}>
-            {year}
-        </button>
+        <div className = "checkBoxContainer">
+        <input type="checkbox" className="genre-tag-box" id={year} name="choice"></input>
+        <label className = "genre-tag-label" for={year}>{year}</label><br></br>
+        </div>
     ))
     return (
         <div className = "Search">

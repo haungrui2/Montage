@@ -22,3 +22,10 @@ export const addMovieAsync = createAsyncThunk(
     return await MoviesService.addMovie(movie);
   }
 );
+
+export const editMovieAsync = createAsyncThunk(
+  actionTypes.EDIT_MOVIE,
+  async (movie) => {
+    return await MoviesService.editMovie(movie);
+  }
+);
