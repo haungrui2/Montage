@@ -12,7 +12,6 @@ export default function MovieInfo() {
     const movieRate = comments.totalRate/comments.commentList.length
 
 
-
     return (
         <div className = "MovieInfo">
             <div className = "MovieInfoContainer">
@@ -34,4 +33,8 @@ export default function MovieInfo() {
             <Comments/>
         </div>
     )
+}
+
+function helper(item, index, arr) {
+    arr[index] = item + "/"
 }
