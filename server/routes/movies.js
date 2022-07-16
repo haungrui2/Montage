@@ -14,8 +14,10 @@ async function main() {
 }
 
 router.get('/', async function(req, res, next) {
-  movies = await movieQueries.getAllMovies({});
-  res.send(movies);
+  await movieQueries.getAllMovies({}).then((result) => {
+    movies = result;
+    res.send(movies);
+  });
 });
 
 router.get('/:movieId', function (req, res, next) {

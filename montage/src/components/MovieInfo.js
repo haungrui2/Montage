@@ -12,7 +12,6 @@ export default function MovieInfo() {
     const movieRate = comments.totalRate/comments.commentList.length
 
 
-
     return (
         <div className = "MovieInfo">
             <div className = "MovieInfoContainer">
@@ -24,7 +23,7 @@ export default function MovieInfo() {
                 <div className = "GeneralInfoContainer">
                     <p className = "MovieInfoDirector">Director: {movie.MovieDirector}</p>
                     <p className = "MovieInfoWriter">Writer: {movie.MovieWriter}</p>
-                    <p className = "MovieInfoGenre">Genre: {movie.MovieGenre.map((genre) => (genre + "/"))}</p>
+                    <p className = "MovieInfoGenre">Genre: {movie.MovieGenre}</p>
                 </div>
 
                 <p className = "MovieInfoRating">{movieRate} / 10 ★</p>
@@ -34,4 +33,8 @@ export default function MovieInfo() {
             <Comments/>
         </div>
     )
+}
+
+function helper(item, index, arr) {
+    arr[index] = item + "/"
 }
