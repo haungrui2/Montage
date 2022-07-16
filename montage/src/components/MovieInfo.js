@@ -10,7 +10,6 @@ export default function MovieInfo() {
     const movie = useSelector(state => state.movies.selectedMovie);
     const comments = useSelector(state => state.comments.moviesComments);
     const movieRate = comments.totalRate/comments.commentList.length
-    console.log("a" + comments)
 
 
 
