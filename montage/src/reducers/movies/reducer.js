@@ -4,7 +4,14 @@ import { getMoviesAsync, getMovieAsync, addMovieAsync} from './thunks';
 
 const INITIAL_STATE = {
   movies: [],
-  selectedMovie: [],
+  selectedMovie: {MovieTitle: "",
+    MovieYear: 0,
+    MovieDirector: "",
+    MovieWriter: "",
+    MovieGenre: [],
+    MovieDescription: "",
+    movieId: "",
+    imageData: ""},
   getMovies: REQUEST_STATE.IDLE,
   getMovie: REQUEST_STATE.IDLE,
   addMovie: REQUEST_STATE.IDLE,
