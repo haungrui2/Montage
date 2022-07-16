@@ -15,3 +15,10 @@ export const addCommentAsync = createAsyncThunk(
         return await CommentsService.addComment(comment);
     }
 );
+
+export const deleteCommentAsync = createAsyncThunk(
+    actionTypes.DELETE_COMMENT,
+    async (comment) => {
+        return await CommentsService.deleteComment(comment);
+    }
+);
