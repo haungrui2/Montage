@@ -61,4 +61,12 @@ router.post('/', async function (req, res, next) {
     // return res.send(allComments[foundMovieIndex]);
 });
 
+router.delete('/',  async function (req, res, next) {
+    //recipes.splice(req.body.index, 1);
+    comments.totalRate -= comments.commentList[req.body.index].rate;
+    comments.commentList.splice(req.body.index, 1);
+    await Comment.updateOne({MovieId: comments.MovieId},{$set:{commentList: comments.commentList, totalRate: comments.totalRate}})
+    return res.send(comments);
+});
+
 module.exports = router;
