@@ -6,8 +6,8 @@ import { CloseMovies, OpenMoviesInfo } from '../actions'
 import {getCommentsAsync} from "../reducers/comments/thunks";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
+
 export default function Movies() {
-    const visibility = useSelector(state => state.others.navbar);
     const movies = useSelector(state => state.movies.movies);
     const dispatch = useDispatch();
 
@@ -15,10 +15,11 @@ export default function Movies() {
 
     useEffect(() => {
       dispatch(getMoviesAsync());
-    });
+    }, []);
     const jumpToMovieInfo = () => {
         navigate('/MovieInfo');
     }
+
     let a = movies.map((movie, index) => (
         <div className="MovieCard" onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}}>
 

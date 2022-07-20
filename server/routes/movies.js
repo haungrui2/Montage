@@ -7,15 +7,17 @@ const movieQueries = require('./queries/movieQueries');
 let movies = [];
 let addedMovie = [];
 
-main().catch(err => console.log(err));
+// main().catch(err => console.log(err));
 async function main() {
-  await mongoose.connect('mongodb+srv://montage2022:cpsc455montage@cluster0.d2rpjlf.mongodb.net/montage');
+  await mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.bgs5j.mongodb.net/?retryWrites=true&w=majority');
   // generateMovieData();
 }
 
 router.get('/', async function(req, res, next) {
-  movies = await movieQueries.getAllMovies({});
-  res.send(movies);
+  await movieQueries.getMovies(req.query).then((result) => {
+    movies = result;
+    res.send(movies);
+  });
 });
 
 router.get('/:movieId', function (req, res, next) {
@@ -28,11 +30,19 @@ router.get('/:movieId', function (req, res, next) {
 router.post('/', async function(req, res, next) {
   await movieQueries.insertOneMovie(req.body).then((added) => {
     movies.push(added[0]);
-    // console.log(movies)
     return res.send(movies);
 });
 });
-  
+
+router.put('/', async function (req, res, next) {
+  await movieQueries.editOneMovie(req.body).then(
+    () => {
+      let index = movies.findIndex(e => e.movieId === req.body.recipe.movieId)
+      movies[index] = req.body;
+      return res.send(movies);
+    }
+  )
+});
   
 
 module.exports = router;

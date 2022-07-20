@@ -2,7 +2,7 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from "react";
 import "./style/comments.css"
-import {addCommentAsync, getCommentsAsync} from "../reducers/comments/thunks";
+import {addCommentAsync, deleteCommentAsync, getCommentsAsync} from "../reducers/comments/thunks";
 
 export default function Comments() {
     const comments = useSelector(state => state.comments.moviesComments)
@@ -11,15 +11,18 @@ export default function Comments() {
     const movieId = selectedMovie.movieId
     const user = "default user"
 
-    useEffect(() => {
-        dispatch(getCommentsAsync(movieId));
-    }, []);
+    // useEffect(() => {
+    //     dispatch(getCommentsAsync(movieId));
+    // }, []);
 
-    const commentsDisplay = comments.commentList.map((comment) =>
+    const commentsDisplay = comments.commentList.map((comment, index) =>
         <div className= "comment">
-            <h3>{comment.user}:</h3>
-            <p>{comment.commentContent}</p>
-            <p>rate: {comment.rate}</p>
+            <button className="delete_comment_button" onClick={() => {dispatch(deleteCommentAsync(index))}}>x</button>
+            <div>
+                <h3>{comment.user}:</h3>
+                <p>{comment.commentContent}</p>
+                <p>rate: {comment.rate}</p>
+            </div>
         </div>
     )
     const [commentContent, setCommentContent] = useState("")

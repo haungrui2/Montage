@@ -23,6 +23,13 @@
     right: 300px;
 }
 
+.editButton{
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    right: 190px;
+}
+
 .genreCheckBoxs{
     position: relative;
     width: 900px;
