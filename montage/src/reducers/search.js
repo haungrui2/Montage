@@ -1,8 +1,8 @@
 let searchInformation = {
     MovieTitle: "",
-    MovieYear: Number,
+    MovieYear: '',
     MovieGenre: [],
-    MovieRate: Number
+    MovieRate: ''
 }
 
 const search = (initialState = searchInformation, action) => {

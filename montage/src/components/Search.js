@@ -1,6 +1,7 @@
 import { notInitialized } from "react-redux/es/utils/useSyncExternalStore";
 import "./style/search.css"
 import {useSelector, useDispatch} from 'react-redux';
+import {getMoviesAsync}  from '../reducers/movies/thunks';
 import {handleOnChangeSearchMovieTitle, handleOnChangeSearchMovieYear,
     handleOnChangeSearchMovieGenre, handleOnChangeSearchMovieRate} from '../actions/index.js';
 export default function Search() {
@@ -36,7 +37,7 @@ export default function Search() {
             </div>
 
             <div className="rateMovieContainer">
-                <p id="searchText">Rate (between 0 to 10):</p>
+                <p id="searchText">Rate Above:</p>
                 <input id="searchMovieInput" type= "number" max="10" min="0" value={searchState.MovieRate} onChange={(e) => dispatch(handleOnChangeSearchMovieRate(e.target.value))}></input>
             </div>
 
@@ -58,8 +59,28 @@ export default function Search() {
                 </ul>
             </div>
             <div className="ButtonContainer">
-                <button id="SearchButton1">Search</button>
+                <button id="SearchButton1" onClick={() => dispatch(getMoviesAsync(helper(searchState)))}>Search</button>
             </div>
         </div>
     )
+}
+
+function helper(state) {
+    let query = "?MovieTitle=" + state.MovieTitle + "&MovieYear=" + state.MovieYear;
+    if (state.MovieGenre[0]) {
+        query = query + "&MovieGenre1=" + state.MovieGenre[0];
+    }
+    if (state.MovieGenre[1]) {
+        query = query + "&MovieGenre2=" + state.MovieGenre[1];
+    }
+    if (state.MovieGenre[2]) {
+        query = query + "&MovieGenre3=" + state.MovieGenre[2];
+    }
+    if (state.MovieGenre[3]) {
+        query = query + "&MovieGenre4=" + state.MovieGenre[3];
+    }
+    if (state.MovieGenre[4]) {
+        query = query + "&MovieGenre5=" + state.MovieGenre[4];
+    }
+    return query;
 }
