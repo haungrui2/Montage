@@ -1,9 +1,18 @@
 const Movie = require('../models/movieModel');
 
 const queries = {
-    getAllMovies: async function (filter) {
-        const movies = await Movie.find(filter);
-        return movies;
+    getMovies: async function (query) {
+        console.log("query" + JSON.stringify(query))
+        const q = {$and: []}
+        q.$and.push({});
+        if(query.MovieTitle) q.$and.push({MovieTitle: {$regex: "(?i)" + query.MovieTitle}});
+        if(query.MovieYear) q.$and.push({MovieYear: query.MovieYear});
+        if(query.MovieGenre1) q.$and.push({MovieGenre: query.MovieGenre1});
+        if(query.MovieGenre2) q.$and.push({MovieGenre: query.MovieGenre2});
+        if(query.MovieGenre3) q.$and.push({MovieGenre: query.MovieGenre3});
+        if(query.MovieGenre4) q.$and.push({MovieGenre: query.MovieGenre4});
+        if(query.MovieGenre5) q.$and.push({MovieGenre: query.MovieGenre5});
+        return Movie.find(q);
     },
     getOneMovie: async function (filter) {
         const movie = await Movie.findOne(filter);
