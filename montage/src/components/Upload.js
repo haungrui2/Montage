@@ -16,7 +16,7 @@ export default function Upload() {
     let checkboxs = genres.map((genre) => (
         <div className = "checkBoxContainer">
             <input className = "genreCheckBox" type="checkbox" id={genre} value={genre} onChange={(e) => dispatch(handleOnChangeMovieGenre(genre))}></input>
-            <label className = "checkBoxLabel" for={genre}>{genre}</label><br></br>
+            <label className = "checkBoxLabel" for={genre}>{genre}</label>
         </div>
     ))
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export default function Upload() {
     return (
         <div className="upload">
             <input className = "shortInputBox uploadPoster" type="file" accept="image/png, image/jpeg" onChange={(e) => reader.readAsDataURL(e.target.files[0])}></input>
-            <input className= "uploadMovieTitle" placeholder="Movie Title" onChange={(e) => dispatch(handleOnChangeMovieTitle(e.target.value))}></input>
+            <input className= "shortInputBox uploadMovieTitle" placeholder="Movie Title" onChange={(e) => dispatch(handleOnChangeMovieTitle(e.target.value))}></input>
             <input className = "shortInputBox uploadMovieId" placeholder="Movie Id" onChange={(e) => dispatch(handleOnChangeMovieId(e.target.value))}></input>
             <input type="number" max="2100" min="1800" className = "shortInputBox uploadMovieTitle" placeholder="Movie Year" onChange={(e) => dispatch(handleOnChangeMovieYear(e.target.value))}></input>
             <input className = "shortInputBox uploadMovieDirector" placeholder="Movie Director" onChange={(e) => dispatch(handleOnChangeMovieDirector(e.target.value))}></input>

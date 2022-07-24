@@ -102,3 +102,31 @@ export const handleOnChangeMovieImage = input => {
         payload: input
     };
 }
+
+export const handleOnChangeSearchMovieTitle = input => {
+    return {
+        type: 'OnChangeSearchMovieTitle',
+        payload: input
+    };
+}
+
+export const handleOnChangeSearchMovieYear = input => {
+    return {
+        type: 'OnChangeSearchMovieYear',
+        payload: input
+    };
+}
+
+export const handleOnChangeSearchMovieGenre = input => {
+    return {
+        type: 'OnChangeSearchMovieGenre',
+        payload: input
+    };
+}
+
+export const handleOnChangeSearchMovieRate = input => {
+    return {
+        type: 'OnChangeSearchMovieRate',
+        payload: input
+    };
+}
