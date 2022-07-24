@@ -8,8 +8,6 @@ import Comments from "./components/Comments";
 import Movies from "./components/Movies";
 import Upload from "./components/Upload";
 import Search from "./components/Search";
-
-
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 function App() {
@@ -19,9 +17,9 @@ function App() {
       <Search/>
       <CoverPage />
       <Routes>
-      <Route path="/Upload" element={<Upload />} />
-      <Route path="/MovieInfo" element={<MovieInfo />} />
-      <Route path="/Movies" element={<Movies />} />
+        <Route path="/Upload" element={<Upload />} />
+        <Route path="/MovieInfo" element={<MovieInfo />} />
+        <Route path="/Movies" element={<Movies />} />
         <Route path="/Login" element={<LoginIndex />} />
       </Routes>
 

@@ -55,7 +55,8 @@ export function RegisterForm(props) {
     <BoxContainer>
       <FormContainer onSubmit = {formik.handleSubmit}>
         <FieldContainer>
-          <Input name="fullName" type="text" placeholder="Full Name"
+          <Input className="formInput" name="fullName" type="text"
+          placeholder="Full Name"
           value={formik.values.fullName} onChange={formik.handleChange}
           onBlur={formik.handleBlur} />
           <FieldError>
@@ -65,7 +66,8 @@ export function RegisterForm(props) {
         </FieldContainer>
 
         <FieldContainer>
-          <Input name="email" type="email" placeholder="Email" required
+          <Input className="formInput" name="email" type="email"
+          placeholder="Email" required
           value={formik.values.email} onChange={formik.handleChange}
           onBlur={formik.handleBlur} />
           <FieldError>
@@ -74,7 +76,8 @@ export function RegisterForm(props) {
         </FieldContainer>
 
         <FieldContainer>
-          <Input name="password" type="password" placeholder="Password" required
+          <Input className="formInput" name="password" type="password"
+          placeholder="Password" required
           value={formik.values.password} onChange={formik.handleChange}
           onBlur={formik.handleBlur} />
           <FieldError>
@@ -84,7 +87,8 @@ export function RegisterForm(props) {
         </FieldContainer>
 
         <FieldContainer>
-          <Input name="confirmPassword" type="password" placeholder="Confirm Password"
+          <Input className="formInput" name="confirmPassword" type="password"
+          placeholder="Confirm Password"
           required value={formik.values.confirmPassword}
           onChange={formik.handleChange} onBlur={formik.handleBlur} />
           <FieldError>
@@ -93,12 +97,14 @@ export function RegisterForm(props) {
           </FieldError>
         </FieldContainer>
 
-        <SubmitButton type="submit" disabled={!formik.isValid}>Sign Up</SubmitButton>
+        <SubmitButton type="submit" disabled={!formik.isValid} onClick={switchToLogin}>
+        Sign Up
+        </SubmitButton>
         {!error && <FormSuccess>{success ? success : ""}</FormSuccess>}
         {!success && <FormError>{error ? error : ""}</FormError>}
         <FormError>{}</FormError>
       </FormContainer>
-      <MutedLink href="#">
+      <MutedLink href="#" onClick={switchToLogin}>
         Already have an account?
         <BoldLink href="#" onClick={switchToLogin}>Sign In</BoldLink>
       </MutedLink>

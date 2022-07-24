@@ -40,7 +40,7 @@ label {
   font-size: 17px;
 }
 
-input {
+.formInput {
   margin-top: 6px;
   min-width: 18em;
   height: 37px;

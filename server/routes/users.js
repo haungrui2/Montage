@@ -4,8 +4,13 @@ const userModel = require("../models/userModel");
 const userSessionModel = require('../models/userSession');
 
 /* GET users listing. */
-router.get('/', (req, res) => {
-  res.send('respond with a resource');
+router.get(`/:id`, async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params.id);
+    res.send(user);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 //SUBMIT A User info -- Sign Up
@@ -69,14 +74,34 @@ router.post(`/signin`, async (req, res) => {
   let {email} = req.body;
 
   email = email.toLowerCase();
+  const adminEmail = "montageadmin@gmail.com";
 
   const userWithEmail = await userModel.find({email: email})
     .catch((error) => {
       console.log("Error :", error);
     });
 
-    console.log(userWithEmail);
-    console.log(userWithEmail[0].password);
+  userModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
+    email: adminEmail,
+    isAdmin: false
+  },
+  {$set: {isAdmin: true}}).catch((error) => {
+    console.log("Error: ", error);
+  })
+  // , null,
+  // (error) => {
+  //   if (error) {
+  //     console.log("error 2:", error);
+  //     return res.send({
+  //       success: false,
+  //       message: 'Error: Server error'
+  //     });
+  //   } return res.send({
+  //       success: true,
+  //       message: 'Verified Admin!'
+  //     });
+  // });
+
     if (!userWithEmail) {
       return res.status(400).json({message: "Email or Password does not match!"});
     }
@@ -85,7 +110,7 @@ router.post(`/signin`, async (req, res) => {
     }
 
     const userSession = new userSessionModel(); // correct user using userSession
-    userSession.userId = userWithEmail._id;
+    userSession.userId = userWithEmail[0]._id;
     userSession.save((error, doc) => {
       if (error) {
         console.log(error);
