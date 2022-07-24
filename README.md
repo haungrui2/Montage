@@ -18,7 +18,7 @@ https://github.com/MonsieurRadiant/Montage/tree/main<br />
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can view the titles, posters, and descriptions of different movies.<br />
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can post reviews to a movie.<br />
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can rate a movie.<br />
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can add categories(genres) to a movie.<br />
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can search movies based on a movie title.<br />
 &nbsp; &nbsp; &nbsp; &nbsp;Standard Requirement:<br />
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can sign up and log in with username and password.<br />
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;-Users can set up their personal preferences.<br />
