@@ -7,6 +7,10 @@ const profile = ( state=profileData, action ) => {
     case "getUserData" :
       return {
         data: action.payload
-      }
-  }
+      };
+    default:
+        return state;
+    }
 }
+
+export default profile;

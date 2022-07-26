@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import {getUserData} from "../actions/index.js";
 
 function UserProfile() {
   const dispatch = useDispatch();
