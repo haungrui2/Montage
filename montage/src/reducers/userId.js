@@ -7,6 +7,10 @@ const userIdReducer = (state=userId, action) => {
     case "getUserId" :
       return {
         id: action.payload.id
-      }
-  }
+      };
+    default:
+        return state;
+    }
 }
+
+export default userIdReducer;
