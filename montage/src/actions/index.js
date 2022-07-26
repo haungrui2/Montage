@@ -130,3 +130,17 @@ export const handleOnChangeSearchMovieRate = input => {
         payload: input
     };
 }
+
+export const getUserId = (data) => {
+  return {
+    type: 'getUserId',
+    payload: data
+  }
+}
+
+export const getUserData = (data) => {
+  return {
+    type: 'getUserData',
+    payload: data
+  }
+}

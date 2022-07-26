@@ -5,6 +5,8 @@ import {LoginContext} from "./LoginContext";
 import {useFormik} from "formik";
 import * as yup from "yup";
 import axios from "axios";
+import jwt from "jwt-decode";
+import {useDispatch} from "react-redux";
 
 const validationSchema = yup.object({
   email: yup.string().required("Email is required"),
@@ -14,10 +16,22 @@ const validationSchema = yup.object({
 export function LoginForm(props) {
   const {switchToSignup} = useContext(LoginContext);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   const onSubmit = async (values) => {
     setError(null);
     const response = await axios.post('http://localhost:3001/users/signin', values)
+    .then((res) => {
+      if (res.data.token) {
+        const token = res.data.token;
+        const decoded = jwt(token);
+        console.log(res.data.token);
+        console.log(token);
+        console.log(decoded);
+        localStorage.setItem("token", res.data.token);
+        dispatch(getUserId(decoded));
+      }
+    })
     .catch((error) => {
       if (error && error.response) {
         setError(error.response.data.message);
