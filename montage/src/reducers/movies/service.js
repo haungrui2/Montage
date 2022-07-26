@@ -1,5 +1,10 @@
-const getMovies = async () => {
-    const response = await fetch('http://localhost:3001/movies', {
+const getMovies = async (input) => {
+  console.log(input)
+  let query = '';
+  if (input) {
+    query = input;
+  }
+    const response = await fetch('http://localhost:3001/movies' + query, {
       method: 'GET'
     });
     return response.json();

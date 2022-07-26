@@ -83,6 +83,10 @@ li{
 #SearchButton1{
     display:inline-block;
     position: absolute;
-    right: 300px;
+    right: 200px;
 
+}
+
+.Search{
+    margin-bottom: 50px;
 }
