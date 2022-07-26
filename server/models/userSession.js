@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const UserSessionSchema = new mongoose.Schema({
+  token: {
+    type: String,
+    default: ''
+  },
   userId: {
     type: String,
     default: ''
