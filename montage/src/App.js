@@ -9,6 +9,7 @@ import Movies from "./components/Movies";
 import Upload from "./components/Upload";
 import Search from "./components/Search";
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import UserProfile from "./components/UserProfile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/MovieInfo" element={<MovieInfo />} />
         <Route path="/Movies" element={<Movies />} />
         <Route path="/Login" element={<LoginIndex />} />
+        <Route path="/UserProfile" element={<UserProfile />} />
       </Routes>
 
     </div>

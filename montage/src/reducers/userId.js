@@ -1,12 +1,13 @@
 let userId = {
-  id: ""
+  uid: ""
 }
 
 const userIdReducer = (state=userId, action) => {
+  console.log(action);
   switch(action.type) {
     case "getUserId" :
       return {
-        id: action.payload.id
+        uid: action.payload
       };
     default:
         return state;

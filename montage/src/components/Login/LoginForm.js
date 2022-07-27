@@ -8,6 +8,8 @@ import axios from "axios";
 import jwt from "jwt-decode";
 import {useDispatch} from "react-redux";
 import {getUserId} from "../../actions/index.js";
+import {Routes, Route, useNavigate} from "react-router-dom";
+
 
 const validationSchema = yup.object({
   email: yup.string().required("Email is required"),
@@ -18,6 +20,7 @@ export function LoginForm(props) {
   const {switchToSignup} = useContext(LoginContext);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     setError(null);
@@ -26,11 +29,14 @@ export function LoginForm(props) {
       if (res.data.token) {
         const token = res.data.token;
         const decoded = jwt(token);
+        const temp = decoded.id;
         console.log(res.data.token);
         console.log(token);
         console.log(decoded);
+        console.log(temp);
         localStorage.setItem("token", res.data.token);
-        dispatch(getUserId(decoded));
+        dispatch(getUserId(temp));
+        navigate('/UserProfile');
       }
     })
     .catch((error) => {
