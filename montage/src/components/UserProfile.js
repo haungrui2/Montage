@@ -7,7 +7,7 @@ function UserProfile() {
   const dispatch = useDispatch();
   const userId = useSelector(state => state.others.userIdReducer.uid);
 
-  const getProfileData = (userId) => {
+  const getProfileData = () => {
     fetch(`http://localhost:3001/users/${userId}`, {method: 'GET'})
     .then((data) => dispatch(getUserData(data)))
   }
