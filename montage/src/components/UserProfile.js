@@ -9,8 +9,13 @@ function UserProfile() {
 
   const getProfileData = () => {
     fetch(`http://localhost:3001/users/${userId}`, {method: 'GET'})
+    .then((response) => response.json())
     .then((data) => dispatch(getUserData(data)))
   }
+
+  useEffect(() => {
+    getProfileData()
+  }, []);
 
   const profileData = useSelector(state => state.others.profile.data);
 
