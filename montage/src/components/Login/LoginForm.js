@@ -5,6 +5,11 @@ import {LoginContext} from "./LoginContext";
 import {useFormik} from "formik";
 import * as yup from "yup";
 import axios from "axios";
+import jwt from "jwt-decode";
+import {useDispatch} from "react-redux";
+import {getUserId} from "../../actions/index.js";
+import {Routes, Route, useNavigate} from "react-router-dom";
+
 
 const validationSchema = yup.object({
   email: yup.string().required("Email is required"),
@@ -14,6 +19,8 @@ const validationSchema = yup.object({
 export function LoginForm(props) {
   const {switchToSignup} = useContext(LoginContext);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     setError(null);
@@ -24,7 +31,18 @@ export function LoginForm(props) {
       }
     });
     if (response && response.data) {
-      alert("Welcome Back!");
+      if (response.data.token) {
+        const token = response.data.token;
+        const decoded = jwt(token);
+        const temp = decoded.id;
+        console.log(response.data.token);
+        console.log(token);
+        console.log(decoded);
+        console.log(temp);
+        localStorage.setItem("token", response.data.token);
+        dispatch(getUserId(temp));
+        navigate('/UserProfile');
+      }
       formik.resetForm();
     }
   };

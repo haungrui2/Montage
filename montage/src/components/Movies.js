@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { CloseMovies, OpenMoviesInfo } from '../actions'
 import {getCommentsAsync} from "../reducers/comments/thunks";
 import {Routes, Route, useNavigate} from 'react-router-dom';
-
+import Search from "./Search";
 
 export default function Movies() {
     const movies = useSelector(state => state.movies.movies);
@@ -29,6 +29,7 @@ export default function Movies() {
     ));
     return (
         <div className = "Movies" >
+            <Search/>
             {a}
         </div>
     )

@@ -14,6 +14,79 @@ li{
     background-color: #ddd;
 }
 
-input{
-    width: 10px;
+.genreListContainer{
+    position: relative;
+    width: 1200px;
+}
+
+.yearListContainer{
+    display:inline-block;
+    position: relative;
+    width: 1200px;
+}
+
+.yearBoxContainer{
+    border-right:2px solid #ddd;
+    position: relative;
+    float: left;
+    height: 30px;
+    width: 110px; 
+}
+
+.genreBoxContainer{
+    border-right:2px solid #ddd;
+    position: relative;
+    float: left;
+    height: 30px;
+    width: 150px; 
+}
+
+.yearBoxContainer2{
+    border-right:2px solid #ddd;
+    position: relative;
+    float: left;
+    height: 30px;
+    width: 180px; 
+}
+
+.yearBoxContainer:hover{
+    background-color: rgb(209, 209, 209);
+}
+
+
+.year-tag-box{
+    position: absolute;
+    left: 0px;
+    width: 15px;
+    height: 15px;
+}
+
+.year-tag-label{
+    height: 37px;
+    padding: 0px, 10px;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    position: absolute;
+    left: 50px;
+    height: 15px;
+    
+}
+
+.yearInputBox{
+    position: relative;
+    resize: none;
+    left: 20px;
+    height: 20px;
+    width: 70px;
+}
+
+#SearchButton1{
+    display:inline-block;
+    position: absolute;
+    right: 200px;
+
+}
+
+.Search{
+    margin-bottom: 50px;
 }

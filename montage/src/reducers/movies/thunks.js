@@ -4,8 +4,8 @@ import MoviesService from './service';
 
 export const getMoviesAsync = createAsyncThunk(
   actionTypes.GET_MOVIES,
-  async () => {
-    return await MoviesService.getMovies();
+  async (query) => {
+    return await MoviesService.getMovies(query);
   }
 );
 
