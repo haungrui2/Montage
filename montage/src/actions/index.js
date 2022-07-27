@@ -131,10 +131,10 @@ export const handleOnChangeSearchMovieRate = input => {
     };
 }
 
-export const getUserId = (data) => {
+export const getUserId = (id) => {
   return {
     type: 'getUserId',
-    payload: data
+    payload: id
   };
 }
 

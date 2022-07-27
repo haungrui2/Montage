@@ -8,6 +8,8 @@ import axios from "axios";
 import jwt from "jwt-decode";
 import {useDispatch} from "react-redux";
 import {getUserId} from "../../actions/index.js";
+import {Routes, Route, useNavigate} from "react-router-dom";
+
 
 const validationSchema = yup.object({
   email: yup.string().required("Email is required"),
@@ -18,28 +20,29 @@ export function LoginForm(props) {
   const {switchToSignup} = useContext(LoginContext);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     setError(null);
     const response = await axios.post('http://localhost:3001/users/signin', values)
-    .then((res) => {
-      if (res.data.token) {
-        const token = res.data.token;
-        const decoded = jwt(token);
-        console.log(res.data.token);
-        console.log(token);
-        console.log(decoded);
-        localStorage.setItem("token", res.data.token);
-        dispatch(getUserId(decoded));
-      }
-    })
     .catch((error) => {
       if (error && error.response) {
         setError(error.response.data.message);
       }
     });
     if (response && response.data) {
-      alert("Welcome Back!");
+      if (response.data.token) {
+        const token = response.data.token;
+        const decoded = jwt(token);
+        const temp = decoded.id;
+        console.log(response.data.token);
+        console.log(token);
+        console.log(decoded);
+        console.log(temp);
+        localStorage.setItem("token", response.data.token);
+        dispatch(getUserId(temp));
+        navigate('/UserProfile');
+      }
       formik.resetForm();
     }
   };
