@@ -30,7 +30,8 @@ li{
     position: relative;
     float: left;
     height: 30px;
-    width: 110px; 
+    width: 110px;
+		margin-right: 10px;
 }
 
 .genreBoxContainer{
@@ -38,7 +39,8 @@ li{
     position: relative;
     float: left;
     height: 30px;
-    width: 150px; 
+    width: 150px;
+		margin-right: 10px;
 }
 
 .yearBoxContainer2{
@@ -46,7 +48,7 @@ li{
     position: relative;
     float: left;
     height: 30px;
-    width: 180px; 
+    width: 180px;
 }
 
 .yearBoxContainer:hover{
@@ -69,7 +71,7 @@ li{
     position: absolute;
     left: 50px;
     height: 15px;
-    
+
 }
 
 .yearInputBox{
@@ -84,7 +86,6 @@ li{
     display:inline-block;
     position: absolute;
     right: 200px;
-
 }
 
 .Search{
