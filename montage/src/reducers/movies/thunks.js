@@ -29,3 +29,10 @@ export const editMovieAsync = createAsyncThunk(
     return await MoviesService.editMovie(movie);
   }
 );
+
+export const editFavouriteMovieAsync = createAsyncThunk(
+  actionTypes.EDIT_LIKEDMOVIES,
+  async (editData) => {
+    return await MoviesService.editFavouriteMovie(editData);
+  }
+);

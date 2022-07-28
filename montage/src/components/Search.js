@@ -1,4 +1,3 @@
-import { notInitialized } from "react-redux/es/utils/useSyncExternalStore";
 import "./style/search.css"
 import {useSelector, useDispatch} from 'react-redux';
 import {getMoviesAsync}  from '../reducers/movies/thunks';

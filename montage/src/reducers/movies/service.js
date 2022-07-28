@@ -49,9 +49,30 @@ const getMovie = async (movie) => {
     return data;
   };
 
-  export default {
+  const editFavouriteMovie = async (editData) => {
+    const response = await fetch('http://localhost:3001/users/editFavouriteMovies', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(editData)
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const errorMsg = data?.message;
+      throw new Error(errorMsg)
+    }
+    return data;
+  };
+
+
+
+let Movieservices = {
     getMovies,
     getMovie,
     addMovie,
-    editMovie
+    editMovie,
+    editFavouriteMovie
   };
+
+export default Movieservices;

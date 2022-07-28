@@ -155,4 +155,18 @@ router.get(`/logout`, (req, res) => {
   });
 });
 
+
+router.patch('/editFavouriteMovies', async function (req, res, next) {
+  const user =  await userModel.findOne({_id: req.body.userId});
+  let favouriteList = user.favoriteMovies;
+  if (user.favoriteMovies.includes(req.body.movieId)) {
+    let index = favouriteList.indexOf(req.body.movieId);
+    favouriteList.splice(index, 1);
+  } else {
+    favouriteList.push(req.body.movieId);
+  }
+  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList}});
+  return res.send();
+});
+
 module.exports = router;
