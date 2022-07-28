@@ -1,5 +1,4 @@
 import "./style/upload.css";
-import {useState} from "react";
 import {handleOnChangeMovieTitle, handleOnChangeMovieYear,
     handleOnChangeMovieDirector, handleOnChangeMovieWriter,
     handleOnChangeMovieGenre, handleOnChangeMovieId,
@@ -8,6 +7,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addMovieAsync, editMovieAsync} from "../reducers/movies/thunks";
 
 export default function Upload() {
+    const profileData = useSelector(state => state.others.profile.data);
     const uploadState = useSelector(state => state.others.upload);
     const genres = ["Action", "Adventure", "Comedy", "Crime", "Drama", "Epics", "Horror",
     "Musicals", "Science Fiction", "War", "Westerns", "Detective", "Mystery", "Biographical",
@@ -25,6 +25,7 @@ export default function Upload() {
         console.log(reader.result)
         dispatch(handleOnChangeMovieImage(reader.result));
     };
+    if (profileData.isAdmin)
     return (
         <div className="upload">
             <input className = "shortInputBox uploadPoster" type="file" accept="image/png, image/jpeg" onChange={(e) => reader.readAsDataURL(e.target.files[0])}></input>

@@ -144,3 +144,10 @@ export const getUserData = (data) => {
     payload: data
   };
 }
+
+export const addFavouriteMovie = (data) => {
+    return {
+      type: 'addFavouriteMovie',
+      payload: data
+    };
+  }
