@@ -8,7 +8,7 @@ import axios from "axios";
 import jwt from "jwt-decode";
 import {useDispatch} from "react-redux";
 import {getUserId} from "../../actions/index.js";
-import {Routes, Route, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const validationSchema = yup.object({
