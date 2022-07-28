@@ -2,11 +2,8 @@
     max-height: 100%;
     max-width: 100%;
     display: none;
-    background-color: #c5c3f2;
-    background-position: center;
-    background-size: cover;
   }
-
+  
   .CoverPageDateContainer{
     position: absolute;
     top: 10%;
@@ -14,33 +11,33 @@
     height: 100px;
     width: 100px;
   }
-
+  
   #Date{
     position: absolute;
     font-size: 90px;
   }
-
+  
   #Month{
     position: absolute;
     left: 120px;
     top: 30px;
     font-size: 22px;
   }
-
+  
   #Year{
     position: absolute;
     left: 170px;
     top: 30px;
     font-size: 22px;
   }
-
+  
   #Day{
     position: absolute;
     left: 120px;
     top: 68px;
     font-size: 22px;
   }
-
+  
   .CoverPagePoster{
     position: absolute;
     top: 25%;
@@ -49,7 +46,7 @@
     width: 360px;
     display:block;
   }
-
+  
   .CoverPageCommentContainer{
     position: absolute;
     top: 35%;
@@ -57,7 +54,8 @@
     height: 300px;
     width: 300px;
   }
-
+  
   #CoverPageComment1{
     font-size: 30px;
   }
+  
