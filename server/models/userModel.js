@@ -27,7 +27,23 @@ const UserSchema = new mongoose.Schema({
   favoriteMovies: {
     type: Array,
     default: []
-  }
+  },
+  preferenceGenreList: {
+    type: Array,
+    default: []
+  },
+  lastRecommendationDate: {
+    type: Date,
+    default: {
+      Year: 0000,
+      Month: 00,
+      Day: 00
+    }
+  },
+  lastRecommendationMovies: {
+    type: Array,
+    default: []
+  },
 },
 {
   collection: 'project_users_collection'

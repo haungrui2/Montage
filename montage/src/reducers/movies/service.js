@@ -65,6 +65,22 @@ const getMovie = async (movie) => {
     return data;
   };
 
+  const recommendMovie = async (userId) => {
+    const response = await fetch('http://localhost:3001/users/recommend', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userId)
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const errorMsg = data?.message;
+      throw new Error(errorMsg)
+    }
+    return data;
+  };
+
 
 
 let Movieservices = {
@@ -72,7 +88,8 @@ let Movieservices = {
     getMovie,
     addMovie,
     editMovie,
-    editFavouriteMovie
+    editFavouriteMovie,
+    recommendMovie
   };
 
 export default Movieservices;
