@@ -3,7 +3,7 @@ rating, director, writer, genre, and description */
 import {useSelector, useDispatch} from 'react-redux';
 import "./style/movieInfo.css"
 import Comments from "./Comments";
-import {editFavouriteMovieAsync}  from '../reducers/movies/thunks';
+import {editFavouriteMovieAsync}  from '../reducers/users/thunks';
 import {addFavouriteMovie} from '../actions/index.js';
 
 export default function MovieInfo() {

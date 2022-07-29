@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import "./style/coverPage.css"
-import {recommendMovieAsync}  from '../reducers/movies/thunks';
+import {recommendMovieAsync}  from '../reducers/users/thunks';
 
 export default function CoverPage() {
     const [dateTime, setDateTime] = useState(new Date());
