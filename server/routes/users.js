@@ -189,15 +189,15 @@ router.patch('/recommend', async function (req, res, next) {
     || lastRecommendationDate.Day !== UTCTime.Day) {
       let recommendMovieList = [];
       let selectedGenre = '';
-      if (preferenceGenreList === []) {
+      if (preferenceGenreList.length === 0) {
         recommendMovieList = await Movie.find({});
-        recommendMovieList.filter(movie => !lastRecommendationMovies.has(movie));
+        recommendMovieList.filter(movie => !lastRecommendationMovies.includes(movie));
         recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
       } else {
         selectedGenre = preferenceGenreList[Math.floor(Math.random() * preferenceGenreList.length)];
         recommendMovieList = await Movie.find({MovieGenre: selectedGenre});
         recommendMovieList.filter(movie => !lastRecommendationMovies.has(movie));
-        if (recommendMovieList !== []) {
+        if (recommendMovieList.length !== 0) {
           recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
         } else {
           recommendMovieList = await Movie.find({});
@@ -213,8 +213,8 @@ router.patch('/recommend', async function (req, res, next) {
   } else {
     recommendMovieId = lastRecommendationMovies[lastRecommendationMovies.length];
   }
-  // await userModel.updateOne({_id: req.body.userId}, {$set:{lastRecommendationDate: lastRecommendationDate,
-  //   lastRecommendationMovies: lastRecommendationMovies}});
+  await userModel.updateOne({_id: req.body.userId}, {$set:{lastRecommendationDate: lastRecommendationDate,
+    lastRecommendationMovies: lastRecommendationMovies}});
   return res.send(recommendMovieId);
 });
 
