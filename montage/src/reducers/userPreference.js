@@ -1,4 +1,5 @@
 let preference = {
+    fullName: "",
     favouriteMovies: []
 }
 
@@ -13,7 +14,7 @@ const userPreference = (initialState = preference, action) => {
                 return {...initialState, favouriteMovies: initialState.favouriteMovies.concat(action.payload)};
             }
         case 'getUserData':
-            return {...initialState, favouriteMovies: action.payload.favoriteMovies};
+            return {...initialState, favouriteMovies: action.payload.favoriteMovies, fullName: action.payload.fullName};
         default:
             return initialState;
     }

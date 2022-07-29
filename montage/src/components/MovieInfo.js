@@ -3,6 +3,7 @@ rating, director, writer, genre, and description */
 import {useSelector, useDispatch} from 'react-redux';
 import "./style/movieInfo.css"
 import Comments from "./Comments";
+
 import {editFavouriteMovieAsync}  from '../reducers/users/thunks';
 import {addFavouriteMovie} from '../actions/index.js';
 
@@ -11,7 +12,8 @@ export default function MovieInfo() {
     const comments = useSelector(state => state.comments.moviesComments);
     const userPreference = useSelector(state => state.others.userPreference);
     const userId = useSelector(state => state.others.userIdReducer);
-    const movieRate = comments.totalRate/comments.commentList.length
+    // const movieRate = Math.round(comments.totalRate * 2 /comments.commentList.length)/2
+    const movieRate = comments.averageRate;
     const dispatch = useDispatch();
 
     let liked, unliked;
