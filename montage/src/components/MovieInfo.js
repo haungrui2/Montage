@@ -4,14 +4,14 @@ import {useSelector, useDispatch} from 'react-redux';
 import "./style/movieInfo.css"
 import Comments from "./Comments";
 import {editFavouriteMovieAsync}  from '../reducers/movies/thunks';
-import {addFavouriteMovie} from '../actions/index.js';
+import {addFavouriteMovie} from '../actions';
 
 export default function MovieInfo() {
     const movie = useSelector(state => state.movies.selectedMovie);
     const comments = useSelector(state => state.comments.moviesComments);
     const userPreference = useSelector(state => state.others.userPreference);
     const userId = useSelector(state => state.others.userIdReducer);
-    const movieRate = comments.totalRate/comments.commentList.length
+    const movieRate = Math.round(comments.totalRate * 2 /comments.commentList.length)/2
     const dispatch = useDispatch();
 
     let liked, unliked;

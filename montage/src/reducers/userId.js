@@ -4,7 +4,6 @@ let userId = {
 }
 
 const userIdReducer = (state=userId, action) => {
-  console.log(action);
   switch(action.type) {
     case "getUserId" :
       return {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import {getUserData} from "../actions/index.js";
+import {getUserData} from "../actions";
 
 function UserProfile() {
   const dispatch = useDispatch();
