@@ -1,4 +1,4 @@
-/* .navbar {
+.navbar {
     background-color: transparent;
     border: 3px;
     border-style: solid;
@@ -6,30 +6,22 @@
     height: 60px;
     width: 99vw;
     position: relative;
-  } */
-
-  .image {
-    height: 100px;
-    width: 100%;
-    margin-left: -150px;
-    margin-top: -22px;
-    display: flex;
   }
-
+  
   .SearchContainer {
-    height: 40px;
-    width: 700px;
-  }
-
+    height: 50px;
+    width: 300px;
+    }
+  
   .SearchForm {
-    position: flex;
-    top: 30px;
+    position: absolute;
+    top: 10px;
     left: 37%;
   }
-
+  
   .SearchText {
-    position: flex;
-    width: 300px;
+    position: absolute;
+    width: 350px;
     height: 40px;
     border-radius: 30px;
     border: 2px;
@@ -37,18 +29,16 @@
     border-color: rgb(0,79,139);
     padding-left: 30px;
     }
-
+  
   #SearchButton {
-    color: red;
-    position: flex;
-    top: 20px;
-    left: 490px;
-    margin-right: 30px;
+    position: absolute;
+    top: 10px;
+    left: 340px;
     background-color: transparent;
     border-color: transparent;
   }
-
-  /* #MainButton {
+  
+  #MainButton {
     position: absolute;
     left: 0px;
     height: 60px;
@@ -60,9 +50,9 @@
     border-right: 3px;
     border-style: solid;
     border-color: rgb(0,79,139);
-  } */
-
-  /* #MoviesButton {
+  }
+  
+  #MoviesButton {
     position: absolute;
     left: 120px;
     height: 60px;
@@ -74,9 +64,9 @@
     border-right: 3px;
     border-style: solid;
     border-color: rgb(0,79,139);
-  } */
-
-  /* #Login {
+  }
+  
+  #Login {
     position: absolute;
     top: 3px;
     right: 0px;
@@ -89,4 +79,20 @@
     border-right: 0px;
     border-style: solid;
     border-color: rgb(0,79,139);
-  } */
+  }
+
+  #Upload{
+    position: absolute;
+    top: 3px;
+    right: 120px;
+    height: 60px;
+    width: 120px;
+    background-color: transparent;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 3px;
+    border-right: 0px;
+    border-style: solid;
+    border-color: rgb(0,79,139);
+  }
+  

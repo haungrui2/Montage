@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import {getUserData} from "../actions/index.js";
+import {getUserData} from "../actions";
 
 function UserProfile() {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ function UserProfile() {
 
   useEffect(() => {
     getProfileData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const profileData = useSelector(state => state.others.profile.data);

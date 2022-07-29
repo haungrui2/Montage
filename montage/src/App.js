@@ -2,13 +2,10 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import MovieInfo from "./components/MovieInfo";
 import {LoginIndex} from "./components/Login/LoginIndex";
-import {Register} from "./components/Login/RegisterForm";
 import CoverPage from "./components/CoverPage";
-import Comments from "./components/Comments";
 import Movies from "./components/Movies";
 import Upload from "./components/Upload";
-import Search from "./components/Search";
-import {Routes, Route, useNavigate, BrowserRouter as Router} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import UserProfile from "./components/UserProfile";
 
 function App() {
@@ -23,6 +20,7 @@ function App() {
         <Route path="/Login" element={<LoginIndex />} />
         <Route path="/UserProfile" element={<UserProfile />} />
       </Routes>
+
     </div>
   );
 }

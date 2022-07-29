@@ -17,7 +17,7 @@ const getMovie = async (movie) => {
     return response.json();
   };
 
-  const addMovie = async (movie) => {
+const addMovie = async (movie) => {
     const response = await fetch('http://localhost:3001/movies/', {
       method: 'POST',
       headers: {
@@ -31,9 +31,9 @@ const getMovie = async (movie) => {
       throw new Error(errorMsg)
     }
     return data;
-  };
+};
 
-  const editMovie = async (movie) => {
+const editMovie = async (movie) => {
     const response = await fetch('http://localhost:3001/movies/', {
       method: 'PUT',
       headers: {
@@ -47,11 +47,22 @@ const getMovie = async (movie) => {
       throw new Error(errorMsg)
     }
     return data;
-  };
+};
 
-  export default {
+const getRandomMovie = async () => {
+    const response = await fetch('http://localhost:3001/movies/random', {
+      method: 'GET'
+    });
+    return response.json();
+};
+
+
+let Movieservices = {
     getMovies,
     getMovie,
     addMovie,
-    editMovie
+    editMovie,
+    getRandomMovie
   };
+
+export default Movieservices;

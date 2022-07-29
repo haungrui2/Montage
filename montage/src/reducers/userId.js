@@ -1,13 +1,14 @@
 let userId = {
-  uid: ""
+  uid: "",
+  isLogin: false
 }
 
 const userIdReducer = (state=userId, action) => {
-  console.log(action);
   switch(action.type) {
     case "getUserId" :
       return {
-        uid: action.payload
+        uid: action.payload,
+        isLogin: true
       };
     default:
         return state;

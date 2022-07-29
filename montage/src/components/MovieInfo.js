@@ -1,15 +1,34 @@
 /* This is the page for movie information, including movie name, the poster,
 rating, director, writer, genre, and description */
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import "./style/movieInfo.css"
 import Comments from "./Comments";
 
+import {editFavouriteMovieAsync}  from '../reducers/users/thunks';
+import {addFavouriteMovie} from '../actions/index.js';
 
 export default function MovieInfo() {
-    const visibility = useSelector(state => state.others.navbar);
     const movie = useSelector(state => state.movies.selectedMovie);
     const comments = useSelector(state => state.comments.moviesComments);
-    const movieRate = comments.totalRate/comments.commentList.length
+    const userPreference = useSelector(state => state.others.userPreference);
+    const userId = useSelector(state => state.others.userIdReducer);
+    // const movieRate = Math.round(comments.totalRate * 2 /comments.commentList.length)/2
+    const movieRate = comments.averageRate;
+    const dispatch = useDispatch();
+
+    let liked, unliked;
+    if (userPreference.favouriteMovies.includes(movie._id)) {
+        liked = "block";
+        unliked = "none";
+    } else {
+        unliked = "block";
+        liked = "none";
+    }
+
+    if (!userId.isLogin){
+        liked = "none";
+        unliked = "none";
+   }
 
 
     return (
@@ -27,14 +46,12 @@ export default function MovieInfo() {
                 </div>
 
                 <p className = "MovieInfoRating">{movieRate} / 10 ★</p>
+                <button className = "MovieInfoLikeButtonNotLiked" onClick={() => {dispatch(addFavouriteMovie(movie._id)); dispatch(editFavouriteMovieAsync({userId: userId.uid, movieId: movie._id}))}} style = {{display: liked}}>Unlike</button>
+                <button className = "MovieInfoLikeButtonLiked" onClick={() => {dispatch(addFavouriteMovie(movie._id)); dispatch(editFavouriteMovieAsync({userId: userId.uid, movieId: movie._id}))}} style = {{display: unliked}}>Like</button>
 
                 <p className = "MovieInfoDescription">Movie Description: {movie.MovieDescription}</p>
             </div>
             <Comments/>
         </div>
     )
-}
-
-function helper(item, index, arr) {
-    arr[index] = item + "/"
 }

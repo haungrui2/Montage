@@ -7,8 +7,8 @@ import * as yup from "yup";
 import axios from "axios";
 import jwt from "jwt-decode";
 import {useDispatch} from "react-redux";
-import {getUserId} from "../../actions/index.js";
-import {Routes, Route, useNavigate} from "react-router-dom";
+import {getUserId} from "../../actions";
+import {useNavigate} from "react-router-dom";
 
 
 const validationSchema = yup.object({
@@ -35,10 +35,10 @@ export function LoginForm(props) {
         const token = response.data.token;
         const decoded = jwt(token);
         const temp = decoded.id;
-        console.log(response.data.token);
-        console.log(token);
-        console.log(decoded);
-        console.log(temp);
+        // console.log(response.data.token);
+        // console.log(token);
+        // console.log(decoded);
+        // console.log(temp);
         localStorage.setItem("token", response.data.token);
         dispatch(getUserId(temp));
         navigate('/UserProfile');
