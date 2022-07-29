@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATE } from '../utils';
-import { getMoviesAsync, getMovieAsync, addMovieAsync, editMovieAsync} from './thunks';
+import { getMoviesAsync, getMovieAsync, addMovieAsync, editMovieAsync, randomMovieAsync} from './thunks';
 
 const INITIAL_STATE = {
   movies: [],
+  randomMovie: "",
   selectedMovie: {MovieTitle: "",
     MovieYear: 0,
     MovieDirector: "",
@@ -16,6 +17,7 @@ const INITIAL_STATE = {
   getMovie: REQUEST_STATE.IDLE,
   addMovie: REQUEST_STATE.IDLE,
   editMovie: REQUEST_STATE.IDLE,
+  randomMovieRequest: REQUEST_STATE.IDLE,
   error: null
 };
 
@@ -71,6 +73,18 @@ const usersSlice = createSlice({
       })
       .addCase(editMovieAsync.rejected, (state, action) => {
         state.editMovie = REQUEST_STATE.REJECTED;
+        state.error = action.error;
+      })
+      .addCase(randomMovieAsync.pending, (state) => {
+        state.randomMovieRequest = REQUEST_STATE.PENDING;
+        state.error = null;
+      })
+      .addCase(randomMovieAsync.fulfilled, (state, action) => {
+        state.randomMovieRequest = REQUEST_STATE.FULFILLED;
+        state.randomMovie = action.payload;
+      })
+      .addCase(randomMovieAsync.rejected, (state, action) => {
+        state.randomMovieRequest = REQUEST_STATE.REJECTED;
         state.error = action.error;
       })
   }

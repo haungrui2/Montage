@@ -1,10 +1,16 @@
 /* this is the cover page, including the date, poster, and a recommendation comment */
 import { useState, useEffect } from "react";
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import "./style/coverPage.css"
+import {recommendMovieAsync}  from '../reducers/users/thunks';
+import {getMovieAsync, randomMovieAsync}  from '../reducers/movies/thunks';
+import {getCommentsAsync} from "../reducers/comments/thunks";
+import {useNavigate} from 'react-router-dom';
+
 export default function CoverPage() {
     const [dateTime, setDateTime] = useState(new Date());
-    const visibility = useSelector(state => state.others.navbar.coverPage);
+    const profileData = useSelector(state => state.others.profile.data);
+    const dispatch = useDispatch()
     useEffect(() => {setDateTime(new Date());}, []);
 
     const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
@@ -14,19 +20,39 @@ export default function CoverPage() {
     let date = dateTime.getDate();
     let day = weekday[dateTime.getDay()];
 
+    useEffect(() => {if (profileData !== "") {
+        dispatch(recommendMovieAsync(profileData._id))
+    }}, []);
+    useEffect(() => {if (profileData === ""){
+        dispatch(randomMovieAsync())
+    }}, []);
+    
+    const recommendMovie = useSelector(state => state.users.recommendMovie);
+    const randomMovie = useSelector(state => state.movies.randomMovie);
+    let movie;
+    if (profileData !== "") {
+        movie = recommendMovie;
+    } else {
+        movie = randomMovie;
+    }
+
+    const navigate = useNavigate();
+    const jumpToMovieInfo = () => {
+        navigate('/MovieInfo');
+    }
 
     return (
-        
-        <div className = "CoverPage" style={{display: visibility}}>
+        <div className = "CoverPage">
             <div className = "CoverPageDateContainer">
                 <div id = "Year">{year}</div>
                 <div id = "Month">{month}</div>
                 <div id = "Date">{date}</div>
                 <div id = "Day">{day}</div>
             </div>
-            <img className = "CoverPagePoster" src={ require('../images/poster2.png') } alt="poster2"/>
+            <img className = "CoverPagePoster" src={movie.imageData} 
+            onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}} alt="poster"/>
             <div className = "CoverPageCommentContainer">
-                <p id = "CoverPageComment1">Einmal ist Keinmal</p>
+                <p id = "CoverPageComment1">{movie.MovieTitle}</p>
                 <p id = "CoverPageComment2"></p>
             </div>
         </div>

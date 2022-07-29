@@ -2,9 +2,8 @@ import "./style/movies.css"
 import {getMoviesAsync, getMovieAsync}  from '../reducers/movies/thunks';
 import {useSelector, useDispatch} from 'react-redux';
 import React, { useEffect } from 'react';
-import { CloseMovies, OpenMoviesInfo } from '../actions'
 import {getCommentsAsync} from "../reducers/comments/thunks";
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Search from "./Search";
 
 export default function Movies() {

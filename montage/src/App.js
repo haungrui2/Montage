@@ -12,8 +12,8 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <CoverPage />
       <Routes>
+        <Route path="/" element={<CoverPage />} />
         <Route path="/Upload" element={<Upload />} />
         <Route path="/MovieInfo" element={<MovieInfo />} />
         <Route path="/Movies" element={<Movies />} />
