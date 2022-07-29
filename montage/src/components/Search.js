@@ -66,6 +66,7 @@ export default function Search() {
 
 function helper(state) {
     let query = "?MovieTitle=" + state.MovieTitle + "&MovieYear=" + state.MovieYear;
+    query = query+"&MovieRate="+state.MovieRate
     if (state.MovieGenre[0]) {
         query = query + "&MovieGenre1=" + state.MovieGenre[0];
     }
