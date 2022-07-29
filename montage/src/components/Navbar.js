@@ -3,7 +3,6 @@ you back to the main page), the menu, the search bar, and user login option.*/
 import "./style/navbar.css"
 import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {CloseMoviesInfo, OpenCoverPage, CloseCoverPage, CloseMovies } from '../actions/index.js'
 
 export default function Navbar() {
     const dispatch = useDispatch();
@@ -14,8 +13,10 @@ export default function Navbar() {
     if (profileData.isAdmin){
         adminDisplay = "block";
     }
-
-  const jumpToLogin = () => {
+    const jumpToMain = () => {
+        navigate('/');
+    }
+    const jumpToLogin = () => {
     navigate('/Login');
     }
     const jumpToMovies = () => {
@@ -27,9 +28,9 @@ export default function Navbar() {
 
     return (
         <div className = "navbar">
-            <button id = "MainButton" onClick={() => { dispatch(CloseMoviesInfo()); dispatch(CloseMovies()); dispatch(OpenCoverPage())}}>MainButton</button>
+            <button id = "MainButton" onClick={jumpToMain}>MainButton</button>
             {/* this will later be replaced by an image of the logo */}
-            <button id = "MoviesButton" onClick={() => {jumpToMovies(); dispatch(CloseMoviesInfo()); dispatch(CloseCoverPage())}}>MoviesButton</button>
+            <button id = "MoviesButton" onClick={jumpToMovies}>MoviesButton</button>
             <div className = "SearchContainer">
                 <form className = "SearchForm">
                     <input type = "text" className = "SearchText" placeholder = "Search"></input>

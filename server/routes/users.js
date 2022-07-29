@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userModel = require("../models/userModel");
 const userSessionModel = require('../models/userSession');
+const Movie = require('./models/movieModel');
 const jwt = require("jsonwebtoken");
 
 /* GET users listing. */
@@ -158,15 +159,70 @@ router.get(`/logout`, (req, res) => {
 
 router.patch('/editFavouriteMovies', async function (req, res, next) {
   const user =  await userModel.findOne({_id: req.body.userId});
+  let movie = await Movie.findOne({_id: req.body.movieId});
+  let movieGenreList = movie.MovieGenre;
   let favouriteList = user.favoriteMovies;
+  let preferenceGenreList = user.preferenceGenreList;
   if (user.favoriteMovies.includes(req.body.movieId)) {
     let index = favouriteList.indexOf(req.body.movieId);
     favouriteList.splice(index, 1);
+    movieGenreList.map((genre) => 
+    preferenceGenreList.splice(preferenceGenreList.indexOf(genre), 1));
   } else {
     favouriteList.push(req.body.movieId);
+    movieGenreList.map((genre) => preferenceGenreList.push(genre));
   }
-  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList}});
+  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList, 
+    preferenceGenreList: preferenceGenreList}});
   return res.send();
 });
+
+router.patch('/recommend', async function (req, res, next) {
+  const istheSameId = (a, b) => a._id.toString() === b._id.toString();
+  const filterNotInLater = (x, y, compareFunction) => 
+  x.filter(xValue =>
+    !y.some(yValue => 
+      compareFunction(xValue, yValue)));
+  let recommendMovieId = '';
+  let user =  await userModel.findOne({_id: req.body.userId});
+  let preferenceGenreList = user.preferenceGenreList;
+  let lastRecommendationDate = user.lastRecommendationDate;
+  let lastRecommendationData = await userModel.findOne({_id: req.body.userId}, "lastRecommendationMovies._id");
+  let lastRecommendationMovies = lastRecommendationData.lastRecommendationMovies;
+  let data = new Date();
+  let UTCTime = {Year: data.getUTCFullYear(), Month: data.getUTCMonth(), Day: data.getUTCDate()};
+  if (lastRecommendationDate.Year !== UTCTime.Year || lastRecommendationDate.Month !== UTCTime.Month
+    || lastRecommendationDate.Day !== UTCTime.Day) {
+      let recommendMovieList = [];
+      let selectedGenre = '';
+      if (preferenceGenreList.length === 0) {
+        recommendMovieList = await Movie.find({}, "_id");
+        recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+        recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
+      } else {
+        selectedGenre = preferenceGenreList[Math.floor(Math.random() * preferenceGenreList.length)];
+        recommendMovieList = await Movie.find({MovieGenre: selectedGenre}, "_id");
+        recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+        if (recommendMovieList.length !== 0) {
+          recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
+        } else {
+          recommendMovieList = await Movie.find({}, "_id");
+          recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+          recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
+        }
+      }
+      lastRecommendationDate = UTCTime;
+      if (lastRecommendationMovies.length === 7) {
+        lastRecommendationMovies.splice(0,1);
+      }
+      lastRecommendationMovies.push(recommendMovieId);
+  } else {
+    recommendMovieId = lastRecommendationMovies[lastRecommendationMovies.length];
+  }
+  await userModel.updateOne({_id: req.body.userId}, {$set:{lastRecommendationDate: lastRecommendationDate,
+    lastRecommendationMovies: lastRecommendationMovies}});
+  return res.send(recommendMovieId);
+});
+
 
 module.exports = router;

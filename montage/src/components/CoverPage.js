@@ -1,10 +1,13 @@
 /* this is the cover page, including the date, poster, and a recommendation comment */
 import { useState, useEffect } from "react";
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import "./style/coverPage.css"
+import {recommendMovieAsync}  from '../reducers/users/thunks';
+
 export default function CoverPage() {
     const [dateTime, setDateTime] = useState(new Date());
-    const visibility = useSelector(state => state.others.navbar.coverPage);
+    const profileData = useSelector(state => state.others.profile.data);
+    const dispatch = useDispatch()
     useEffect(() => {setDateTime(new Date());}, []);
 
     const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
@@ -14,10 +17,13 @@ export default function CoverPage() {
     let date = dateTime.getDate();
     let day = weekday[dateTime.getDay()];
 
+    useEffect(() => {if (profileData !== "") {
+        dispatch(recommendMovieAsync(profileData._id))
+    }}, []);
 
     return (
         
-        <div className = "CoverPage" style={{display: visibility}}>
+        <div className = "CoverPage">
             <div className = "CoverPageDateContainer">
                 <div id = "Year">{year}</div>
                 <div id = "Month">{month}</div>
