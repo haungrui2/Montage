@@ -1,6 +1,21 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 
+const YearMonthDay = new mongoose.Schema({
+  Year: {
+    type: Number,
+    default: 0000
+  },
+  Month: {
+    type: Number,
+    default: 00
+  },
+  Day: {
+    type: Number,
+    default: 00
+  }
+});
+
 const UserSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -33,7 +48,7 @@ const UserSchema = new mongoose.Schema({
     default: []
   },
   lastRecommendationDate: {
-    type: Date,
+    type: YearMonthDay,
     default: {
       Year: 0000,
       Month: 00,
@@ -49,6 +64,7 @@ const UserSchema = new mongoose.Schema({
   collection: 'project_users_collection'
 }
 );
+
 
 UserSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
