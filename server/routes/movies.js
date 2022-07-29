@@ -20,6 +20,13 @@ router.get('/', async function(req, res, next) {
   });
 });
 
+router.get('/random', async function(req, res, next) {
+  await movieQueries.getMovies(req.query).then((result) => {
+  let find = result[Math.floor(Math.random() * result.length)];
+  return res.send(find);
+  });
+});
+
 router.get('/:movieId', function (req, res, next) {
     const foundUser = movies.find(movie => movie.movieId === req.params.movieId);
     return res
