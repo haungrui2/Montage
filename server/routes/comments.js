@@ -31,7 +31,7 @@ async function connectDb() {
 router.get('/:movieId', async function(req, res, next) {
     //const foundMovieComment = allComments.find(movieComments => movieComments.MovieId === req.params.movieId);
     const foundMovieComment = await Comment.findOne({"MovieId": req.params.movieId});
-    console.log(foundMovieComment);
+    //console.log(foundMovieComment);
     if(!foundMovieComment){
         await Comment.insertMany({
             MovieId: req.params.movieId,
