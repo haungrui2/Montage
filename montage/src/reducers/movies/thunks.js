@@ -30,3 +30,10 @@ export const editMovieAsync = createAsyncThunk(
   }
 );
 
+export const randomMovieAsync = createAsyncThunk(
+  actionTypes.GET_RANDOM,
+  async (movie) => {
+    return await MoviesService.getRandomMovie(movie);
+  }
+);
+

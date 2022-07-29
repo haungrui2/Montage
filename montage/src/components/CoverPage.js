@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import "./style/coverPage.css"
 import {recommendMovieAsync}  from '../reducers/users/thunks';
+import {getMovieAsync, randomMovieAsync}  from '../reducers/movies/thunks';
+import {getCommentsAsync} from "../reducers/comments/thunks";
+import {useNavigate} from 'react-router-dom';
 
 export default function CoverPage() {
     const [dateTime, setDateTime] = useState(new Date());
@@ -20,9 +23,25 @@ export default function CoverPage() {
     useEffect(() => {if (profileData !== "") {
         dispatch(recommendMovieAsync(profileData._id))
     }}, []);
+    useEffect(() => {if (profileData === ""){
+        dispatch(randomMovieAsync())
+    }}, []);
+    
+    const recommendMovie = useSelector(state => state.users.recommendMovie);
+    const randomMovie = useSelector(state => state.movies.randomMovie);
+    let movie;
+    if (profileData !== "") {
+        movie = recommendMovie;
+    } else {
+        movie = randomMovie;
+    }
+
+    const navigate = useNavigate();
+    const jumpToMovieInfo = () => {
+        navigate('/MovieInfo');
+    }
 
     return (
-        
         <div className = "CoverPage">
             <div className = "CoverPageDateContainer">
                 <div id = "Year">{year}</div>
@@ -30,9 +49,10 @@ export default function CoverPage() {
                 <div id = "Date">{date}</div>
                 <div id = "Day">{day}</div>
             </div>
-            <img className = "CoverPagePoster" src={ require('../images/poster2.png') } alt="poster2"/>
+            <img className = "CoverPagePoster" src={movie.imageData} 
+            onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}} alt="poster"/>
             <div className = "CoverPageCommentContainer">
-                <p id = "CoverPageComment1">Einmal ist Keinmal</p>
+                <p id = "CoverPageComment1">{movie.MovieTitle}</p>
                 <p id = "CoverPageComment2"></p>
             </div>
         </div>

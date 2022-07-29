@@ -187,7 +187,7 @@ router.patch('/recommend', async function (req, res, next) {
   let user =  await userModel.findOne({_id: req.body.userId});
   let preferenceGenreList = user.preferenceGenreList;
   let lastRecommendationDate = user.lastRecommendationDate;
-  let lastRecommendationData = await userModel.findOne({_id: req.body.userId}, "lastRecommendationMovies._id");
+  let lastRecommendationData = await userModel.findOne({_id: req.body.userId}, "lastRecommendationMovies");
   let lastRecommendationMovies = lastRecommendationData.lastRecommendationMovies;
   let data = new Date();
   let UTCTime = {Year: data.getUTCFullYear(), Month: data.getUTCMonth(), Day: data.getUTCDate()};
@@ -217,11 +217,12 @@ router.patch('/recommend', async function (req, res, next) {
       }
       lastRecommendationMovies.push(recommendMovieId);
   } else {
-    recommendMovieId = lastRecommendationMovies[lastRecommendationMovies.length];
+    recommendMovieId =  lastRecommendationMovies[lastRecommendationMovies.length-1]
   }
   await userModel.updateOne({_id: req.body.userId}, {$set:{lastRecommendationDate: lastRecommendationDate,
     lastRecommendationMovies: lastRecommendationMovies}});
-  return res.send(recommendMovieId);
+    let result = await Movie.find({_id: recommendMovieId._id.toString()});
+    return res.send(result[0]);
 });
 
 
