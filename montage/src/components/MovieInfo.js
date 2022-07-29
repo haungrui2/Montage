@@ -11,7 +11,8 @@ export default function MovieInfo() {
     const comments = useSelector(state => state.comments.moviesComments);
     const userPreference = useSelector(state => state.others.userPreference);
     const userId = useSelector(state => state.others.userIdReducer);
-    const movieRate = Math.round(comments.totalRate * 2 /comments.commentList.length)/2
+    // const movieRate = Math.round(comments.totalRate * 2 /comments.commentList.length)/2
+    const movieRate = comments.averageRate;
     const dispatch = useDispatch();
 
     let liked, unliked;
