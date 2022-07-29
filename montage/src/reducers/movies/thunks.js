@@ -4,8 +4,8 @@ import MoviesService from './service';
 
 export const getMoviesAsync = createAsyncThunk(
   actionTypes.GET_MOVIES,
-  async () => {
-    return await MoviesService.getMovies();
+  async (query) => {
+    return await MoviesService.getMovies(query);
   }
 );
 
@@ -20,5 +20,19 @@ export const addMovieAsync = createAsyncThunk(
   actionTypes.ADD_MOVIE,
   async (movie) => {
     return await MoviesService.addMovie(movie);
+  }
+);
+
+export const editMovieAsync = createAsyncThunk(
+  actionTypes.EDIT_MOVIE,
+  async (movie) => {
+    return await MoviesService.editMovie(movie);
+  }
+);
+
+export const editFavouriteMovieAsync = createAsyncThunk(
+  actionTypes.EDIT_LIKEDMOVIES,
+  async (editData) => {
+    return await MoviesService.editFavouriteMovie(editData);
   }
 );

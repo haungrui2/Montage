@@ -80,4 +80,19 @@
     border-style: solid;
     border-color: rgb(0,79,139);
   }
+
+  #Upload{
+    position: absolute;
+    top: 3px;
+    right: 120px;
+    height: 60px;
+    width: 120px;
+    background-color: transparent;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 3px;
+    border-right: 0px;
+    border-style: solid;
+    border-color: rgb(0,79,139);
+  }
   

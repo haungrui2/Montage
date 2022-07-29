@@ -1,7 +1,11 @@
-import { notInitialized } from "react-redux/es/utils/useSyncExternalStore";
 import "./style/search.css"
-
+import {useSelector, useDispatch} from 'react-redux';
+import {getMoviesAsync}  from '../reducers/movies/thunks';
+import {handleOnChangeSearchMovieTitle, handleOnChangeSearchMovieYear,
+    handleOnChangeSearchMovieGenre, handleOnChangeSearchMovieRate} from '../actions/index.js';
 export default function Search() {
+    const searchState = useSelector(state => state.others.search);
+    const dispatch = useDispatch();
     const genres = ["Action", "Adventure", "Comedy", "Crime", "Drama", "Epics", "Horror",
     "Musicals", "Science Fiction", "War", "Westerns", "Detective", "Mystery", "Biographical",
     "Disaster", "Fantasy", "Road", "Romance", "Sports", "Superhero", "Documentary",
@@ -12,35 +16,70 @@ export default function Search() {
     2006, 2005, 2004, 2003, 2002, 2001, 2000];
 
     let genreList = genres.map((genre) => (
-        <li className="genre-tag">
-            {genre}
-        </li>
+        <div className = "genreBoxContainer">
+        <input type="checkbox" className="genre-tag-box" id={genre} name="choice" onClick={(e) => dispatch(handleOnChangeSearchMovieGenre(genre))}></input>
+        <label className = "genre-tag-label" for={genre}>{genre}</label>
+        </div>
     ))
 
     let yearList = years.map((year) => (
-        <button className="genre-tag" name="choice" style={{color: "#0000ff", backgroundColor: "#ddd"}}>
-            {year}
-        </button>
+        <div className = "yearBoxContainer">
+        <input type="radio" className="year-tag-box" id={year} name="choice" onClick={(e) => dispatch(handleOnChangeSearchMovieYear(year))}></input>
+        <label className = "year-tag-label" for={year}>{year}</label>
+        </div>
     ))
     return (
         <div className = "Search">
+            <div className="searchMovieContainer">
+                <p id="searchText">MovieTitle:</p>
+                <input id="searchMovieInput" value={searchState.MovieName} onChange={(e) => dispatch(handleOnChangeSearchMovieTitle(e.target.value))}></input>
+            </div>
+
+            <div className="rateMovieContainer">
+                <p id="searchText">Rate Above:</p>
+                <input id="searchMovieInput" type= "number" max="10" min="0" value={searchState.MovieRate} onChange={(e) => dispatch(handleOnChangeSearchMovieRate(e.target.value))}></input>
+            </div>
+
             <div className="genreListContainer">
-            <ul>
-            {genreList}
-            </ul>
+                <p>Genre:</p>
+                <ul>
+                    {genreList}
+                </ul>
             </div>
 
             <div className="yearListContainer">
-            <ul>
-            {yearList}
-            <li className="genre-tag" name="choice">
-            <label>Other:</label>
-            <div className="yearInputContainer">
-            <input type="number" className="yearInputBox" max="2100" min="1800"></input>
+                <p>Year:</p>
+                <ul>
+                    {yearList}
+                    <div className = "yearBoxContainer2">
+                        <label className = "genre-tag-label" for="other">Other:</label>
+                        <input className="yearInputBox" type= "number" max="2100" min="1800" value={searchState.MovieYear} onChange={(e) => dispatch(handleOnChangeSearchMovieYear(e.target.value))}></input>
+                    </div>
+                </ul>
             </div>
-            </li> 
-            </ul>
+            <div className="ButtonContainer">
+                <button id="SearchButton1" onClick={() => dispatch(getMoviesAsync(helper(searchState)))}>Search</button>
             </div>
         </div>
     )
+}
+
+function helper(state) {
+    let query = "?MovieTitle=" + state.MovieTitle + "&MovieYear=" + state.MovieYear;
+    if (state.MovieGenre[0]) {
+        query = query + "&MovieGenre1=" + state.MovieGenre[0];
+    }
+    if (state.MovieGenre[1]) {
+        query = query + "&MovieGenre2=" + state.MovieGenre[1];
+    }
+    if (state.MovieGenre[2]) {
+        query = query + "&MovieGenre3=" + state.MovieGenre[2];
+    }
+    if (state.MovieGenre[3]) {
+        query = query + "&MovieGenre4=" + state.MovieGenre[3];
+    }
+    if (state.MovieGenre[4]) {
+        query = query + "&MovieGenre5=" + state.MovieGenre[4];
+    }
+    return query;
 }

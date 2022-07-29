@@ -2,10 +2,16 @@ const express = require('express');
 const router = express.Router();
 const userModel = require("../models/userModel");
 const userSessionModel = require('../models/userSession');
+const jwt = require("jsonwebtoken");
 
 /* GET users listing. */
-router.get('/', (req, res) => {
-  res.send('respond with a resource');
+router.get(`/:id`, async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params.id);
+    res.send(user);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 //SUBMIT A User info -- Sign Up
@@ -69,23 +75,33 @@ router.post(`/signin`, async (req, res) => {
   let {email} = req.body;
 
   email = email.toLowerCase();
+  const adminEmail = "montageadmin@gmail.com";
 
   const userWithEmail = await userModel.find({email: email})
     .catch((error) => {
       console.log("Error :", error);
     });
 
-    console.log(userWithEmail);
-    console.log(userWithEmail[0].password);
+  userModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
+    email: adminEmail,
+    isAdmin: false
+  },
+  {$set: {isAdmin: true}}).catch((error) => {
+    console.log("Error: ", error);
+  })
+
     if (!userWithEmail) {
       return res.status(400).json({message: "Email or Password does not match!"});
     }
     if (userWithEmail[0].password !== password) {
       return res.status(400).json({message: "Email or Password does not match!"});
     }
+    const jwtToken = jwt.sign({id: userWithEmail[0]._id,
+      email: userWithEmail[0].email}, process.env.JWT_SECRET);
 
     const userSession = new userSessionModel(); // correct user using userSession
-    userSession.userId = userWithEmail._id;
+    userSession.userId = userWithEmail[0]._id;
+    userSession.token = jwtToken;
     userSession.save((error, doc) => {
       if (error) {
         console.log(error);
@@ -96,38 +112,24 @@ router.post(`/signin`, async (req, res) => {
       } return res.send({
         success: true,
         message: 'Valid Sign In',
-        token: doc._id
+        token: jwtToken
       });
     });
   });
 
 // Get the token for easy login
-router.get(`/verify`, (req, res) => {
-  const { query } = req;
-  const { token } = query;
-  userSessionModel.find({   // Verify the token is one of them and not deleted.
-    _id: token,
-    isDeleted: false
-  }, (error, sessions) => {
-    if (error) {
-      console.log("error 2:", error);
-      return res.send({
-        success: false,
-        message: 'Error: Server error'
-      });
-    }
-    if (sessions.length != 1) {
-      return res.send({
-        success: false,
-        message: 'Error: Found more than one user session.'
-      });
-    } else {
-      return res.send({
-        success: true,
-        message: 'Verify token successful'
-      });
-    }
-  });
+router.get(`/verify/:token`, (req, res) => {
+  try {
+    const userSession = userSessionModel.findOne({   // Verify the token is one of them and not deleted.
+      token: req.params.token
+    });
+    res.send({
+      success: true,
+      message: "User Verified!"
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 //Logout, if success logout, set isDeleted to true
@@ -151,6 +153,20 @@ router.get(`/logout`, (req, res) => {
         message: 'Verified token and successful logout'
       });
   });
+});
+
+
+router.patch('/editFavouriteMovies', async function (req, res, next) {
+  const user =  await userModel.findOne({_id: req.body.userId});
+  let favouriteList = user.favoriteMovies;
+  if (user.favoriteMovies.includes(req.body.movieId)) {
+    let index = favouriteList.indexOf(req.body.movieId);
+    favouriteList.splice(index, 1);
+  } else {
+    favouriteList.push(req.body.movieId);
+  }
+  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList}});
+  return res.send();
 });
 
 module.exports = router;

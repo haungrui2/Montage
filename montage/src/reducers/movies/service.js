@@ -1,5 +1,10 @@
-const getMovies = async () => {
-    const response = await fetch('http://localhost:3001/movies', {
+const getMovies = async (input) => {
+  console.log(input)
+  let query = '';
+  if (input) {
+    query = input;
+  }
+    const response = await fetch('http://localhost:3001/movies' + query, {
       method: 'GET'
     });
     return response.json();
@@ -28,8 +33,46 @@ const getMovie = async (movie) => {
     return data;
   };
 
-  export default {
+  const editMovie = async (movie) => {
+    const response = await fetch('http://localhost:3001/movies/', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(movie)
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const errorMsg = data?.message;
+      throw new Error(errorMsg)
+    }
+    return data;
+  };
+
+  const editFavouriteMovie = async (editData) => {
+    const response = await fetch('http://localhost:3001/users/editFavouriteMovies', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(editData)
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const errorMsg = data?.message;
+      throw new Error(errorMsg)
+    }
+    return data;
+  };
+
+
+
+let Movieservices = {
     getMovies,
     getMovie,
-    addMovie
+    addMovie,
+    editMovie,
+    editFavouriteMovie
   };
+
+export default Movieservices;

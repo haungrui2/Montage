@@ -20,6 +20,7 @@ export const MutedLink = styled.a`
   font-weight: 500;
   text-decoration: none;
   direction: vertical;
+  margin-left: 30px;
 `;
 
 export const BoldLink = styled.a`
@@ -90,23 +91,26 @@ export const FieldError = styled.span`
   font-size: 14px;
   min-height: -20px;
   margin-bottom: 22px;
+  margin-left: 30px;
 `;
 
 export const FieldErrorLogin = styled.span`
   color: red;
   font-size: 14px;
   margin-bottom: 24px;
+  margin-left: 30px;
 `;
 
 export const FormSuccess = styled.span`
   color: #28a828;
   font-size: 15px;
   min-height: 20px;
+  margin-left: 30px;
 `;
 
 export const FormError = styled.span`
   color: red;
   font-size: 15px;
   min-height: 20px;
-  z-index:10;
+  margin-left: 30px;
 `;

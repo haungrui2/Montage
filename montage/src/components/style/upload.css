@@ -4,6 +4,17 @@
 }
 
 .shortInputBox{
+    margin-top: 6px;
+    min-width: 18em;
+    height: 37px;
+    padding: 0px, 10px;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f3f3f3;
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 31px;
+    transition: all 250ms ease-in-out;
     width: 500px;
 }
 
@@ -23,10 +34,16 @@
     right: 300px;
 }
 
+.editButton{
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    right: 190px;
+}
+
 .genreCheckBoxs{
     position: relative;
     width: 900px;
-    background-color: brown;
 }
 
 .checkBoxContainer{
@@ -41,10 +58,17 @@
 }
 
 .genreCheckBox{
+    height: 37px;
+    padding: 0px, 10px;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    background-color: #f3f3f3;
+    border: 0;
+    border-radius: 4px;
+    margin-bottom: 31px;
     position: absolute;
-    left: 0px;
+    left: 120px;
     height: 15px;
-    width: 15px;
 }
 
 .checkBoxLabel{

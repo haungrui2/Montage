@@ -74,3 +74,16 @@
   text-overflow: ellipsis;
 }
 
+.MovieInfoLikeButtonLiked{
+  position: absolute;
+  right: 160px;
+  top: 117px;
+}
+
+.MovieInfoLikeButtonNotLiked{
+  background-color: red;
+  position: absolute;
+  right: 160px;
+  top: 117px;
+}
+

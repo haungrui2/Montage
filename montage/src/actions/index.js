@@ -102,3 +102,52 @@ export const handleOnChangeMovieImage = input => {
         payload: input
     };
 }
+
+export const handleOnChangeSearchMovieTitle = input => {
+    return {
+        type: 'OnChangeSearchMovieTitle',
+        payload: input
+    };
+}
+
+export const handleOnChangeSearchMovieYear = input => {
+    return {
+        type: 'OnChangeSearchMovieYear',
+        payload: input
+    };
+}
+
+export const handleOnChangeSearchMovieGenre = input => {
+    return {
+        type: 'OnChangeSearchMovieGenre',
+        payload: input
+    };
+}
+
+export const handleOnChangeSearchMovieRate = input => {
+    return {
+        type: 'OnChangeSearchMovieRate',
+        payload: input
+    };
+}
+
+export const getUserId = (id) => {
+  return {
+    type: 'getUserId',
+    payload: id
+  };
+}
+
+export const getUserData = (data) => {
+  return {
+    type: 'getUserData',
+    payload: data
+  };
+}
+
+export const addFavouriteMovie = (data) => {
+    return {
+      type: 'addFavouriteMovie',
+      payload: data
+    };
+  }

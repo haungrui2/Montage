@@ -29,6 +29,17 @@ const queries = {
             movieId: movie.movieId,
             imageData: movie.imageData});
         return added;
+    },
+    editOneMovie: async function (movie) {
+        const added  = await Movie.updateOne({movieId: movie.movieId},{$set:{
+            MovieTitle: movie.MovieTitle,
+            MovieYear: movie.MovieYear,
+            MovieDirector: movie.MovieDirector,
+            MovieWriter: movie.MovieWriter,
+            MovieGenre: movie.MovieGenre,
+            MovieDescription: movie.MovieDescription,
+            imageData: movie.imageData}});
+        return added;
     }
 }
 
