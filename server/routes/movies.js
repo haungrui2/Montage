@@ -4,6 +4,7 @@ var path = require('path');
 const mongoose = require('mongoose');
 var generateMovieData = require('./generateData/movieData');
 const movieQueries = require('./queries/movieQueries');
+const rateQueries = require('./queries/rateQueries')
 let movies = [];
 let addedMovie = [];
 
@@ -14,10 +15,14 @@ async function main() {
 }
 
 router.get('/', async function(req, res, next) {
-  await movieQueries.getMovies(req.query).then((result) => {
-    movies = result;
+    let r;
+    if (req.query.MovieRate) { r = await rateQueries.getRatedMovie(req.query)}
+    movies = await movieQueries.getMovies(req.query, r)
     res.send(movies);
-  });
+  //   await movieQueries.getMovies(req.query).then((result) => {
+  //   movies = result;
+  //   res.send(movies);
+  // });
 });
 
 router.get('/:movieId', function (req, res, next) {
