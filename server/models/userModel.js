@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     default: ''
   },
-  isDeleted: {
+  isLogin: {
     type: Boolean,
     default: false,
   },

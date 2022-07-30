@@ -78,18 +78,21 @@ router.post(`/signin`, async (req, res) => {
   email = email.toLowerCase();
   const adminEmail = "montageadmin@gmail.com";
 
-  const userWithEmail = await userModel.find({email: email})
-    .catch((error) => {
+  const userWithEmail = await userModel.find({
+    email: email,
+    isLogin: false
+  }, {$set: {isLogin: true}}).catch((error) => {
       console.log("Error :", error);
     });
 
-  userModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
+  userModel.findOneAndUpdate({
     email: adminEmail,
-    isAdmin: false
+    isAdmin: false,
+    isLogin: false
   },
-  {$set: {isAdmin: true}}).catch((error) => {
+  {$set: {isAdmin: true, isLogin: true}}).catch((error) => {
     console.log("Error: ", error);
-  })
+  });
 
     if (!userWithEmail) {
       return res.status(400).json({message: "Email or Password does not match!"});
@@ -166,22 +169,22 @@ router.patch('/editFavouriteMovies', async function (req, res, next) {
   if (user.favoriteMovies.includes(req.body.movieId)) {
     let index = favouriteList.indexOf(req.body.movieId);
     favouriteList.splice(index, 1);
-    movieGenreList.map((genre) => 
+    movieGenreList.map((genre) =>
     preferenceGenreList.splice(preferenceGenreList.indexOf(genre), 1));
   } else {
     favouriteList.push(req.body.movieId);
     movieGenreList.map((genre) => preferenceGenreList.push(genre));
   }
-  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList, 
+  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList,
     preferenceGenreList: preferenceGenreList}});
   return res.send();
 });
 
 router.patch('/recommend', async function (req, res, next) {
   const istheSameId = (a, b) => a._id.toString() === b._id.toString();
-  const filterNotInLater = (x, y, compareFunction) => 
+  const filterNotInLater = (x, y, compareFunction) =>
   x.filter(xValue =>
-    !y.some(yValue => 
+    !y.some(yValue =>
       compareFunction(xValue, yValue)));
   let recommendMovieId = '';
   let user =  await userModel.findOne({_id: req.body.userId});
