@@ -15,24 +15,29 @@ export default function Comments() {
     // useEffect(() => {
     //     dispatch(getCommentsAsync(movieId));
     // }, []);
+    const [commentContent, setCommentContent] = useState("")
+    const [commentRate, setCommentRate] = useState(0)
+    let isAbleToComment = commentContent !== "";
 
-    const commentsDisplay = comments.commentList.map((comment, index) =>
+
+    const commentsDisplay = comments.commentList.map((comment, index) =>{
+        isAbleToComment = isAbleToComment && (userId.uid !== comment.userId)
+        return(
         <div className= "comment">
-            <button className="delete_comment_button" onClick={() => {dispatch(deleteCommentAsync(index))}} style = {{display: comment.userId===userId.uid ? "block" : "none"}}>x</button>
+            <button className="delete_comment_button" onClick={() => {dispatch(deleteCommentAsync({index: index, movieId: movieId}))}} style = {{display: comment.userId===userId.uid ? "block" : "none"}}>x</button>
             <div>
                 <h3>{comment.user}:</h3>
                 <p>{comment.commentContent}</p>
                 <p>rate: {comment.rate}</p>
             </div>
-        </div>
+        </div>)}
     )
-    const [commentContent, setCommentContent] = useState("")
-    const [commentRate, setCommentRate] = useState(0)
+
     return(<div id = "movie_comment">
             <div id = "comment_input" style = {{display: userId.isLogin ? "block" : "none"}}>
                 <textarea name="commentInput" value ={commentContent} placeholder="..." onChange={(e) => setCommentContent(e.target.value)}/><br/>
                 <button id="rate">rate:{commentRate}</button>
-                <button id = "comment_button" onClick={() => {if(commentContent !== "") dispatch(
+                <button id = "comment_button" onClick={() => {if(isAbleToComment) dispatch(
                     addCommentAsync({
                         commentsContent: {userId: userId.uid, user: userPreference.fullName, commentContent: commentContent, rate: commentRate},
                         movieId: movieId
