@@ -1,6 +1,6 @@
 let movieInformation = {
     MovieTitle: "",
-    MovieYear: 2000,
+    MovieYear: 0,
     MovieDirector: "",
     MovieWriter: "",
     MovieGenre: [],
@@ -32,6 +32,16 @@ const upload = (initialState = movieInformation, action) => {
             } else {
                 return {...initialState, MovieGenre: initialState.MovieGenre.concat(action.payload)};
             }
+        case 'clearUploadState':
+            return {...initialState,     
+            MovieTitle: "",
+            MovieYear: 0,
+            MovieDirector: "",
+            MovieWriter: "",
+            MovieGenre: [],
+            MovieDescription: "",
+            movieId: "",
+            imageData: ""}
         default:
             return initialState;
     }
