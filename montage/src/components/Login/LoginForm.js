@@ -24,7 +24,7 @@ export function LoginForm(props) {
 
   const onSubmit = async (values) => {
     setError(null);
-    const response = await axios.post('http://localhost:3001/users/signin', values)
+    const response = await axios.post('https://cpsc455montageserver.herokuapp.com/users/signin', values)
     .catch((error) => {
       if (error && error.response) {
         setError(error.response.data.message);
