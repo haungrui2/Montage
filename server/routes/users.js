@@ -189,6 +189,7 @@ router.patch('/recommend', async function (req, res, next) {
   let recommendMovieId = '';
   let user =  await userModel.findOne({_id: req.body.userId});
   let preferenceGenreList = user.preferenceGenreList;
+  let favouriteList = user.favoriteMovies;
   let lastRecommendationDate = user.lastRecommendationDate;
   let lastRecommendationData = await userModel.findOne({_id: req.body.userId}, "lastRecommendationMovies");
   let lastRecommendationMovies = lastRecommendationData.lastRecommendationMovies;
@@ -199,18 +200,20 @@ router.patch('/recommend', async function (req, res, next) {
       let recommendMovieList = [];
       let selectedGenre = '';
       if (preferenceGenreList.length === 0) {
-        recommendMovieList = await Movie.find({}, "_id");
-        recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+        //recommendMovieList = await Movie.find({}, "_id");
+        //recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+        recommendMovieList = await Movie.find( {_id: {$nin: lastRecommendationMovies}}, "_id");
         recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
       } else {
         selectedGenre = preferenceGenreList[Math.floor(Math.random() * preferenceGenreList.length)];
-        recommendMovieList = await Movie.find({MovieGenre: selectedGenre}, "_id");
-        recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+        recommendMovieList = await Movie.find( {$and: [{MovieGenre: selectedGenre, _id: {$nin: favouriteList}}, {_id: {$nin: lastRecommendationMovies}}]}, "_id");
+        //recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
         if (recommendMovieList.length !== 0) {
           recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
         } else {
-          recommendMovieList = await Movie.find({}, "_id");
-          recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+          //recommendMovieList = await Movie.find({}, "_id");
+          //recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
+          recommendMovieList = await Movie.find( {$and: [{_id: {$nin: favouriteList}}, {_id: {$nin: lastRecommendationMovies}}]}, "_id");
           recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
         }
       }

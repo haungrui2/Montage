@@ -15,7 +15,6 @@ const editFavouriteMovie = async (editData) => {
 };
 
 const recommendMovie = async (userId) => {
-  console.log(userId)
   const response = await fetch('http://localhost:3001/users/recommend', {
     method: 'PATCH',
     headers: {

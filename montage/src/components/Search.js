@@ -32,7 +32,7 @@ export default function Search() {
         <div className = "Search">
             <div className="searchMovieContainer">
                 <p id="searchText">MovieTitle:</p>
-                <input id="searchMovieInput" value={searchState.MovieName} onChange={(e) => dispatch(handleOnChangeSearchMovieTitle(e.target.value))}/>
+                <input id="searchMovieInput" value={searchState.MovieTitle} onChange={(e) => dispatch(handleOnChangeSearchMovieTitle(e.target.value))}/>
             </div>
 
             <div className="rateMovieContainer">
