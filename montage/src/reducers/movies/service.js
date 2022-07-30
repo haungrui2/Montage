@@ -4,21 +4,21 @@ const getMovies = async (input) => {
   if (input) {
     query = input;
   }
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/movies' + query, {
+    const response = await fetch('http://localhost:3001/movies' + query, {
       method: 'GET'
     });
     return response.json();
   };
 
 const getMovie = async (movie) => {
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/movies/' + movie, {
+    const response = await fetch('http://localhost:3001/movies/' + movie, {
       method: 'GET'
     });
     return response.json();
   };
 
 const addMovie = async (movie) => {
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/movies/', {
+    const response = await fetch('http://localhost:3001/movies/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ const addMovie = async (movie) => {
 };
 
 const editMovie = async (movie) => {
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/movies/', {
+    const response = await fetch('http://localhost:3001/movies/', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ const editMovie = async (movie) => {
 };
 
 const getRandomMovie = async () => {
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/movies/random', {
+    const response = await fetch('http://localhost:3001/movies/random', {
       method: 'GET'
     });
     return response.json();

@@ -1,5 +1,5 @@
 const editFavouriteMovie = async (editData) => {
-  const response = await fetch('https://cpsc455montageserver.herokuapp.com/users/editFavouriteMovies', {
+  const response = await fetch('http://localhost:3001/users/editFavouriteMovies', {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ const editFavouriteMovie = async (editData) => {
 };
 
 const recommendMovie = async (userId) => {
-  const response = await fetch('https://cpsc455montageserver.herokuapp.com/users/recommend', {
+  const response = await fetch('http://localhost:3001/users/recommend', {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

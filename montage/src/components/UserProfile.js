@@ -8,7 +8,7 @@ function UserProfile() {
   const userId = useSelector(state => state.others.userIdReducer.uid);
 
   const getProfileData = () => {
-    fetch(`https://cpsc455montageserver.herokuapp.com/users/${userId}`, {method: 'GET'})
+    fetch(`http://localhost:3001/users/${userId}`, {method: 'GET'})
     .then((response) => response.json())
     .then((data) => dispatch(getUserData(data)))
   }

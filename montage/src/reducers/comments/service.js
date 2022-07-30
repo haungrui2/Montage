@@ -1,12 +1,12 @@
 const getComments = async (movieTitle) => {
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/comments/' + movieTitle, {
+    const response = await fetch('http://localhost:3001/comments/' + movieTitle, {
       method: 'GET'
     });
     return response.json();
   };
 
 const addComment = async (comment) => {
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/comments', {
+    const response = await fetch('http://localhost:3001/comments', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,12 +24,12 @@ const addComment = async (comment) => {
 };
 
 const deleteComment = async (deleteData) => {
-    const response = await fetch('https://cpsc455montageserver.herokuapp.com/comments', {
+    const response = await fetch('http://localhost:3001/comments', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({deleteData})
+        body: JSON.stringify(deleteData)
     });
 
     const data = await response.json();
