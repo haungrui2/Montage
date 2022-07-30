@@ -78,48 +78,48 @@ router.post(`/signin`, async (req, res) => {
   email = email.toLowerCase();
   const adminEmail = "montageadmin@gmail.com";
 
-  const userWithEmail = await userModel.find({
+  const userWithEmail = await userModel.findOneAndUpdate({
     email: email,
     isLogin: false
   }, {$set: {isLogin: true}}).catch((error) => {
       console.log("Error :", error);
     });
 
-  userModel.findOneAndUpdate({
-    email: adminEmail,
-    isAdmin: false,
-    isLogin: false
-  },
-  {$set: {isAdmin: true, isLogin: true}}).catch((error) => {
-    console.log("Error: ", error);
-  });
+  if (!userWithEmail) {
+    return res.status(400).json({message: "Email or Password does not match!"});
+  }
+  if (userWithEmail.email == adminEmail) {
+    userModel.findOneAndUpdate({
+      email: adminEmail,
+      isAdmin: false
+    },
+    {$set: {isAdmin: true}}).catch((error) => {
+      console.log("Error: ", error);
+    });
+  }
+  if (userWithEmail.password !== password) {
+    return res.status(400).json({message: "Email or Password does not match!"});
+  }
+  const jwtToken = jwt.sign({id: userWithEmail._id,
+    email: userWithEmail.email}, process.env.JWT_SECRET);
 
-    if (!userWithEmail) {
-      return res.status(400).json({message: "Email or Password does not match!"});
-    }
-    if (userWithEmail[0].password !== password) {
-      return res.status(400).json({message: "Email or Password does not match!"});
-    }
-    const jwtToken = jwt.sign({id: userWithEmail[0]._id,
-      email: userWithEmail[0].email}, process.env.JWT_SECRET);
-
-    const userSession = new userSessionModel(); // correct user using userSession
-    userSession.userId = userWithEmail[0]._id;
-    userSession.token = jwtToken;
-    userSession.save((error, doc) => {
-      if (error) {
-        console.log(error);
-        return res.send({
-          success: false,
-          message: 'Error: Server error'
-        });
-      } return res.send({
-        success: true,
-        message: 'Valid Sign In',
-        token: jwtToken
+  const userSession = new userSessionModel(); // correct user using userSession
+  userSession.userId = userWithEmail._id;
+  userSession.token = jwtToken;
+  userSession.save((error, doc) => {
+    if (error) {
+      console.log(error);
+      return res.send({
+        success: false,
+        message: 'Error: Server error'
       });
+    } return res.send({
+      success: true,
+      message: 'Valid Sign In',
+      token: jwtToken
     });
   });
+});
 
 // Get the token for easy login
 router.get(`/verify/:token`, (req, res) => {
@@ -137,15 +137,13 @@ router.get(`/verify/:token`, (req, res) => {
 });
 
 //Logout, if success logout, set isDeleted to true
-router.get(`/logout`, (req, res) => {
-  const { query } = req;
-  const { token } = query;
-  userSessionModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
-    _id: token,
-    isDeleted: false
+router.get(`/logout/:userId`, (req, res) => {
+  userModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
+    _id: req.params.userId,
+    isLogin: true
   },
-  {$set: {isDeleted: true}}, null,
-  (error, sessions) => {
+  {$set: {isLogin: false}}, null,
+  (error, user) => {
     if (error) {
       console.log("error 2:", error);
       return res.send({
@@ -154,7 +152,7 @@ router.get(`/logout`, (req, res) => {
       });
     } return res.send({
         success: true,
-        message: 'Verified token and successful logout'
+        message: 'Successful logout'
       });
   });
 });

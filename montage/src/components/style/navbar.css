@@ -7,18 +7,26 @@
     width: 99vw;
     position: relative;
   }
-  
+
+  .image {
+    height: 100px;
+    width: 100%;
+    margin-left: -150px;
+    margin-top: -22px;
+    display: flex;
+  }
+
   .SearchContainer {
     height: 50px;
     width: 300px;
     }
-  
+
   .SearchForm {
     position: absolute;
     top: 10px;
     left: 37%;
   }
-  
+
   .SearchText {
     position: absolute;
     width: 350px;
@@ -29,7 +37,7 @@
     border-color: rgb(0,79,139);
     padding-left: 30px;
     }
-  
+
   #SearchButton {
     position: absolute;
     top: 10px;
@@ -37,7 +45,7 @@
     background-color: transparent;
     border-color: transparent;
   }
-  
+
   #MainButton {
     position: absolute;
     left: 0px;
@@ -51,7 +59,7 @@
     border-style: solid;
     border-color: rgb(0,79,139);
   }
-  
+
   #MoviesButton {
     position: absolute;
     left: 120px;
@@ -65,7 +73,7 @@
     border-style: solid;
     border-color: rgb(0,79,139);
   }
-  
+
   #Login {
     position: absolute;
     top: 3px;
@@ -95,4 +103,3 @@
     border-style: solid;
     border-color: rgb(0,79,139);
   }
-  
