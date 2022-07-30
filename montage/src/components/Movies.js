@@ -12,9 +12,6 @@ export default function Movies() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-      dispatch(getMoviesAsync());
-    }, []);
     const jumpToMovieInfo = () => {
         navigate('/MovieInfo');
     }
