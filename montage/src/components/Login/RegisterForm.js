@@ -25,7 +25,7 @@ export function RegisterForm(props) {
 
   const onSubmit = async (values) => {
     const {confirmPassword, ...data} = values;
-    const response = await axios.post('http://localhost:3001/users/signup', data)
+    const response = await axios.post('https://cpsc455montageserver.herokuapp.com/users/signup', data)
     .catch((error) => {
       if (error && error.response) {
         setError(error.response.data.message);
