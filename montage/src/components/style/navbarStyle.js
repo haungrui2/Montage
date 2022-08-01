@@ -2,25 +2,26 @@ import styled from "styled-components";
 import {NavLink as Link} from "react-router-dom";
 
 export const Nav = styled.nav`
-  background: white;
-  height: 80px;
-  width: 65.2%;
+  width: 100%;
+  height: 70px;
+  background: #eae4d8;
+  border-bottom: 1px solid white;
   display: flex;
-  justify-content: space-between;
-  padding: 0.5rem calc((100vw - 1000px) / 2);
+  flex-direction: row;
+  align-items: center;
+  padding: 0 1.5em;
 `;
 
 export const NavLink = styled(Link)`
   color: black;
+  backgound-color: transparent;
   display: flex;
   align-items: center;
   text-decoration: none;
   padding-right: 20px;
-  margin-right: -180px;
-  margin-left: -80px;
-  margin-top: 10px;
+  margin-right: 120px;
   height: 120%;
-  width: 13%;
+  width: 10%;
   cursor: pointer;
   font-size: 28px;
 
@@ -42,8 +43,8 @@ export const NavMenu = styled.div`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: -80px;
-
+  margin-right: 100px;
+  margin-left: 130px;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -77,8 +78,9 @@ export const SearchBarContainer = styled.div`
   border-radius: 6px;
   box-shadow: 0px 2px 12px 3px rgba(0, 0, 0, 0.14);
   overflow: hidden;
-  margin-top: 15px;
-  margin-right: 60px;
+  margin-top: 0px;
+  margin-right: 50px;
+  margin-left: 50px;
 `;
 
 export const SearchInputContainer = styled.div`
@@ -100,6 +102,7 @@ export const SearchInput = styled.input`
   border-radius: 6px;
   background-color: transparent;
   position: relative;
+  z-index: 10;
 
   &:focus {
     outline: none;
@@ -117,9 +120,10 @@ export const SearchInput = styled.input`
 export const SearchIcon = styled.span`
   color: #bebebe;
   font-size: 30px;
-  margin-top: 30px;
-  margin-left: -340px;
+  margin-top: 10px;
+  margin-left: -100px;
   cursor: pointer;
+  z-index: 20;
   &:hover {
     color: #dfdfdf;
   }

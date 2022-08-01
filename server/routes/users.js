@@ -80,7 +80,8 @@ router.post(`/signin`, async (req, res) => {
 
   const userWithEmail = await userModel.findOneAndUpdate({
     email: email,
-    isLogin: false
+    isLogin: false,
+    password: password
   }, {$set: {isLogin: true}}).catch((error) => {
       console.log("Error :", error);
     });
@@ -88,18 +89,22 @@ router.post(`/signin`, async (req, res) => {
   if (!userWithEmail) {
     return res.status(400).json({message: "Email or Password does not match!"});
   }
+  if (userWithEmail.password !== password) {
+    return res.status(400).json({message: "Email or Password does not match!"});
+  }
+
   if (userWithEmail.email == adminEmail) {
     userModel.findOneAndUpdate({
       email: adminEmail,
-      isAdmin: false
+      isAdmin: false,
+      isLogin: false,
+      password: password
     },
     {$set: {isAdmin: true}}).catch((error) => {
       console.log("Error: ", error);
     });
   }
-  if (userWithEmail.password !== password) {
-    return res.status(400).json({message: "Email or Password does not match!"});
-  }
+  
   const jwtToken = jwt.sign({id: userWithEmail._id,
     email: userWithEmail.email}, process.env.JWT_SECRET);
 

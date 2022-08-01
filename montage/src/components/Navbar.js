@@ -11,21 +11,19 @@ SearchInputContainer, SearchInput, SearchIcon} from "./style/navbarStyle"
 import {IoSearch} from "react-icons/io5";
 import axios from "axios";
 import {useState} from "react";
+import {HamburgerMenu} from "./HamburgerMenu/HamburgerMenu"
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const profileData = useSelector(state => state.others.profile.data);
   const searchState = useSelector(state => state.others.search);
-  // const [login, setLogin] = useState(false);
+  const userId = useSelector(state => state.others.userIdReducer.uid);
 
   let adminDisplay = "none";
   if (profileData.isAdmin){
       adminDisplay = "block";
   }
-  // if (profileData.isLogin) {
-  //   setLogin(true);
-  // }
 
   const jumpToMovies = () => {
       navigate('/Movies');
@@ -38,20 +36,13 @@ export default function Navbar() {
     }
   }
 
-  // const handleLogout = async () => {
-  //   // fetch(`http://localhost:3001/users/logout${profileData._id}`, {method: 'GET'})
-  //   // .then((response) => response.json())
-  //   // .then(res => res.json())
-  //   // .catch(e => console.log(e))
-  //   setLogin(false);
-  //   const res = await axios.get(`http://localhost:3001/users/logout${profileData._id}`)
-  //   .catch((error) => {
-  //     console.log(error);
-  //   })
-  //   .then(res => {
-  //     res.json();
-  //   })
-  // };
+  const handleLogout = () => {
+    axios.get(`http://localhost:3001/users/logout/${userId}`)
+    .then(res => {
+      res.json();
+      window.location.reload();
+    })
+  };
 
   // return (
   //   <div className = "navbar">
@@ -89,23 +80,8 @@ export default function Navbar() {
          jumpToMovies()}} onKeyPress={handleKeyPress}>
          <IoSearch/>
        </SearchIcon>
-       <NavBtn>
-        <NavBtnLink to="/Upload" style={{display: adminDisplay}}>Upload</NavBtnLink>
-       </NavBtn>
-       <NavBtn>
-          <NavBtnLink to="/Login">Login</NavBtnLink>
-       </NavBtn>
-      </Nav>
-       // {login ? (
-       //   <NavBtn>
-       //    <NavBtnLink to="/">Logout</NavBtnLink>
-       //   </NavBtn>
-       // ) : (
-       //   <NavBtn>
-       //    <NavBtnLink to="/Login">Login</NavBtnLink>
-       //   </NavBtn>
-       // )}
-
+       <HamburgerMenu />
+    </Nav>
   )
 }
 
