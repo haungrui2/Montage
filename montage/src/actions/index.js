@@ -101,4 +101,11 @@ export const addFavouriteMovie = (data) => {
       type: 'addFavouriteMovie',
       payload: data
     };
-  }
+}
+
+export const clearUploadState = (data) => {
+    return {
+      type: 'clearUploadState',
+      payload: data
+    };
+}
