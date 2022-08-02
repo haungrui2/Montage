@@ -15,6 +15,19 @@ router.get(`/:id`, async (req, res) => {
   }
 });
 
+ // Check login state
+// router.get(`/checkLogin/:id`, async (req, res) => {
+//   try {
+//     const loginUser = await userModel.find({
+//       _id: req.params.id,
+//       isLogin: true
+//     });
+//     res.send(loginUser[0].isLogin);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// });
+
 //SUBMIT A User info -- Sign Up
 router.post(`/signup`, (req, res) => {
   const {fullName, password} = req.body;
@@ -78,45 +91,53 @@ router.post(`/signin`, async (req, res) => {
   email = email.toLowerCase();
   const adminEmail = "montageadmin@gmail.com";
 
-  const userWithEmail = await userModel.find({email: email})
-    .catch((error) => {
+  const userWithEmail = await userModel.findOneAndUpdate({
+    email: email,
+    isLogin: false,
+    password: password
+  }, {$set: {isLogin: true}}).catch((error) => {
       console.log("Error :", error);
     });
 
-  userModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
-    email: adminEmail,
-    isAdmin: false
-  },
-  {$set: {isAdmin: true}}).catch((error) => {
-    console.log("Error: ", error);
-  })
+  if (!userWithEmail) {
+    return res.status(400).json({message: "Email or Password does not match!"});
+  }
+  if (userWithEmail.password !== password) {
+    return res.status(400).json({message: "Email or Password does not match!"});
+  }
 
-    if (!userWithEmail) {
-      return res.status(400).json({message: "Email or Password does not match!"});
-    }
-    if (userWithEmail[0].password !== password) {
-      return res.status(400).json({message: "Email or Password does not match!"});
-    }
-    const jwtToken = jwt.sign({id: userWithEmail[0]._id,
-      email: userWithEmail[0].email}, process.env.JWT_SECRET);
+  if (userWithEmail.email == adminEmail) {
+    userModel.findOneAndUpdate({
+      email: adminEmail,
+      isAdmin: false,
+      isLogin: false,
+      password: password
+    },
+    {$set: {isAdmin: true}}).catch((error) => {
+      console.log("Error: ", error);
+    });
+  }
 
-    const userSession = new userSessionModel(); // correct user using userSession
-    userSession.userId = userWithEmail[0]._id;
-    userSession.token = jwtToken;
-    userSession.save((error, doc) => {
-      if (error) {
-        console.log(error);
-        return res.send({
-          success: false,
-          message: 'Error: Server error'
-        });
-      } return res.send({
-        success: true,
-        message: 'Valid Sign In',
-        token: jwtToken
+  const jwtToken = jwt.sign({id: userWithEmail._id,
+    email: userWithEmail.email}, process.env.JWT_SECRET);
+
+  const userSession = new userSessionModel(); // correct user using userSession
+  userSession.userId = userWithEmail._id;
+  userSession.token = jwtToken;
+  userSession.save((error, doc) => {
+    if (error) {
+      console.log(error);
+      return res.send({
+        success: false,
+        message: 'Error: Server error'
       });
+    } return res.send({
+      success: true,
+      message: 'Valid Sign In',
+      token: jwtToken
     });
   });
+});
 
 // Get the token for easy login
 router.get(`/verify/:token`, (req, res) => {
@@ -134,15 +155,13 @@ router.get(`/verify/:token`, (req, res) => {
 });
 
 //Logout, if success logout, set isDeleted to true
-router.get(`/logout`, (req, res) => {
-  const { query } = req;
-  const { token } = query;
-  userSessionModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
-    _id: token,
-    isDeleted: false
+router.get(`/logout/:userId`, (req, res) => {
+  userModel.findOneAndUpdate({   // Verify the token is one of them and not deleted.
+    _id: req.params.userId,
+    isLogin: true
   },
-  {$set: {isDeleted: true}}, null,
-  (error, sessions) => {
+  {$set: {isLogin: false}}, null,
+  (error, user) => {
     if (error) {
       console.log("error 2:", error);
       return res.send({
@@ -151,7 +170,8 @@ router.get(`/logout`, (req, res) => {
       });
     } return res.send({
         success: true,
-        message: 'Verified token and successful logout'
+        message: 'Successful logout',
+        userId: user._id
       });
   });
 });
@@ -166,23 +186,23 @@ router.patch('/editFavouriteMovies', async function (req, res, next) {
   if (user.favoriteMovies.includes(req.body.movieId)) {
     let index = favouriteList.indexOf(req.body.movieId);
     favouriteList.splice(index, 1);
-    movieGenreList.map((genre) => 
+    movieGenreList.map((genre) =>
     preferenceGenreList.splice(preferenceGenreList.indexOf(genre), 1));
   } else {
     favouriteList.push(req.body.movieId);
     movieGenreList.map((genre) => preferenceGenreList.push(genre));
   }
-  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList, 
+  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList,
     preferenceGenreList: preferenceGenreList}});
   return res.send();
 });
 
 router.patch('/recommend', async function (req, res, next) {
-  // const istheSameId = (a, b) => a._id.toString() === b._id.toString();
-  // const filterNotInLater = (x, y, compareFunction) =>
-  // x.filter(xValue =>
-  //   !y.some(yValue =>
-  //     compareFunction(xValue, yValue)));
+  const istheSameId = (a, b) => a._id.toString() === b._id.toString();
+  const filterNotInLater = (x, y, compareFunction) =>
+  x.filter(xValue =>
+    !y.some(yValue =>
+      compareFunction(xValue, yValue)));
   let recommendMovieId = '';
   let user =  await userModel.findOne({_id: req.body.userId});
   let preferenceGenreList = user.preferenceGenreList;

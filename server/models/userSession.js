@@ -13,7 +13,7 @@ const UserSessionSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
-  isDeleted: {
+  isLogin: {
     type: Boolean,
     default: false,
   },
