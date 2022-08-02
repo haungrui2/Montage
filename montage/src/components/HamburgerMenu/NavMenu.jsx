@@ -83,6 +83,10 @@ export function NavMenu({isOpen}) {
     navigate('/');
   }
 
+  const jumpToProfile = () => {
+    navigate('/UserProfile');
+  }
+
   const handleLogout = (e) => {
     e.preventDefault();
     fetch(`http://localhost:3001/users/logout/${userId}`, {method: 'GET'})
@@ -91,10 +95,6 @@ export function NavMenu({isOpen}) {
       dispatch(updateLoginState(data));
       jumpToMain();
     })
-    // axios.get(`http://localhost:3001/users/logout/${userId}`)
-    // .then((data) => {
-    //   dispatch(updateLoginState(data));
-    // })
   };
 
   console.log(userState);
@@ -107,8 +107,8 @@ export function NavMenu({isOpen}) {
           variants={{
             show: {...variants.show, transition: {delay: 0.1, duration: 0.2}},
             hide: {...variants.hide, transition: {delay: 0.05, duration: 0.05}},
-          }}>
-            <a href="/">Home</a>
+          }} onClick={jumpToMain}>
+            <a>Home</a>
           </NavLink>
           <NavLink initial={false} animate={isOpen ? "show" : "hide"}
           variants={{
@@ -121,8 +121,8 @@ export function NavMenu({isOpen}) {
           variants={{
             show: {...variants.show, transition: {delay: 0.3, duration: 0.2}},
             hide: {...variants.hide, transition: {delay: 0.15, duration: 0.05}},
-          }}>
-            <a href="/UserProfile">Profile</a>
+          }} onClick={jumpToProfile}>
+            <a>Profile</a>
           </NavLink>
           <NavLink initial={false} animate={isOpen ? "show" : "hide"}
           variants={{
@@ -138,8 +138,8 @@ export function NavMenu({isOpen}) {
           variants={{
             show: {...variants.show, transition: {delay: 0.1, duration: 0.2}},
             hide: {...variants.hide, transition: {delay: 0.05, duration: 0.05}},
-          }}>
-            <a href="/">Home</a>
+          }} onClick={jumpToMain}>
+            <a>Home</a>
           </NavLink>
           <NavLink initial={false} animate={isOpen ? "show" : "hide"}
           variants={{
