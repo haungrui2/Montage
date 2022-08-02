@@ -9,7 +9,6 @@ import logo from "./style/montageLogo.jpg";
 import {Nav, NavLink, NavMenu, NavBtn, NavBtnLink, SearchBarContainer,
 SearchInputContainer, SearchInput, SearchIcon} from "./style/navbarStyle"
 import {IoSearch} from "react-icons/io5";
-import axios from "axios";
 import {useState} from "react";
 import {HamburgerMenu} from "./HamburgerMenu/HamburgerMenu"
 
@@ -35,14 +34,6 @@ export default function Navbar() {
       jumpToMovies();
     }
   }
-
-  const handleLogout = () => {
-    axios.get(`http://localhost:3001/users/logout/${userId}`)
-    .then(res => {
-      res.json();
-      window.location.reload();
-    })
-  };
 
   // return (
   //   <div className = "navbar">

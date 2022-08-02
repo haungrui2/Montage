@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import {motion} from "framer-motion";
-import {useSelector} from 'react-redux';
-import {useState} from "react";
+import {useSelector, useDispatch} from 'react-redux';
+import {useState, useEffect} from "react";
+import {useNavigate} from 'react-router-dom';
+import axios from "axios";
+import {updateLoginState} from "../../actions/index";
 
 const NavMenuContainer = styled.div`
   width: 100%;
@@ -59,55 +62,94 @@ const variants = {
 }
 
 export function NavMenu({isOpen}) {
+  const dispatch = useDispatch();
   const profileData = useSelector(state => state.others.profile.data);
-  // const [login, setLogin] = useState(true);
+  const navigate = useNavigate();
+  const userId = useSelector(state => state.others.userIdReducer.uid);
+  const userLoginState = useSelector(state => state.others.userIdReducer.isLogin);
+  const userState = useSelector(state => state.others.userIdReducer);
 
   let adminDisplay = "none";
-  let login = false;
-  if (profileData.isAdmin){
-      adminDisplay = "block";
+
+  if (profileData.isAdmin) {
+    adminDisplay = "block";
   }
-  if (profileData.isLogin) {
-    login = true;
+
+  const jumpToUpload = () => {
+    navigate('/Upload');
   }
+
+  const jumpToMain = () => {
+    navigate('/');
+  }
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    fetch(`http://localhost:3001/users/logout/${userId}`, {method: 'GET'})
+    .then((response) => response.json())
+    .then((data) => {
+      dispatch(updateLoginState(data));
+      jumpToMain();
+    })
+    // axios.get(`http://localhost:3001/users/logout/${userId}`)
+    // .then((data) => {
+    //   dispatch(updateLoginState(data));
+    // })
+  };
+
+  console.log(userState);
 
   return (
     <NavMenuContainer>
-      <NavList>
-        <NavLink initial={false} animate={isOpen ? "show" : "hide"}
-        variants={{
-          show: {...variants.show, transition: {delay: 0.1, duration: 0.2}},
-          hide: {...variants.hide, transition: {delay: 0.05, duration: 0.05}},
-        }}>
-          <a href="/">Home</a>
-        </NavLink>
-
-        {login ? (
-        <NavLink initial={false} animate={isOpen ? "show" : "hide"}
-        variants={{
+      {userLoginState ? (
+        <NavList>
+          <NavLink initial={false} animate={isOpen ? "show" : "hide"}
+          variants={{
+            show: {...variants.show, transition: {delay: 0.1, duration: 0.2}},
+            hide: {...variants.hide, transition: {delay: 0.05, duration: 0.05}},
+          }}>
+            <a href="/">Home</a>
+          </NavLink>
+          <NavLink initial={false} animate={isOpen ? "show" : "hide"}
+          variants={{
+            show: {...variants.show, transition: {delay: 0.2, duration: 0.2}},
+            hide: {...variants.hide, transition: {delay: 0.1, duration: 0.05}},
+          }}>
+            <a href="/" onClick={handleLogout}>Logout</a>
+          </NavLink>
+          <NavLink initial={false} animate={isOpen ? "show" : "hide"}
+          variants={{
+            show: {...variants.show, transition: {delay: 0.3, duration: 0.2}},
+            hide: {...variants.hide, transition: {delay: 0.15, duration: 0.05}},
+          }}>
+            <a href="/UserProfile">Profile</a>
+          </NavLink>
+          <NavLink initial={false} animate={isOpen ? "show" : "hide"}
+          variants={{
+            show: {...variants.show, transition: {delay: 0.4, duration: 0.2}},
+            hide: {...variants.hide, transition: {delay: 0.2, duration: 0.05}},
+          }} style={{display: adminDisplay}} onClick={jumpToUpload}>
+            <a>Upload</a>
+          </NavLink>
+        </NavList>
+      ) : (
+        <NavList>
+          <NavLink initial={false} animate={isOpen ? "show" : "hide"}
+          variants={{
+            show: {...variants.show, transition: {delay: 0.1, duration: 0.2}},
+            hide: {...variants.hide, transition: {delay: 0.05, duration: 0.05}},
+          }}>
+            <a href="/">Home</a>
+          </NavLink>
+          <NavLink initial={false} animate={isOpen ? "show" : "hide"}
+          variants={{
           show: {...variants.show, transition: {delay: 0.2, duration: 0.2}},
           hide: {...variants.hide, transition: {delay: 0.1, duration: 0.05}},
         }}>
-          <a href="/">Logout</a>
-        </NavLink>)
-      : (
-        <NavLink initial={false} animate={isOpen ? "show" : "hide"}
-      variants={{
-        show: {...variants.show, transition: {delay: 0.2, duration: 0.2}},
-        hide: {...variants.hide, transition: {delay: 0.1, duration: 0.05}},
-      }}>
-        <a href="/Login">Login</a>
-      </NavLink>)}
-
-        <NavLink initial={false} animate={isOpen ? "show" : "hide"}
-        variants={{
-          show: {...variants.show, transition: {delay: 0.3, duration: 0.2}},
-          hide: {...variants.hide, transition: {delay: 0.15, duration: 0.05}},
-        }} style={{display: adminDisplay}}>
-          <a href="/Upload">Upload</a>
-        </NavLink>
-
-      </NavList>
+          <a href="/Login">Login</a>
+          </NavLink>
+        </NavList>
+      )}
     </NavMenuContainer>
   );
 }
