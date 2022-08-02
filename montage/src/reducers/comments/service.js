@@ -23,13 +23,13 @@ const addComment = async (comment) => {
     return data;
 };
 
-const deleteComment = async (index) => {
+const deleteComment = async (deleteData) => {
     const response = await fetch('http://localhost:3001/comments', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({index: index})
+        body: JSON.stringify(deleteData)
     });
 
     const data = await response.json();

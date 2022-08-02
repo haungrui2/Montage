@@ -1,3 +1,5 @@
+"Montage" is a movie-sharing platform established to provide information about movies and help people find their interested movies. Users could search, view, like, rate, comment on, and receive recommendations about movies.
+
 # Montage
 CPSC 455<br />
 Team Members:<br />

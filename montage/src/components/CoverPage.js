@@ -10,7 +10,7 @@ import {useNavigate} from 'react-router-dom';
 export default function CoverPage() {
     const [dateTime, setDateTime] = useState(new Date());
     const profileData = useSelector(state => state.others.profile.data);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     useEffect(() => {setDateTime(new Date());}, []);
 
     const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
@@ -26,7 +26,7 @@ export default function CoverPage() {
     useEffect(() => {if (profileData === ""){
         dispatch(randomMovieAsync())
     }}, []);
-    
+
     const recommendMovie = useSelector(state => state.users.recommendMovie);
     const randomMovie = useSelector(state => state.movies.randomMovie);
     let movie;
@@ -49,7 +49,7 @@ export default function CoverPage() {
                 <div id = "Date">{date}</div>
                 <div id = "Day">{day}</div>
             </div>
-            <img className = "CoverPagePoster" src={movie.imageData} 
+            <img className = "CoverPagePoster" src={movie.imageData}
             onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}} alt="poster"/>
             <div className = "CoverPageCommentContainer">
                 <p id = "CoverPageComment1">{movie.MovieTitle}</p>

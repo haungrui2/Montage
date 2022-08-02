@@ -96,9 +96,23 @@ export const getUserData = (data) => {
   };
 }
 
+export const updateLoginState = (data) => {
+  return {
+    type: 'updateLoginState',
+    payload: data
+  };
+}
+
 export const addFavouriteMovie = (data) => {
     return {
       type: 'addFavouriteMovie',
       payload: data
     };
-  }
+}
+
+export const clearUploadState = (data) => {
+    return {
+      type: 'clearUploadState',
+      payload: data
+    };
+}
