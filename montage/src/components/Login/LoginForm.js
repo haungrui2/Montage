@@ -7,8 +7,9 @@ import * as yup from "yup";
 import axios from "axios";
 import jwt from "jwt-decode";
 import {useDispatch} from "react-redux";
-import {getUserId} from "../../actions";
+import {getUserData, getUserId} from "../../actions";
 import {useNavigate} from "react-router-dom";
+import {getMoviesAsync} from "../../reducers/movies/thunks";
 
 
 const validationSchema = yup.object({
@@ -41,6 +42,7 @@ export function LoginForm(props) {
         // console.log(temp);
         localStorage.setItem("token", response.data.token);
         dispatch(getUserId(temp));
+        dispatch(getMoviesAsync());
         navigate('/UserProfile');
       }
       formik.resetForm();

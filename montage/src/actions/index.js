@@ -96,6 +96,13 @@ export const getUserData = (data) => {
   };
 }
 
+export const getMovies = (data) => {
+  return {
+    type: 'getMovies',
+    payload: data
+  };
+}
+
 export const updateLoginState = (data) => {
   return {
     type: 'updateLoginState',
