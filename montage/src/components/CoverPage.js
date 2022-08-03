@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom';
 
 export default function CoverPage() {
     const [dateTime, setDateTime] = useState(new Date());
-    const profileData = useSelector(state => state.others.profile.data);
+    const profileData = useSelector(state => state.persistReducer.profile.data);
     const dispatch = useDispatch();
     useEffect(() => {setDateTime(new Date());}, []);
 

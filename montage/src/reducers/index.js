@@ -5,12 +5,13 @@ import profile from "./profile";
 import userIdReducer from "./userId";
 import userPreference from "./userPreference";
 
+
 const rootReducer = combineReducers({
     upload,
     search,
-    userIdReducer,
-    profile,
-    userPreference
+    // userIdReducer,
+    // profile,
+    // userPreference
 });
 
 export default rootReducer;
