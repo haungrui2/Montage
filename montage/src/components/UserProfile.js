@@ -2,7 +2,8 @@ import "./style/userProfile.css";
 import React from 'react';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserData, getMovies } from "../actions";
+import { getUserData, addUserAvatar } from "../actions";
+import {addUserAvatarAsync} from "../reducers/users/thunks";
 import "./style/userProfile.css";
 
 function UserProfile() {
@@ -20,19 +21,20 @@ function UserProfile() {
   }, []);
 
   const profileData = useSelector(state => state.persistReducer.profile.data);
-  console.log(profileData);
-
   const movies = useSelector(state => state.movies.movies);
   const likedMovies = useSelector(state => state.persistReducer.userPreference.favouriteMovies);
+  const avatar = useSelector(state => state.persistReducer.userPreference.avatar);
   var reader = new FileReader();
 
-  return (
+    return (
     <div className="UserProfile">
       <div className="profileUserInformation">
         <div className='ProfileImage'>
-          <img className='profileAvatar' src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar"></img>
-          <input id="profileUpload" type="file" accept="image/png, image/jpeg" hidden></input>
-          <label id="profileUploadLabel" for="profileUpload"><span id="profileUploadText">Upload</span></label>
+          <img className='profileAvatar' src={avatar} alt="Avatar"></img>
+          <input id="profileUpload" type="file" accept="image/png, image/jpeg" hidden onChange={(e) => {reader.readAsDataURL(e.target.files[0]);
+             reader.onload = function(){dispatch(addUserAvatar(reader.result)); dispatch(addUserAvatarAsync({userId: profileData._id, avatar: reader.result}))}}}></input>
+          
+          <label id="profileUploadLabel" for="profileUpload" ><span id="profileUploadText">Upload</span></label>
         </div>
         <div className='profileInfimation'>
           <p className='profileName'>User Name: {profileData.fullName}</p>

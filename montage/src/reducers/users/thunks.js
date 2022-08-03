@@ -15,3 +15,10 @@ export const recommendMovieAsync = createAsyncThunk(
       return await Userservices.recommendMovie({userId});
     }
 );
+
+export const addUserAvatarAsync = createAsyncThunk(
+  actionTypes.EDIT_AVATAR,
+  async (avatar) => {
+    return await Userservices.addUserAvatar(avatar);
+  }
+);

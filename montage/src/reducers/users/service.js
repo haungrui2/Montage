@@ -30,10 +30,26 @@ const recommendMovie = async (userId) => {
   return data;
 };
 
+const addUserAvatar = async (avatar) => {
+  const response = await fetch('http://localhost:3001/users/avatar', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(avatar)
+  });
+  const data = await response.json();
+  if (!response.ok) {
+    const errorMsg = data?.message;
+    throw new Error(errorMsg)
+  }
+  return data;
+};
 
 let Userservices = {
     editFavouriteMovie,
-    recommendMovie
+    recommendMovie,
+    addUserAvatar
 };
 
 export default Userservices;
