@@ -3,7 +3,7 @@
     top: 100px;
     left: 300px;
     width: 500px;
-    height: 1000px;
+    height: auto;
 }
 
 .profileAvatar {
@@ -47,3 +47,31 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.profileFavouriteMovie {
+    width: 1000px;
+    display: block;
+}
+
+.profileFavouriteMovieCard {
+    float: left;
+    position: relative;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.profileFavouriteMovieTitle {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.profileFavouriteMoviePosters {
+    position: relative;
+    height: 200px;
+    width: 150px;
+}
