@@ -13,9 +13,8 @@ textarea{
 #comments_frame {
     position: relative;
     top: 5vw;
-    width: 80vw;
-    margin-left: auto;
-    margin-right: auto;
+    width: 90%;
+    margin-left: 5%;
 }
 #comments {
     border-radius: 2rem;
@@ -34,7 +33,7 @@ textarea{
 }
 #comment_button{
     position: relative;
-    background: green;
+    background: rgb(0,79,139);
     padding: 0.5vw;
     color: white;
     float: right;
@@ -42,26 +41,27 @@ textarea{
     margin-right: 10%;
 }
 #comment_button:hover{
-    background: #004600;
+    background: rgb(0, 48, 84);
 }
 
 #rate{
     position: relative;
-    background: green;
+    background: rgba(0, 128, 0, 0);
     padding: 0.5vw;
-    color: white;
+    font-size: medium;
+    color: black;
     float: left;
     border: none;
-    margin-left: 10%;
 }
 
 #rate_button{
     position: relative;
     float: left;
+    margin-left: 10%;
 }
 #rate_button button{
     font-size: small;
-    width: 2vw;
+    width: 30px;
 }
 
 .comment {
@@ -75,6 +75,7 @@ textarea{
 
 .comment h3{
     position: relative;
+    color: rgb(0,79,139);
     text-align: left;
 }
 
@@ -88,12 +89,19 @@ textarea{
 }
 
 .delete_comment_button {
-    top: 3%;
-    right: 2%;
-    background: red;
+    font-size: medium;
+    bottom: 20%;
+    right: 3%;
+    background: rgba(0,0,0,0);
+    border: none;
+    color: red;
     position: absolute;
-    font-weight: bold;
+    z-index: 1;
 }
 
+.delete_comment_button:hover {
+    background: rgba(0,0,0,0);
+    color: #5e0000;
+}
 
 

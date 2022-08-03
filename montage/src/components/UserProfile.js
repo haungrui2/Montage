@@ -1,8 +1,9 @@
 import React from 'react';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserData, getMovies } from "../actions";
+import { getUserData } from "../actions";
 import "./style/userProfile.css";
+import {getMoviesAsync} from "../reducers/movies/thunks";
 
 function UserProfile() {
   const dispatch = useDispatch();
@@ -15,12 +16,11 @@ function UserProfile() {
   }
 
   useEffect(() => {
-    getProfileData()
+    getProfileData();
+    dispatch(getMoviesAsync())
   }, []);
 
   const profileData = useSelector(state => state.persistReducer.profile.data);
-  console.log(profileData);
-
   const movies = useSelector(state => state.movies.movies);
   const likedMovies = useSelector(state => state.persistReducer.userPreference.favouriteMovies);
 

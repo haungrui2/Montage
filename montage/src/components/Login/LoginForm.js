@@ -42,7 +42,6 @@ export function LoginForm(props) {
         // console.log(temp);
         localStorage.setItem("token", response.data.token);
         dispatch(getUserId(temp));
-        dispatch(getMoviesAsync());
         navigate('/UserProfile');
       }
       formik.resetForm();
