@@ -2,7 +2,7 @@
   text-align: left;
     position: absolute;
     top: 100px;
-    left: 0px;
+    left: 250px;
     height: 700px;
     width: 1300px;
     display: block;
@@ -15,7 +15,6 @@
   
 .MovieInfoPoster{
     position: absolute;
-    left: 250px;
     top: 100px;
     height: 320px;
     width: 240px;
@@ -24,7 +23,6 @@
   
 .TitleYearContainer{
     position: absolute;
-    left: 250px;
     top: 0px;
 }
   
@@ -44,12 +42,12 @@
 .GeneralInfoContainer{
     position: absolute;
     top: 100px;
-    left: 520px;
+    left: 270px;
 }
   
 .MovieInfoRating{
     position: absolute;
-    left: 1000px;
+    left: 750px;
     top: 100px;
 }
   
@@ -57,7 +55,6 @@
     position: absolute;
     max-width: 750px;
     top: 430px;
-    left: 250px;
 }
 
 .MovieInfoDirector{
@@ -76,14 +73,14 @@
 
 .MovieInfoLikeButtonLiked{
   position: absolute;
-  right: 160px;
+  right: 410px;
   top: 117px;
 }
 
 .MovieInfoLikeButtonNotLiked{
   background-color: red;
   position: absolute;
-  right: 160px;
+  right: 410px;
   top: 117px;
 }
 

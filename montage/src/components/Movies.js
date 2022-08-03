@@ -9,6 +9,9 @@ import Search from "./Search";
 export default function Movies() {
     const movies = useSelector(state => state.movies.movies);
     const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getMoviesAsync())
+    }, []);
 
     const navigate = useNavigate();
 

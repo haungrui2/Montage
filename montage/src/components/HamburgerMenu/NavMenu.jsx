@@ -85,7 +85,6 @@ export function NavMenu({isOpen}) {
   }
 
   const jumpToProfile = () => {
-    dispatch(getMoviesAsync());
     navigate('/UserProfile');
   }
 
