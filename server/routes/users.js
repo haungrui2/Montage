@@ -15,7 +15,7 @@ router.get(`/:id`, async (req, res) => {
   }
 });
 
- // Check login state
+// Check login state
 // router.get(`/checkLogin/:id`, async (req, res) => {
 //   try {
 //     const loginUser = await userModel.find({
@@ -30,8 +30,8 @@ router.get(`/:id`, async (req, res) => {
 
 //SUBMIT A User info -- Sign Up
 router.post(`/signup`, (req, res) => {
-  const {fullName, password} = req.body;
-  let {email} = req.body;
+  const { fullName, password } = req.body;
+  let { email } = req.body;
 
   if (!fullName) {
     return res.send({
@@ -64,7 +64,7 @@ router.post(`/signup`, (req, res) => {
         message: 'Error: Server error'
       });
     } else if (previousUsers.length > 0) {
-      return res.status(409).json({message: "User with email already exists!"});
+      return res.status(409).json({ message: "User with email already exists!" });
     }
 
     // Save the new User info -- using userModel
@@ -73,20 +73,20 @@ router.post(`/signup`, (req, res) => {
     newUser.email = email;
     newUser.password = password;
     const savedUser = newUser.save()
-    .catch((error) => {
-      console.log("Error: ", error);
-      res.status(500).json({error:"Cannot register user at the moment!"});
-    });
+      .catch((error) => {
+        console.log("Error: ", error);
+        res.status(500).json({ error: "Cannot register user at the moment!" });
+      });
     if (savedUser) {
-      res.json({message: "Thanks for registering!"});
+      res.json({ message: "Thanks for registering!" });
     }
   });
 });
 
 // Sign In
 router.post(`/signin`, async (req, res) => {
-  const {password} = req.body;
-  let {email} = req.body;
+  const { password } = req.body;
+  let { email } = req.body;
 
   email = email.toLowerCase();
   const adminEmail = "montageadmin@gmail.com";
@@ -95,15 +95,15 @@ router.post(`/signin`, async (req, res) => {
     email: email,
     isLogin: false,
     password: password
-  }, {$set: {isLogin: true}}).catch((error) => {
-      console.log("Error :", error);
-    });
+  }, { $set: { isLogin: true } }).catch((error) => {
+    console.log("Error :", error);
+  });
 
   if (!userWithEmail) {
-    return res.status(400).json({message: "Email or Password does not match!"});
+    return res.status(400).json({ message: "Email or Password does not match!" });
   }
   if (userWithEmail.password !== password) {
-    return res.status(400).json({message: "Email or Password does not match!"});
+    return res.status(400).json({ message: "Email or Password does not match!" });
   }
 
   if (userWithEmail.email == adminEmail) {
@@ -113,13 +113,15 @@ router.post(`/signin`, async (req, res) => {
       isLogin: false,
       password: password
     },
-    {$set: {isAdmin: true}}).catch((error) => {
-      console.log("Error: ", error);
-    });
+      { $set: { isAdmin: true } }).catch((error) => {
+        console.log("Error: ", error);
+      });
   }
 
-  const jwtToken = jwt.sign({id: userWithEmail._id,
-    email: userWithEmail.email}, process.env.JWT_SECRET);
+  const jwtToken = jwt.sign({
+    id: userWithEmail._id,
+    email: userWithEmail.email
+  }, process.env.JWT_SECRET);
 
   const userSession = new userSessionModel(); // correct user using userSession
   userSession.userId = userWithEmail._id;
@@ -160,26 +162,25 @@ router.get(`/logout/:userId`, (req, res) => {
     _id: req.params.userId,
     isLogin: true
   },
-  {$set: {isLogin: false}}, null,
-  (error, user) => {
-    if (error) {
-      console.log("error 2:", error);
-      return res.send({
-        success: false,
-        message: 'Error: Server error'
-      });
-    } return res.send({
+    { $set: { isLogin: false } }, null,
+    (error, user) => {
+      if (error) {
+        console.log("error 2:", error);
+        return res.send({
+          success: false,
+          message: 'Error: Server error'
+        });
+      } return res.send({
         success: true,
         message: 'Successful logout',
         userId: user._id
       });
-  });
+    });
 });
 
-
 router.patch('/editFavouriteMovies', async function (req, res, next) {
-  const user =  await userModel.findOne({_id: req.body.userId});
-  let movie = await Movie.findOne({_id: req.body.movieId});
+  const user = await userModel.findOne({ _id: req.body.userId });
+  let movie = await Movie.findOne({ _id: req.body.movieId });
   let movieGenreList = movie.MovieGenre;
   let favouriteList = user.favoriteMovies;
   let preferenceGenreList = user.preferenceGenreList;
@@ -187,65 +188,68 @@ router.patch('/editFavouriteMovies', async function (req, res, next) {
     let index = favouriteList.indexOf(req.body.movieId);
     favouriteList.splice(index, 1);
     movieGenreList.map((genre) =>
-    preferenceGenreList.splice(preferenceGenreList.indexOf(genre), 1));
+      preferenceGenreList.splice(preferenceGenreList.indexOf(genre), 1));
   } else {
     favouriteList.push(req.body.movieId);
     movieGenreList.map((genre) => preferenceGenreList.push(genre));
   }
-  await userModel.updateOne({_id: req.body.userId}, {$set:{favoriteMovies: favouriteList,
-    preferenceGenreList: preferenceGenreList}});
+  await userModel.updateOne({ _id: req.body.userId }, {
+    $set: {
+      favoriteMovies: favouriteList,
+      preferenceGenreList: preferenceGenreList
+    }
+  });
   return res.send();
 });
 
 router.patch('/recommend', async function (req, res, next) {
-  const istheSameId = (a, b) => a._id.toString() === b._id.toString();
-  const filterNotInLater = (x, y, compareFunction) =>
-  x.filter(xValue =>
-    !y.some(yValue =>
-      compareFunction(xValue, yValue)));
   let recommendMovieId = '';
-  let user =  await userModel.findOne({_id: req.body.userId});
+  let user = await userModel.findOne({ _id: req.body.userId });
   let preferenceGenreList = user.preferenceGenreList;
   let favouriteList = user.favoriteMovies;
   let lastRecommendationDate = user.lastRecommendationDate;
-  let lastRecommendationData = await userModel.findOne({_id: req.body.userId}, "lastRecommendationMovies");
+  let lastRecommendationData = await userModel.findOne({ _id: req.body.userId }, "lastRecommendationMovies");
   let lastRecommendationMovies = lastRecommendationData.lastRecommendationMovies;
   let data = new Date();
-  let UTCTime = {Year: data.getUTCFullYear(), Month: data.getUTCMonth(), Day: data.getUTCDate()};
+  let UTCTime = { Year: data.getUTCFullYear(), Month: data.getUTCMonth(), Day: data.getUTCDate() };
   if (lastRecommendationDate.Year !== UTCTime.Year || lastRecommendationDate.Month !== UTCTime.Month
     || lastRecommendationDate.Day !== UTCTime.Day) {
-      let recommendMovieList = [];
-      let selectedGenre = '';
-      if (preferenceGenreList.length === 0) {
-        //recommendMovieList = await Movie.find({}, "_id");
-        //recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
-        recommendMovieList = await Movie.find( {_id: {$nin: lastRecommendationMovies}}, "_id");
+    let recommendMovieList = [];
+    let selectedGenre = '';
+    if (preferenceGenreList.length === 0) {
+      recommendMovieList = await Movie.find({ _id: { $nin: lastRecommendationMovies } }, "_id");
+      recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
+    } else {
+      selectedGenre = preferenceGenreList[Math.floor(Math.random() * preferenceGenreList.length)];
+      recommendMovieList = await Movie.find({ $and: [{ MovieGenre: selectedGenre, _id: { $nin: favouriteList } }, { _id: { $nin: lastRecommendationMovies } }] }, "_id");
+      if (recommendMovieList.length !== 0) {
         recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
       } else {
-        selectedGenre = preferenceGenreList[Math.floor(Math.random() * preferenceGenreList.length)];
-        recommendMovieList = await Movie.find( {$and: [{MovieGenre: selectedGenre, _id: {$nin: favouriteList}}, {_id: {$nin: lastRecommendationMovies}}]}, "_id");
-        //recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
-        if (recommendMovieList.length !== 0) {
-          recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
-        } else {
-          //recommendMovieList = await Movie.find({}, "_id");
-          //recommendMovieList = filterNotInLater(recommendMovieList, lastRecommendationMovies, istheSameId);
-          recommendMovieList = await Movie.find( {$and: [{_id: {$nin: favouriteList}}, {_id: {$nin: lastRecommendationMovies}}]}, "_id");
-          recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
-        }
+        recommendMovieList = await Movie.find({ $and: [{ _id: { $nin: favouriteList } }, { _id: { $nin: lastRecommendationMovies } }] }, "_id");
+        recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
       }
-      lastRecommendationDate = UTCTime;
-      if (lastRecommendationMovies.length === 7) {
-        lastRecommendationMovies.splice(0,1);
-      }
-      lastRecommendationMovies.push(recommendMovieId);
+    }
+    lastRecommendationDate = UTCTime;
+    if (lastRecommendationMovies.length === 7) {
+      lastRecommendationMovies.splice(0, 1);
+    }
+    lastRecommendationMovies.push(recommendMovieId);
   } else {
-    recommendMovieId =  lastRecommendationMovies[lastRecommendationMovies.length-1]
+    recommendMovieId = lastRecommendationMovies[lastRecommendationMovies.length - 1]
   }
-  await userModel.updateOne({_id: req.body.userId}, {$set:{lastRecommendationDate: lastRecommendationDate,
-    lastRecommendationMovies: lastRecommendationMovies}});
-    let result = await Movie.find({_id: recommendMovieId._id.toString()});
-    return res.send(result[0]);
+  await userModel.updateOne({ _id: req.body.userId }, {
+    $set: {
+      lastRecommendationDate: lastRecommendationDate,
+      lastRecommendationMovies: lastRecommendationMovies
+    }
+  });
+  let result = await Movie.find({ _id: recommendMovieId._id.toString() });
+  return res.send(result[0]);
+});
+
+router.patch('/avatar', async function (req, res, next) {
+  await userModel.updateOne({ _id: req.body.userId }, {$set: {userAvatar: req.body.avatar}});
+  return res.send();
 });
 
 
