@@ -24,11 +24,11 @@ export default function Comments() {
         isAbleToComment = isAbleToComment && (userId.uid !== comment.userId)
         return(
         <div className= "comment">
-            <button className="delete_comment_button" onClick={() => {dispatch(deleteCommentAsync({index: index, movieId: movieId}))}} style = {{display: comment.userId===userId.uid ? "block" : "none"}}>x</button>
+            <button className="delete_comment_button" onClick={() => {dispatch(deleteCommentAsync({index: index, movieId: movieId}))}} style = {{display: comment.userId===userId.uid ? "block" : "none"}}>Delete</button>
             <div>
                 <h3>{comment.user}:</h3>
                 <p>{comment.commentContent}</p>
-                <p>rate: {comment.rate}</p>
+                <p>{comment.rate}/10 ★</p>
             </div>
         </div>)}
     )
@@ -36,17 +36,17 @@ export default function Comments() {
     return(<div id = "movie_comment">
             <div id = "comment_input" style = {{display: userId.isLogin ? "block" : "none"}}>
                 <textarea name="commentInput" value ={commentContent} placeholder="..." onChange={(e) => setCommentContent(e.target.value)}/><br/>
-                <button id="rate">rate:{commentRate}</button>
+                <div id= "rate_button">
+                    <button onClick={() => {if(commentRate < 10) setCommentRate(commentRate+1)}}>+</button><br/>
+                    <button onClick={() => {if(commentRate > 0) setCommentRate(commentRate-1)}}>-</button>
+                </div>
+                <button id="rate">rate:{commentRate}/10 ★</button>
                 <button id = "comment_button" onClick={() => {if(isAbleToComment) dispatch(
                     addCommentAsync({
                         commentsContent: {userId: userId.uid, user: userPreference.fullName, commentContent: commentContent, rate: commentRate},
                         movieId: movieId
                     }));
                     setCommentContent("")}}>comment</button>
-                <div id= "rate_button">
-                    <button onClick={() => {if(commentRate < 10) setCommentRate(commentRate+1)}}>+</button><br/>
-                    <button onClick={() => {if(commentRate > 0) setCommentRate(commentRate-1)}}>-</button>
-                </div>
             </div>
             <div id = "comments_frame">
                 <div id="comments">

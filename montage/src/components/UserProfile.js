@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUserData, addUserAvatar } from "../actions";
 import {addUserAvatarAsync} from "../reducers/users/thunks";
 import "./style/userProfile.css";
+import {getMoviesAsync} from "../reducers/movies/thunks";
 
 function UserProfile() {
   const dispatch = useDispatch();
@@ -17,7 +18,8 @@ function UserProfile() {
   }
 
   useEffect(() => {
-    getProfileData()
+    getProfileData();
+    dispatch(getMoviesAsync())
   }, []);
 
   const profileData = useSelector(state => state.persistReducer.profile.data);
