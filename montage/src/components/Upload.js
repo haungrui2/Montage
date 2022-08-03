@@ -7,7 +7,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addMovieAsync, editMovieAsync} from "../reducers/movies/thunks";
 
 export default function Upload() {
-    const profileData = useSelector(state => state.others.profile.data);
+    const profileData = useSelector(state => state.persistReducer.profile.data);
     const uploadState = useSelector(state => state.others.upload);
     const genres = ["Action", "Adventure", "Comedy", "Crime", "Drama", "Epics", "Horror",
     "Musicals", "Science Fiction", "War", "Westerns", "Detective", "Mystery", "Biographical",
