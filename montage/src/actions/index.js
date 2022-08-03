@@ -83,43 +83,43 @@ export const handleOnChangeSearchMovieRate = input => {
 }
 
 export const getUserId = (id) => {
-  return {
-    type: 'getUserId',
-    payload: id
-  };
+    return {
+        type: 'getUserId',
+        payload: id
+    };
 }
 
 export const getUserData = (data) => {
-  return {
-    type: 'getUserData',
-    payload: data
-  };
-}
-
-export const getMovies = (data) => {
-  return {
-    type: 'getMovies',
-    payload: data
-  };
+    return {
+        type: 'getUserData',
+        payload: data
+    };
 }
 
 export const updateLoginState = (data) => {
-  return {
-    type: 'updateLoginState',
-    payload: data
-  };
+    return {
+        type: 'updateLoginState',
+        payload: data
+    };
 }
 
 export const addFavouriteMovie = (data) => {
     return {
-      type: 'addFavouriteMovie',
-      payload: data
+        type: 'addFavouriteMovie',
+        payload: data
     };
 }
 
 export const clearUploadState = (data) => {
     return {
-      type: 'clearUploadState',
-      payload: data
+        type: 'clearUploadState',
+        payload: data
+    };
+}
+
+export const addUserAvatar = (data) => {
+    return {
+        type: 'addUserAvatar',
+        payload: data
     };
 }
