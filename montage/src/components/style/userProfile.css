@@ -1,0 +1,11 @@
+.UserProfile {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+.post {
+  position: relative;
+  height: 280px;
+  width: 210px;
+}

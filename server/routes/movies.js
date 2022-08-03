@@ -25,6 +25,13 @@ router.get('/', async function(req, res, next) {
   // });
 });
 
+router.get('/all', async function(req, res, next) {
+  await movieQueries.getMovies(req.query).then((result) => {
+      movies = result;
+      res.send(movies);
+  });
+});
+
 router.get('/random', async function(req, res, next) {
   await movieQueries.getMovies(req.query).then((result) => {
   let find = result[Math.floor(Math.random() * result.length)];
@@ -55,6 +62,6 @@ router.put('/', async function (req, res, next) {
     }
   )
 });
-  
+
 
 module.exports = router;
