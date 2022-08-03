@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import {motion} from "framer-motion";
 import {useSelector, useDispatch} from 'react-redux';
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
-import axios from "axios";
 import {updateLoginState} from "../../actions/index";
 
 const NavMenuContainer = styled.div`
@@ -96,8 +95,6 @@ export function NavMenu({isOpen}) {
       jumpToMain();
     })
   };
-
-  console.log(userState);
 
   return (
     <NavMenuContainer>
