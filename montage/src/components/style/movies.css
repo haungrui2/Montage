@@ -1,0 +1,30 @@
+.Movies{
+    position: absolute;
+    top: 100px;
+    left: 250px;
+    width: 1000px;
+    display: block;
+}
+
+.MovieCard{
+    float:left;
+    position: relative;
+    margin: 5px;
+}
+
+.MovieCardPoster{
+    position: relative;
+    height: 280px;
+    width: 210px;
+}
+
+.MovieCardTitle{
+    margin:0;
+	padding:0;
+    position: relative;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}

@@ -1,0 +1,89 @@
+.MovieInfo {
+  text-align: left;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    height: 700px;
+    width: 1300px;
+    display: block;
+  }
+
+.MovieInfoContainer{
+  position: relative;
+}
+
+  
+.MovieInfoPoster{
+    position: absolute;
+    left: 250px;
+    top: 100px;
+    height: 320px;
+    width: 240px;
+    display:block;
+}
+  
+.TitleYearContainer{
+    position: absolute;
+    left: 250px;
+    top: 0px;
+}
+  
+.MovieInfoTitle{
+    position: relative;
+    font-size: 25px;
+    max-width: 1200px;
+}
+  
+.MovieInfoYear{
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    font-size: 15px;
+}
+  
+.GeneralInfoContainer{
+    position: absolute;
+    top: 100px;
+    left: 520px;
+}
+  
+.MovieInfoRating{
+    position: absolute;
+    left: 1000px;
+    top: 100px;
+}
+  
+.MovieInfoDescription{
+    position: absolute;
+    max-width: 750px;
+    top: 430px;
+    left: 250px;
+}
+
+.MovieInfoDirector{
+  max-width: 400px;
+  max-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.MovieInfoWriter{
+  max-width: 400px;
+  max-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.MovieInfoLikeButtonLiked{
+  position: absolute;
+  right: 160px;
+  top: 117px;
+}
+
+.MovieInfoLikeButtonNotLiked{
+  background-color: red;
+  position: absolute;
+  right: 160px;
+  top: 117px;
+}
+

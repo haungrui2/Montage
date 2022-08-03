@@ -6,6 +6,10 @@ textarea{
     height: 7vw;
 }
 
+#movie_comment{
+    position: relative;
+    margin-top: 50%;
+}
 #comments_frame {
     position: relative;
     top: 5vw;
@@ -71,17 +75,25 @@ textarea{
 
 .comment h3{
     position: relative;
-
+    text-align: left;
 }
 
 .comment p{
     position: relative;
+    text-align: left;
 }
 
 .comment:hover {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+.delete_comment_button {
+    top: 3%;
+    right: 2%;
+    background: red;
+    position: absolute;
+    font-weight: bold;
+}
 
 
 
