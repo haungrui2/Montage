@@ -6,7 +6,7 @@ import "./style/userProfile.css";
 
 function UserProfile() {
   const dispatch = useDispatch();
-  const userId = useSelector(state => state.others.userIdReducer.uid);
+  const userId = useSelector(state => state.persistReducer.userIdReducer.uid);
 
   const getProfileData = () => {
     fetch(`http://localhost:3001/users/${userId}`, {method: 'GET'})
@@ -18,20 +18,11 @@ function UserProfile() {
     getProfileData()
   }, []);
 
-  const profileData = useSelector(state => state.others.profile.data);
+  const profileData = useSelector(state => state.persistReducer.profile.data);
+  console.log(profileData);
 
-  const getAllMovies = () => {
-    fetch(`http://localhost:3001/movies`, {method: 'GET'})
-    .then((response) => response.json())
-    .then((data) => dispatch(getMovies(data)))
-  }
-
-  useEffect(() => {
-    getAllMovies()
-  }, []);
-
-  const movies = useSelector(state => state.others.userMovie.movies);
-  const likedMovies = useSelector(state => state.others.userPreference.favouriteMovies);
+  const movies = useSelector(state => state.movies.movies);
+  const likedMovies = useSelector(state => state.persistReducer.userPreference.favouriteMovies);
 
   return (
     <div className = "UserProfile">

@@ -15,9 +15,9 @@ import {HamburgerMenu} from "./HamburgerMenu/HamburgerMenu"
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const profileData = useSelector(state => state.others.profile.data);
+  const profileData = useSelector(state => state.persistReducer.profile.data);
   const searchState = useSelector(state => state.others.search);
-  const userId = useSelector(state => state.others.userIdReducer.uid);
+  const userId = useSelector(state => state.persistReducer.userIdReducer.uid);
 
   let adminDisplay = "none";
   if (profileData.isAdmin){

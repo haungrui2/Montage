@@ -10,8 +10,8 @@ import {addFavouriteMovie} from '../actions/index.js';
 export default function MovieInfo() {
     const movie = useSelector(state => state.movies.selectedMovie);
     const comments = useSelector(state => state.comments.moviesComments);
-    const userPreference = useSelector(state => state.others.userPreference);
-    const userId = useSelector(state => state.others.userIdReducer);
+    const userPreference = useSelector(state => state.persistReducer.userPreference);
+    const userId = useSelector(state => state.persistReducer.userIdReducer);
     // const movieRate = Math.round(comments.totalRate * 2 /comments.commentList.length)/2
     const movieRate = comments.averageRate;
     const dispatch = useDispatch();

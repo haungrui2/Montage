@@ -9,8 +9,8 @@ export default function Comments() {
     const dispatch = useDispatch()
     const selectedMovie = useSelector(state => state.movies.selectedMovie)
     const movieId = selectedMovie.movieId
-    const userId = useSelector(state => state.others.userIdReducer);
-    const userPreference = useSelector(state => state.others.userPreference);
+    const userId = useSelector(state => state.persistReducer.userIdReducer);
+    const userPreference = useSelector(state => state.persistReducer.userPreference);
 
     // useEffect(() => {
     //     dispatch(getCommentsAsync(movieId));

@@ -6,7 +6,6 @@ let preference = {
 const userPreference = (initialState = preference, action) => {
     switch(action.type) {
         case 'addFavouriteMovie':
-            console.log(action.payload)
             let findIndex = initialState.favouriteMovies.indexOf(action.payload);
             if (findIndex !== -1) {
                 return {...initialState, favouriteMovies: [...initialState.favouriteMovies.slice(0, findIndex), ...initialState.favouriteMovies.slice(findIndex+1)]};
