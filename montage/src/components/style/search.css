@@ -1,12 +1,12 @@
 
-li{
+li {
 	display:inline-block;
-    border-right:2px solid #ddd;
-    height: 25px;
-    width:auto;
-    padding-left:1em;
-    padding-right:1em;
-    margin-bottom:.5em
+  border-right:2px solid #ddd;
+  height: 25px;
+  width:auto;
+  padding-left:1em;
+  padding-right:1em;
+  margin-bottom:.5em
 }
 
 .genre-tag:hover {
@@ -30,7 +30,7 @@ li{
     position: relative;
     float: left;
     height: 30px;
-    width: 110px; 
+    width: 110px;
 }
 
 .genreBoxContainer{
@@ -38,7 +38,7 @@ li{
     position: relative;
     float: left;
     height: 30px;
-    width: 150px; 
+    width: 150px;
 }
 
 .yearBoxContainer2{
@@ -46,7 +46,7 @@ li{
     position: relative;
     float: left;
     height: 30px;
-    width: 180px; 
+    width: 180px;
 }
 
 .yearBoxContainer:hover{
@@ -69,7 +69,7 @@ li{
     position: absolute;
     left: 50px;
     height: 15px;
-    
+
 }
 
 .yearInputBox{
@@ -89,4 +89,6 @@ li{
 
 .Search{
     margin-bottom: 50px;
+		background-color: #1c1d2f;
+		background-size: cover;
 }

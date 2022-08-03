@@ -1,61 +1,77 @@
 .CoverPage{
     max-height: 100%;
     max-width: 100%;
-    display: block;
+    display: flex;
+    /* background-color: #d1ddd0;
+    background-size: contain; */
   }
-  
+
   .CoverPageDateContainer{
-    position: absolute;
-    top: 10%;
-    left: 15%;
-    height: 100px;
-    width: 100px;
+    position: relative;
   }
-  
+
   #Date{
-    position: absolute;
+    position: relative;
     font-size: 90px;
+    margin-left: -150px;
+
   }
-  
+
   #Month{
-    position: absolute;
-    left: 120px;
-    top: 30px;
-    font-size: 22px;
+    position: relative;
+    font-size: 45px;
+    margin-top: -105px;
+    margin-left: -400px;
   }
-  
+
   #Year{
-    position: absolute;
-    left: 170px;
-    top: 30px;
-    font-size: 22px;
+    position: relative;
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    margin-left: -200px;
   }
-  
+
   #Day{
-    position: absolute;
-    left: 120px;
-    top: 68px;
-    font-size: 22px;
+    position: relative;
+    font-size: 40px;
+    margin-left: -400px;
   }
-  
-  .CoverPagePoster{
-    position: absolute;
-    top: 25%;
-    left: 20%;
-    height: 480px;
+
+  .img-wrapper {
+    position: relative;
+  }
+
+  .img-wrapper > img {
+    position: relative;
+    margin-top: 30px;
+    margin-left: -0px;
+    height: 580px;
     width: 360px;
-    display:block;
+    display: block;
+    border-radius: 2rem;
+    object-fit: cover;
+    object-position: center;
   }
-  
-  .CoverPageCommentContainer{
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    height: 300px;
-    width: 300px;
+
+  .img-wrapper > .CoverPageCommentContainer{
+    position: relative;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.4);
+    height: 580px;
+    width: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -580px;
+    border-radius: 2rem;
   }
-  
+
   #CoverPageComment1{
-    font-size: 30px;
+    font-size: 45px;
+    align-items: center;
   }
-  
+
+  #CoverPageComment2{
+    font-size: 45px;
+  }

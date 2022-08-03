@@ -1,8 +1,10 @@
 import "./style/search.css"
 import {useSelector, useDispatch} from 'react-redux';
-import {getMoviesAsync}  from '../reducers/movies/thunks';
+import {getMoviesAsync} from '../reducers/movies/thunks';
 import {handleOnChangeSearchMovieTitle, handleOnChangeSearchMovieYear,
-    handleOnChangeSearchMovieGenre, handleOnChangeSearchMovieRate} from '../actions';
+    handleOnChangeSearchMovieGenre, handleOnChangeSearchMovieRate}
+    from '../actions';
+
 export default function Search() {
     const searchState = useSelector(state => state.others.search);
     const dispatch = useDispatch();
@@ -17,14 +19,16 @@ export default function Search() {
 
     let genreList = genres.map((genre) => (
         <div className = "genreBoxContainer">
-        <input type="checkbox" className="genre-tag-box" id={genre} name="choice" onClick={(e) => dispatch(handleOnChangeSearchMovieGenre(genre))}/>
+        <input type="checkbox" className="genre-tag-box" id={genre} name="choice"
+        onClick={(e) => dispatch(handleOnChangeSearchMovieGenre(genre))}/>
         <label className = "genre-tag-label" for={genre}>{genre}</label>
         </div>
     ))
 
     let yearList = years.map((year) => (
         <div className = "yearBoxContainer">
-        <input type="radio" className="year-tag-box" id={year} name="choice" onClick={(e) => dispatch(handleOnChangeSearchMovieYear(year))}/>
+        <input type="radio" className="year-tag-box" id={year} name="choice"
+        onClick={(e) => dispatch(handleOnChangeSearchMovieYear(year))}/>
         <label className = "year-tag-label" for={year}>{year}</label>
         </div>
     ))
@@ -32,12 +36,15 @@ export default function Search() {
         <div className = "Search">
             <div className="searchMovieContainer">
                 <p id="searchText">MovieTitle:</p>
-                <input id="searchMovieInput" value={searchState.MovieTitle} onChange={(e) => dispatch(handleOnChangeSearchMovieTitle(e.target.value))}/>
+                <input id="searchMovieInput" value={searchState.MovieTitle}
+                onChange={(e) => dispatch(handleOnChangeSearchMovieTitle(e.target.value))}/>
             </div>
 
             <div className="rateMovieContainer">
                 <p id="searchText">Rate Above:</p>
-                <input id="searchMovieInput" type= "number" max="10" min="0" value={searchState.MovieRate} onChange={(e) => dispatch(handleOnChangeSearchMovieRate(e.target.value))}/>
+                <input id="searchMovieInput" type= "number" max="10" min="0"
+                value={searchState.MovieRate} onChange={(e) =>
+                  dispatch(handleOnChangeSearchMovieRate(e.target.value))}/>
             </div>
 
             <div className="genreListContainer">
@@ -53,12 +60,15 @@ export default function Search() {
                     {yearList}
                     <div className = "yearBoxContainer2">
                         <label className = "genre-tag-label" for="other">Other:</label>
-                        <input className="yearInputBox" type= "number" max="2100" min="1800" value={searchState.MovieYear} onChange={(e) => dispatch(handleOnChangeSearchMovieYear(e.target.value))}/>
+                        <input className="yearInputBox" type= "number" max="2100" min="1800"
+                        value={searchState.MovieYear} onChange={(e) =>
+                          dispatch(handleOnChangeSearchMovieYear(e.target.value))}/>
                     </div>
                 </ul>
             </div>
             <div className="ButtonContainer">
-                <button id="SearchButton1" onClick={() => dispatch(getMoviesAsync(helper(searchState)))}>Search</button>
+                <button id="SearchButton1" onClick={() =>
+                  dispatch(getMoviesAsync(helper(searchState)))}>Search</button>
             </div>
         </div>
     )

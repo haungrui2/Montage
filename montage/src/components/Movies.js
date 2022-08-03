@@ -17,10 +17,11 @@ export default function Movies() {
     }
 
     let a = movies.map((movie, index) => (
-        <div className="MovieCard" onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}}>
-
-            <img className = "MovieCardPoster" src = {movie.imageData} alt={movie.MovieTitle}/>
-            <p className = "MovieCardTitle">{movie.MovieTitle}</p>
+        <div className="MovieCard" onClick={() => {jumpToMovieInfo();
+          dispatch(getMovieAsync(movie.movieId));
+          dispatch(getCommentsAsync(movie.movieId));}}>
+          <p className = "MovieCardTitle">{movie.MovieTitle}</p>
+          <img className = "MovieCardPoster" src = {movie.imageData} alt={movie.MovieTitle}/>
         </div>
     ));
     return (

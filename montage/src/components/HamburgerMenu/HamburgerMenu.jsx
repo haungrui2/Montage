@@ -14,8 +14,8 @@ const MenuContainer = styled(motion.div)`
   width: 80%;
   max-width: 16%;
   height: 100%;
-  background-color: #eae4d8;
-  box-shadow: -2px 0 2px rgba(15, 15, 15, 0.3);
+  background-color: #ffeecd;
+  box-shadow: -2px 0 10px rgba(15, 15, 15, 0.3);
   z-index: 90;
   position: fixed;
   top: 0;
