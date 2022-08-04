@@ -17,12 +17,14 @@ li {
 .genreListContainer{
     position: relative;
     width: 1200px;
+		color: white;
 }
 
 .yearListContainer{
     display:inline-block;
     position: relative;
     width: 1200px;
+		color: white;
 }
 
 .yearBoxContainer{
@@ -81,14 +83,32 @@ li {
 }
 
 #SearchButton1{
-    display:inline-block;
+    display: flex;
     position: absolute;
-    right: 200px;
+    margin-left: 250px;
+		margin-top: -330px;
+		color: #f5c851;
+		background-color: white;
+		height: 40px;
+		width: 80px;
+		align-items: center;
+		cursor: pointer;
+		border-radius: 7px;
+		border: none;
+		outline: none;
+		font-weight: 1000;
+		font-size: 20px;
+	}
 
+#SearchButton1:hover {
+  filter: brightness(1.1);
 }
 
 .Search{
     margin-bottom: 50px;
-		background-color: #1c1d2f;
+		background-color: #f5c851;
 		background-size: cover;
+		color: white;
+		font-weight: 600;
+		padding-left: 1rem;
 }

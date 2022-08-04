@@ -1,9 +1,11 @@
 .Movies{
-  position: absolute;
-  top: 100px;
-  left: 250px;
-  width: 1000px;
+  position: relative;
+  top: 10px;
+  left: 0px;
+  width: 1500px;
   display: block;
+  background-color: #f5c851;
+  background-size: cover;
 }
 
 .MovieCard{
@@ -12,22 +14,41 @@
   margin: 5px;
 }
 
-.MovieCardPoster{
+.movieImg-wrapper{
   position: relative;
   height: 280px;
-  width: 210px;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
+  width: 200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  cursor: pointer;
+  margin-left: 3rem;
+  margin-bottom: 5rem;
+  justify-content: space-between;
+}
+
+.movieImg-wrapper > img {
+  display: block;
+  width: 240px;
+  border-radius: 1.8rem;
+  margin-left: 2.7rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.movieImg-wrapper:hover > img.zoom {
+  transform: scale(1.1);
 }
 
 .MovieCardTitle{
-  margin:0;
-  padding:0;
+  margin-left: 120px;
+  margin-top: -10px;
   position: relative;
   max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 18px;
+  color: white;
+  font-size: 24px;
 }

@@ -13,7 +13,7 @@
   #Date{
     position: relative;
     font-size: 90px;
-    margin-left: -150px;
+    margin-left: -250px;
 
   }
 
@@ -21,13 +21,13 @@
     position: relative;
     font-size: 45px;
     margin-top: -105px;
-    margin-left: -400px;
+    margin-left: -350px;
   }
 
   #Year{
     position: relative;
     font-size: 40px;
-    margin-top: 50px;
+    margin-top: 150px;
     margin-bottom: 40px;
     margin-left: -200px;
   }
@@ -35,7 +35,7 @@
   #Day{
     position: relative;
     font-size: 40px;
-    margin-left: -400px;
+    margin-left: -350px;
   }
 
   .img-wrapper {
@@ -58,20 +58,44 @@
     position: relative;
     inset: 0;
     background: rgba(255, 255, 255, 0.4);
-    height: 580px;
-    width: 360px;
-    display: flex;
+    height: 638px;
+    width: 396px;
+    display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: -580px;
+    margin-top: -610px;
+    margin-left: -20px;
     border-radius: 2rem;
+    cursor: pointer;
   }
 
   #CoverPageComment1{
-    font-size: 45px;
-    align-items: center;
+    font-size: 40px;
+    margin-left: 60px;
   }
 
   #CoverPageComment2{
-    font-size: 45px;
+    font-size: 50px;
+    margin-left: 120px;
+  }
+
+  .img-wrapper > img,
+  .img-wrapper > .CoverPageCommentContainer {
+    transition: 200ms ease-in-out;
+  }
+
+  .img-wrapper:hover > img.blur {
+    filter: blur(3px);
+  }
+
+  .img-wrapper:hover > img.zoom {
+    transform: scale(1.1);
+  }
+
+  .img-wrapper > .CoverPageCommentContainer.fade {
+    opacity: 0;
+  }
+
+  .img-wrapper:hover > .CoverPageCommentContainer.fade {
+    opacity: 1;
   }

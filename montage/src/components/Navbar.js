@@ -28,28 +28,6 @@ export default function Navbar() {
       navigate('/Movies');
   }
 
-  const handleKeyPress = e => {
-    if (e.keyCode === 13) {
-      dispatch(getMoviesAsync(helper(searchState)));
-      jumpToMovies();
-    }
-  }
-
-  // return (
-  //   <div className = "navbar">
-  //     <button id = "MainButton" onClick={jumpToMain}>MainButton</button>
-  //     <button id = "MoviesButton" onClick={() => {dispatch(getMoviesAsync()); jumpToMovies()}}>MoviesButton</button>
-  //     <div className = "SearchContainer">
-  //         <div className = "SearchForm">
-  //             <input type = "text" className = "SearchText" placeholder = "Search"
-  //             value={searchState.MovieTitle} onChange={(e) => dispatch(handleOnChangeSearchMovieTitle(e.target.value))}></input>
-  //             <button id = "SearchButton" onClick={() => {dispatch(getMoviesAsync(helper(searchState))); jumpToMovies()}}>Q</button>
-  //         </div>
-  //     </div>
-  //     <button id = "Upload" onClick={jumpToUpload} style={{display: adminDisplay}}>Upload</button>
-  //     <button id = "Login" onClick={jumpToLogin}>Login</button>
-  //   </div>
-  // )
   return (
      <Nav>
        <NavLink to="/">
@@ -68,7 +46,7 @@ export default function Navbar() {
          </SearchInputContainer>
        </SearchBarContainer>
        <SearchIcon onClick={() => {dispatch(getMoviesAsync(helper(searchState)));
-         jumpToMovies()}} onKeyPress={handleKeyPress}>
+         jumpToMovies()}}>
          <IoSearch/>
        </SearchIcon>
        <HamburgerMenu />

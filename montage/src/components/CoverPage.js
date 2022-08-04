@@ -52,11 +52,11 @@ export default function CoverPage() {
                 <div id = "Date">{date}</div>
                 <div id = "Day">{day}</div>
             </div>
-            
+
             <div className = "img-wrapper">
-              <img className = "CoverPagePoster" src={movie.imageData}
+              <img className = "zoom blur" src={movie.imageData}
               onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}} alt="poster"/>
-              <div className = "CoverPageCommentContainer">
+              <div className = "CoverPageCommentContainer fade">
                 <p id = "CoverPageComment1">{movie.MovieTitle}</p>
                 <p id = "CoverPageComment2">{movie.MovieYear}</p>
               </div>
