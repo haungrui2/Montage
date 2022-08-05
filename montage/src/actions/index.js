@@ -61,6 +61,20 @@ export const handleOnChangeSearchMovieTitle = input => {
     };
 }
 
+export const handleOnQuickChangeSearchMovieTitle = input => {
+    return {
+        type: 'OnChangeQuickSearchMovieTitle',
+        payload: input
+    };
+}
+
+export const handleDeleteQuickChangeSearchMovieTitle = input => {
+    return {
+        type: 'DeleteQuickChangeSearchMovieTitle',
+        payload: input
+    };
+}
+
 export const handleOnChangeSearchMovieYear = input => {
     return {
         type: 'OnChangeSearchMovieYear',
