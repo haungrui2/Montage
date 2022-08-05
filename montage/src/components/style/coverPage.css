@@ -2,8 +2,6 @@
     max-height: 100%;
     max-width: 100%;
     display: flex;
-    /* background-color: #d1ddd0;
-    background-size: contain; */
   }
 
   .CoverPageDateContainer{
@@ -13,7 +11,7 @@
   #Date{
     position: relative;
     font-size: 90px;
-    margin-left: -250px;
+    margin-left: -260px;
 
   }
 
@@ -35,7 +33,7 @@
   #Day{
     position: relative;
     font-size: 40px;
-    margin-left: -350px;
+    margin-left: -340px;
   }
 
   .img-wrapper {
@@ -45,7 +43,7 @@
   .img-wrapper > img {
     position: relative;
     margin-top: 30px;
-    margin-left: -0px;
+    margin-left: 30px;
     height: 580px;
     width: 360px;
     display: block;
@@ -64,7 +62,7 @@
     justify-content: center;
     align-items: center;
     margin-top: -610px;
-    margin-left: -20px;
+    margin-left: 13px;
     border-radius: 2rem;
     cursor: pointer;
   }

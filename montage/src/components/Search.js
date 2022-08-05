@@ -8,12 +8,10 @@ import {handleOnChangeSearchMovieTitle, handleOnChangeSearchMovieYear,
 export default function Search() {
     const searchState = useSelector(state => state.others.search);
     const dispatch = useDispatch();
-    // const genres = ["Action", "Adventure", "Comedy", "Crime", "Drama", "Epics", "Horror",
-    // "Musicals", "Science Fiction", "War", "Westerns", "Detective", "Mystery", "Biographical",
-    // "Disaster", "Fantasy", "Road", "Romance", "Sports", "Superhero", "Documentary",
-    // "Animation", "Family"];
-    const genres = ["Action", "Comedy", "Crime", "Drama", "War", "Mystery",
-    "Romance", "Animation", "Family"];
+    const genres = ["Action", "Adventure", "Comedy", "Crime", "Drama", "Epics", "Horror",
+    "Musicals", "Science Fiction", "War", "Westerns", "Detective", "Mystery", "Biographical",
+    "Disaster", "Fantasy", "Road", "Romance", "Sports", "Superhero", "Documentary",
+    "Animation", "Family"];
 
     const years = [2023, 2022, 2021, 2020, 2019, 2018, 2017,
     2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007,

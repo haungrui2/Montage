@@ -55,11 +55,24 @@ export default function CoverPage() {
 
             <div className = "img-wrapper">
               <img className = "zoom blur" src={movie.imageData}
-              onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}} alt="poster"/>
-              <div className = "CoverPageCommentContainer fade">
-                <p id = "CoverPageComment1">{movie.MovieTitle}</p>
-                <p id = "CoverPageComment2">{movie.MovieYear}</p>
+              onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId));
+                dispatch(getCommentsAsync(movie.movieId));}} alt="poster"/>
+
+              <div className = "CoverPageCommentContainer fade"
+              onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId));
+                dispatch(getCommentsAsync(movie.movieId));}}>
+                <p id = "CoverPageComment1"
+                onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId));
+                  dispatch(getCommentsAsync(movie.movieId));}}>
+                  {movie.MovieTitle}
+                </p>
+                <p id = "CoverPageComment2"
+                onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId));
+                  dispatch(getCommentsAsync(movie.movieId));}}>
+                  {movie.MovieYear}
+                </p>
               </div>
+              
             </div>
         </div>
     )
