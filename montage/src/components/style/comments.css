@@ -26,9 +26,9 @@ textarea::placeholder {
 
 #movie_comment{
   position: relative;
-  margin-top: 170px;
+  margin-top: 150px;
   background-color: #f5c851;
-  margin-left: 100px;
+  margin-left: 200px;
 }
 
 #comments_frame {
@@ -168,7 +168,7 @@ textarea::placeholder {
   outline: none;
   font-weight: 500;
   font-size: 18px;
-  margin-left: 1000px;
+  margin-left: 925px;
 }
 
 .delete_comment_button:hover {
