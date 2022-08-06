@@ -213,6 +213,9 @@ router.patch('/recommend', async function (req, res, next) {
         recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
       } else {
         recommendMovieList = await Movie.find({ $and: [{ _id: { $nin: favouriteList } }, { _id: { $nin: lastRecommendationMovies } }] }, "_id");
+        if (recommendMovieList.length === 0) {
+          recommendMovieList = await Movie.find({ _id: { $nin: lastRecommendationMovies } }, "_id");
+        }
         recommendMovieId = recommendMovieList[Math.floor(Math.random() * recommendMovieList.length)];
       }
     }
