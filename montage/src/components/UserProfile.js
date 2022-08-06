@@ -37,31 +37,38 @@ function UserProfile() {
   return (
     <div className="UserProfile">
       <div className="profileUserInformation">
+
         <div className='ProfileImage'>
           <img className='profileAvatar' src={avatar} alt="Avatar" />
-          <input id="profileUpload" type="file" accept="image/png, image/jpeg" hidden onChange={(e) => {
-            reader.readAsDataURL(e.target.files[0]);
+          <input id="profileUpload" type="file" accept="image/png, image/jpeg" hidden
+          onChange={(e) => {reader.readAsDataURL(e.target.files[0]);
             reader.onload = function () {
               dispatch(addUserAvatar(reader.result));
-              dispatch(addUserAvatarAsync({ userId: profileData._id, avatar: reader.result }))
-            }
-          }} />
-          <label id="profileUploadLabel" for="profileUpload"><span
-            id="profileUploadText">Upload</span></label>
+              dispatch(addUserAvatarAsync({ userId: profileData._id,
+                avatar: reader.result }))}}} />
+          <label id="profileUploadLabel" for="profileUpload">
+            <span id="profileUploadText">Upload</span>
+          </label>
         </div>
-        <div className='profileInfimation'>
+
+        <div className='profileInformation'>
           <p className='profileName'>User Name: {profileData.fullName}</p>
           <p className='profileEmail'>Email: {profileData.email}</p>
           <div className="profileFavouriteMovie">
-            <p>Favourite Movies:</p>
+            <p className="display_title">Favourite Movies:</p>
             {movies.filter(movie => likedMovies.includes(movie._id)).map(filteredMovie => (
-              <div className="profileFavouriteMovieCard" onClick={() => { jumpToMovieInfo(); dispatch(getMovieAsync(filteredMovie.movieId)); dispatch(getCommentsAsync(filteredMovie.movieId)) }}>
-                <p className="profileFavouriteMovieTitle">{filteredMovie.MovieTitle}</p>
-                <img className="profileFavouriteMoviePosters" src={filteredMovie.imageData} />
+              <div className="profileFavouriteMovieCard" onClick={() => { jumpToMovieInfo();
+                dispatch(getMovieAsync(filteredMovie.movieId));
+                dispatch(getCommentsAsync(filteredMovie.movieId)) }}>
+                <div className="profileFavouriteMovieTitle">{filteredMovie.MovieTitle}</div>
+                <div className="img-wrapper-User">
+                  <img className="zoom" src={filteredMovie.imageData} />
+                </div>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </div>
   )

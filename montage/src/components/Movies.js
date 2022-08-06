@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import {getCommentsAsync} from "../reducers/comments/thunks";
 import {useNavigate} from 'react-router-dom';
 import Search from "./Search";
+import background from "./style/moviebg.jpg";
 
 export default function Movies() {
     const movies = useSelector(state => state.movies.movies);
@@ -17,11 +18,16 @@ export default function Movies() {
     }
 
     let a = movies.map((movie, index) => (
-        <div className="MovieCard" onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId)); dispatch(getCommentsAsync(movie.movieId));}}>
-
-            <img className = "MovieCardPoster" src = {movie.imageData} alt={movie.MovieTitle}/>
-            <p className = "MovieCardTitle">{movie.MovieTitle}</p>
+      <div key={movie.movieId}>
+        <div className="MovieCard" onClick={() => {jumpToMovieInfo();
+          dispatch(getMovieAsync(movie.movieId));
+          dispatch(getCommentsAsync(movie.movieId));}}>
+          <p className = "MovieCardTitle">{movie.MovieTitle}</p>
+          <div className = "movieImg-wrapper">
+            <img className = "zoom" src = {movie.imageData} alt={movie.MovieTitle}/>
+          </div>
         </div>
+      </div>
     ));
     return (
         <div className = "Movies" >
