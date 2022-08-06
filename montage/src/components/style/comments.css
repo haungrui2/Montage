@@ -44,11 +44,13 @@ textarea::placeholder {
   border-style: solid;
   border-color: rgb(0,79,139);
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  top: -150px;
 }
 
 #comment_input{
-  position: relative;
+  position: absolute;
   width: 95%;
+  top: -350px;
 }
 
 #comment_button{
