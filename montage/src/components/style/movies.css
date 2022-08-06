@@ -19,7 +19,7 @@
   height: 280px;
   width: 200px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   cursor: pointer;
   margin-left: 3rem;
   margin-bottom: 5rem;
@@ -29,6 +29,7 @@
 .movieImg-wrapper > img {
   display: block;
   width: 240px;
+  height: 350px;
   border-radius: 1.8rem;
   margin-left: 2.7rem;
   object-fit: cover;
