@@ -85,8 +85,8 @@ li {
 #SearchButton1{
     display: flex;
     position: absolute;
-    margin-left: 250px;
-		margin-top: -330px;
+    margin-left: 1070px;
+		margin-top: -10px;
 		color: #f5c851;
 		background-color: white;
 		height: 40px;
@@ -111,4 +111,5 @@ li {
 		color: white;
 		font-weight: 600;
 		padding-left: 1rem;
+		margin-left: 115px;
 }
