@@ -29,6 +29,7 @@ textarea::placeholder {
   margin-top: 150px;
   background-color: #f5c851;
   margin-left: 200px;
+  width: 1500px;
 }
 
 #comments_frame {
@@ -44,11 +45,11 @@ textarea::placeholder {
   border-style: solid;
   border-color: rgb(0,79,139);
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  top: -150px;
+  top: -300px;
 }
 
 #comment_input{
-  position: absolute;
+  position: relative;
   width: 95%;
   top: -350px;
 }
@@ -71,6 +72,7 @@ textarea::placeholder {
   margin-top: -30px;
   margin-right: 20%;
 }
+
 #comment_button:hover{
   background-color: #fada5e;
   color: white;
@@ -135,9 +137,10 @@ textarea::placeholder {
 .comment {
   word-wrap: break-word;
   position: relative;
-  width: 90%;
+  width: 95%;
   display: block;
-  margin-left: 10px;
+  left: 20px;
+  padding: 5px;
 }
 
 .comment h3{
@@ -170,7 +173,8 @@ textarea::placeholder {
   outline: none;
   font-weight: 500;
   font-size: 18px;
-  right: 0px;
+  top: 20px;
+  right: 20px;
 }
 
 .delete_comment_button:hover {
