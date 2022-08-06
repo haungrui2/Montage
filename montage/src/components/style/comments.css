@@ -65,8 +65,9 @@ textarea::placeholder {
   outline: none;
   font-weight: 1000;
   font-size: 20px;
-  margin-top: -15px;
-  margin-left: 960px;
+  float: right;
+  margin-top: -30px;
+  margin-right: 20%;
 }
 #comment_button:hover{
   background-color: #fada5e;
@@ -153,9 +154,8 @@ textarea::placeholder {
 }
 
 .delete_comment_button {
-  font-size: medium;
+  z-index: 1;
   position: absolute;
-
   display: flex;
   color: white;
   background-color: red;
@@ -168,7 +168,7 @@ textarea::placeholder {
   outline: none;
   font-weight: 500;
   font-size: 18px;
-  margin-left: 925px;
+  right: 0px;
 }
 
 .delete_comment_button:hover {
