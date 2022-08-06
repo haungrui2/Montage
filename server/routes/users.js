@@ -15,19 +15,6 @@ router.get(`/:id`, async (req, res) => {
   }
 });
 
-// Check login state
-// router.get(`/checkLogin/:id`, async (req, res) => {
-//   try {
-//     const loginUser = await userModel.find({
-//       _id: req.params.id,
-//       isLogin: true
-//     });
-//     res.send(loginUser[0].isLogin);
-//   } catch (error) {
-//     res.status(500).send(error);
-//   }
-// });
-
 //SUBMIT A User info -- Sign Up
 router.post(`/signup`, (req, res) => {
   const { fullName, password } = req.body;

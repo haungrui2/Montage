@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import styled from "styled-components";
 import {MenuToggle} from "./MenuToggle";
 import {useState} from "react";
 import {motion} from "framer-motion";
-import {NavMenu} from "./NavMenu"
+import {NavMenu} from "./NavMenu";
 
 const HamburgerMenuContainer = styled.div`
   display: flex;
@@ -41,6 +41,23 @@ const menuTransition = {
   delay: 0.1
 };
 
+let useClickOutside = (handler) => {
+  let domNode = useRef();
+
+  useEffect(() => {
+    let maybeHandler = (e) => {
+      if (!domNode.current.contains(e.target)) {
+        handler();
+      }
+    };
+    document.addEventListener("mousedown", maybeHandler);
+    return () => {
+      document.removeEventListener("mousedown", maybeHandler);
+    };
+  });
+  return domNode;
+};
+
 export function HamburgerMenu(props) {
   const [isOpen, setOpen] = useState(false);
 
@@ -48,8 +65,12 @@ export function HamburgerMenu(props) {
     setOpen(!isOpen);
   }
 
+  let domNode = useClickOutside(() => {
+    setOpen(false);
+  });
+
   return (
-    <HamburgerMenuContainer>
+    <HamburgerMenuContainer ref={domNode}>
      <MenuToggle toggle={toggleMenu} isOpen={isOpen} />
      <MenuContainer initial={false} animate={isOpen ? "open" : "closed"}
      variants={menuVariants} transition={menuTransition}>
