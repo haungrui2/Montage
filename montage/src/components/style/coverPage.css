@@ -6,34 +6,37 @@
 
   .CoverPageDateContainer{
     position: relative;
+    margin-left: 80px;
+    margin-top: -10px;
   }
 
   #Date{
-    position: relative;
-    font-size: 90px;
-    margin-left: -260px;
-
+    position: absolute;
+    font-size: 70px;
+    margin-left: -320px;
+    margin-top: 24px;
   }
 
   #Month{
-    position: relative;
-    font-size: 45px;
-    margin-top: -105px;
-    margin-left: -350px;
+    position: absolute;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-left: -240px;
   }
 
   #Year{
-    position: relative;
-    font-size: 40px;
-    margin-top: 150px;
-    margin-bottom: 40px;
-    margin-left: -200px;
+    position: absolute;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 42px;
+    margin-left: -170px;
   }
 
   #Day{
-    position: relative;
-    font-size: 40px;
-    margin-left: -340px;
+    position: absolute;
+    font-size: 25px;
+    margin-left: -240px;
+    margin-top: 75px;
   }
 
   .img-wrapper {
@@ -41,59 +44,51 @@
   }
 
   .img-wrapper > img {
-    position: relative;
-    margin-top: 30px;
-    margin-left: 30px;
-    height: 580px;
+    height: 500px;
     width: 360px;
-    display: block;
-    border-radius: 2rem;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .img-wrapper > .CoverPageCommentContainer{
-    position: relative;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.4);
-    height: 638px;
-    width: 396px;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    margin-top: -610px;
-    margin-left: 13px;
     border-radius: 2rem;
     cursor: pointer;
+    margin-top: 130px;
+    margin-left: -320px;
+    margin-bottom: 30px;
+  }
+
+  .CoverPageCommentContainer{
+    position: relative;
+    display: flex;
+    font-weight: bold;
   }
 
   #CoverPageComment1{
-    font-size: 40px;
-    margin-left: 60px;
+    font-size: 30px;
+    margin-left: 100px;
+    margin-top: -400px;
   }
 
   #CoverPageComment2{
-    font-size: 50px;
+    position: absolute;
+    font-size: 30px;
     margin-left: 120px;
+    margin-top: -280px;
   }
 
-  .img-wrapper > img,
+  /* .img-wrapper > img,
   .img-wrapper > .CoverPageCommentContainer {
     transition: 200ms ease-in-out;
-  }
+  } */
 
-  .img-wrapper:hover > img.blur {
+  /* .img-wrapper:hover > img.blur {
     filter: blur(3px);
-  }
+  } */
 
   .img-wrapper:hover > img.zoom {
     transform: scale(1.1);
   }
 
-  .img-wrapper > .CoverPageCommentContainer.fade {
+  /* .img-wrapper > .CoverPageCommentContainer.fade {
     opacity: 0;
   }
 
   .img-wrapper:hover > .CoverPageCommentContainer.fade {
     opacity: 1;
-  }
+  } */

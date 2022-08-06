@@ -9,30 +9,33 @@
 }
 
 .MovieCard{
-  float:left;
   position: relative;
   margin: 5px;
+  display: block;
+  float: left;
 }
 
 .movieImg-wrapper{
   position: relative;
   height: 280px;
   width: 200px;
-  display: grid;
+  table-layout: fixed;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   cursor: pointer;
-  margin-left: 3rem;
+  margin-left: 8rem;
   margin-bottom: 5rem;
   justify-content: space-between;
 }
 
 .movieImg-wrapper > img {
-  display: block;
+  display: flex;
   width: 240px;
+  height: 350px;
   border-radius: 1.8rem;
-  margin-left: 2.7rem;
+  margin-left: 0rem;
   object-fit: cover;
   object-position: center;
+  display: table-cell;
 }
 
 .movieImg-wrapper:hover > img.zoom {
@@ -40,7 +43,7 @@
 }
 
 .MovieCardTitle{
-  margin-left: 120px;
+  margin-left: 140px;
   margin-top: -10px;
   position: relative;
   max-width: 200px;
