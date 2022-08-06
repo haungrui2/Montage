@@ -1,43 +1,14 @@
+.UserProfile {
+  background-color: #ffeecd;
+}
+
 .profileUserInformation {
-    position: absolute;
-    top: 100px;
-    left: 300px;
-    width: 500px;
+    position: relative;
     height: auto;
 }
 
-.profileAvatar {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-
-.profileInfimation {
-    position: absolute;
-    top: 180px;
-    left: 0px;
-}
-
-#profileUploadLabel {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(255, 255, 255, 0.0);
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: block;
-}
-
-#profileUploadText {
-    position: absolute;
-    left: 45px;
-    top: 55px;
-    color: rgba(255, 255, 255, 0.0);
+.ProfileImage {
+  margin-left: -180px;
 }
 
 .ProfileImage:hover #profileUploadText {
@@ -48,31 +19,101 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.profileFavouriteMovie {
-    width: 1000px;
+.profileAvatar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 30px;
+}
+
+#profileUploadLabel {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.0);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
     display: block;
+    margin-top: -155px;
+}
+
+#profileUploadText {
+    position: relative;
+    color: rgba(255, 255, 255, 0.0);
+    font-size: 20px;
+    margin-left: 40px;
+    top: 60px;
+}
+
+.profileInformation {
+    position: relative;
+}
+
+.profileName {
+  margin-left: 30px;
+  font-size: 30px;
+  margin-top: -120px;
+}
+
+.profileEmail {
+  margin-left: 30px;
+  font-size: 30px;
+  margin-top: -20px;
+}
+
+.profileFavouriteMovie {
+    display: flex;
+}
+
+.display_title {
+  display: absolute;
+  margin-left: -300px;
+  font-size: 30px;
+  margin-top: -10px;
 }
 
 .profileFavouriteMovieCard {
-    float: left;
-    position: relative;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    position: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    cursor: pointer;
 }
 
 .profileFavouriteMovieTitle {
-    margin: 0;
-    padding: 0;
     position: relative;
-    max-width: 200px;
+    max-width: 150px;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
+    font-size: 20px;
+    margin-left: -230px;
+    font-weight: bold;
+    margin-top: 50px;
+    overflow: hidden;
 }
 
-.profileFavouriteMoviePosters {
-    position: relative;
-    height: 200px;
-    width: 150px;
+.img-wrapper-User {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  cursor: pointer;
+  margin-left: -17rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+.img-wrapper-User > img {
+  display: block;
+  height: 340px;
+  width: 240px;
+  border-radius: 1.8rem;
+  margin-left: 2rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.img-wrapper-User:hover > img.zoom {
+  transform: scale(1.1);
 }
