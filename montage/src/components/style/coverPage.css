@@ -1,91 +1,95 @@
-.CoverPage{
-    max-height: 100%;
-    max-width: 100%;
-    display: flex;
-  }
+.CoverPage {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background-color: #f5c851;
+}
 
-  .CoverPageDateContainer{
-    position: relative;
-    margin-left: 80px;
-    margin-top: -10px;
-  }
+.CoverPageDateContainer {
+  position: relative;
+  left: 580px;
+  top: 0px;
+}
 
-  #Date{
-    position: absolute;
-    font-size: 70px;
-    margin-left: -320px;
-    margin-top: 24px;
-  }
+#Date {
+  position: absolute;
+  font-size: 70px;
+  left: -320px;
+  top: 24px;
+}
 
-  #Month{
-    position: absolute;
-    font-size: 25px;
-    margin-top: 30px;
-    margin-left: -240px;
-  }
+#Month {
+  position: absolute;
+  font-size: 25px;
+  top: 30px;
+  left: -240px;
+}
 
-  #Year{
-    position: absolute;
-    font-size: 25px;
-    margin-top: 30px;
-    margin-bottom: 42px;
-    margin-left: -170px;
-  }
+#Year {
+  position: absolute;
+  font-size: 25px;
+  top: 30px;
+  bottom: 42px;
+  left: -170px;
+}
 
-  #Day{
-    position: absolute;
-    font-size: 25px;
-    margin-left: -240px;
-    margin-top: 75px;
-  }
+#Day {
+  position: absolute;
+  font-size: 25px;
+  margin-left: -240px;
+  margin-top: 75px;
+}
 
-  .img-wrapper {
-    position: relative;
-  }
+.img-wrapper {
+  position: relative;
+  left: 260px;
+  top: 130px;
+  height: 500px;
+}
 
-  .img-wrapper > img {
-    height: 500px;
-    width: 360px;
-    border-radius: 2rem;
-    cursor: pointer;
-    margin-top: 130px;
-    margin-left: -320px;
-    margin-bottom: 30px;
-  }
+.zoom{
+  height: 500px;
+  width: 360px;
+}
 
-  .CoverPageCommentContainer{
-    position: relative;
-    display: flex;
-    font-weight: bold;
-  }
+.img-wrapper>img {
+  border-radius: 2rem;
+  cursor: pointer;
+}
 
-  #CoverPageComment1{
-    font-size: 30px;
-    margin-left: 100px;
-    margin-top: -400px;
-  }
+.CoverPageCommentContainer {
+  position: absolute;
+  font-weight: bold;
+  left: 750px;
+  top: 300px;
+}
 
-  #CoverPageComment2{
-    position: absolute;
-    font-size: 30px;
-    margin-left: 120px;
-    margin-top: -280px;
-  }
+#CoverPageComment1 {
+  font-size: 30px;
+  left: 100px;
+}
 
-  /* .img-wrapper > img,
+#CoverPageComment2 {
+  position: absolute;
+  font-size: 30px;
+  left: 120px;
+  top: 120px;
+}
+
+/* .img-wrapper > img,
   .img-wrapper > .CoverPageCommentContainer {
     transition: 200ms ease-in-out;
   } */
 
-  /* .img-wrapper:hover > img.blur {
+/* .img-wrapper:hover > img.blur {
     filter: blur(3px);
   } */
 
-  .img-wrapper:hover > img.zoom {
-    transform: scale(1.1);
-  }
+.img-wrapper:hover>img.zoom {
+  transform: scale(1.1);
+}
 
-  /* .img-wrapper > .CoverPageCommentContainer.fade {
+/* .img-wrapper > .CoverPageCommentContainer.fade {
     opacity: 0;
   }
 

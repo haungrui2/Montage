@@ -57,13 +57,11 @@ export default function CoverPage() {
               <img className = "zoom" src={movie.imageData} alt="poster"
               onClick={() => {jumpToMovieInfo(); dispatch(getMovieAsync(movie.movieId));
                 dispatch(getCommentsAsync(movie.movieId));}}/>
-
-              <div className = "CoverPageCommentContainer">
+            </div>
+            <div className = "CoverPageCommentContainer">
                 <p id = "CoverPageComment1">{movie.MovieTitle}</p>
                 <p id = "CoverPageComment2">{movie.MovieYear}</p>
               </div>
-
-            </div>
         </div>
     )
 }
