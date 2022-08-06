@@ -58,11 +58,10 @@
 }
 
 .CoverPageCommentContainer {
-  position: relative;
-  display: flex;
+  position: absolute;
   font-weight: bold;
-  left: 500px;
-  top: -450px;
+  left: 750px;
+  top: 300px;
 }
 
 #CoverPageComment1 {
