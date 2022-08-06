@@ -10,9 +10,6 @@ import background from "./style/moviebg.jpg";
 export default function Movies() {
     const movies = useSelector(state => state.movies.movies);
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getMoviesAsync())
-    }, []);
 
     const navigate = useNavigate();
 

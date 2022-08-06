@@ -1,4 +1,5 @@
 let searchInformation = {
+    qucikSearchMovieTitle: "",
     MovieTitle: "",
     MovieYear: '',
     MovieGenre: [],
@@ -7,6 +8,10 @@ let searchInformation = {
 
 const search = (initialState = searchInformation, action) => {
     switch(action.type) {
+        case 'DeleteQuickChangeSearchMovieTitle':
+            return {...initialState, qucikSearchMovieTitle: ""};
+        case 'OnChangeQuickSearchMovieTitle':
+            return {...initialState, qucikSearchMovieTitle: action.payload};
         case 'OnChangeSearchMovieTitle':
             return {...initialState, MovieTitle: action.payload};
         case 'OnChangeSearchMovieYear':
