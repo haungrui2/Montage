@@ -78,6 +78,8 @@
 .profileFavouriteMovieTitle {
   margin: 0;
   padding: 0;
+  top: -10px;
+  left: 20px;
   position: relative;
   max-width: 150px;
   white-space: nowrap;
@@ -91,9 +93,11 @@
   height: 240px;
   width: 180px;
   border-radius: 1.8rem;
-  left: 2rem;
+  left: 1rem;
+  margin: 10px;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 
 .img-wrapper-User:hover > img.zoom {
