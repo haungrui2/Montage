@@ -1,53 +1,49 @@
 .navbar {
     background-color: transparent;
-    border: 3px;
-    border-style: solid;
-    border-color: rgb(0,79,139);
+    border: 3px solid rgb(0, 79, 139);
     height: 60px;
     width: 99vw;
     position: relative;
-  }
+}
 
-  .image {
+.image {
     height: 70px;
     width: 100%;
     margin-top: 0px;
     display: flex;
     margin-left: 30px;
     border-bottom: 2px solid #eae4d8;
-  }
+}
 
-  .SearchContainer {
+.SearchContainer {
     height: 50px;
     width: 300px;
-    }
+}
 
-  .SearchForm {
+.SearchForm {
     position: absolute;
     top: 10px;
     left: 37%;
-  }
+}
 
-  .SearchText {
+.SearchText {
     position: absolute;
     width: 350px;
     height: 40px;
     border-radius: 30px;
-    border: 2px;
-    border-style: solid;
-    border-color: rgb(0,79,139);
+    border: 2px solid rgb(0, 79, 139);
     padding-left: 30px;
-    }
+}
 
-  #SearchButton {
+#SearchButton {
     position: absolute;
     top: 10px;
     left: 340px;
     background-color: transparent;
     border-color: transparent;
-  }
+}
 
-  #MainButton {
+#MainButton {
     position: absolute;
     left: 0px;
     height: 60px;
@@ -58,10 +54,10 @@
     border-left: 0px;
     border-right: 3px;
     border-style: solid;
-    border-color: rgb(0,79,139);
-  }
+    border-color: rgb(0, 79, 139);
+}
 
-  #MoviesButton {
+#MoviesButton {
     position: absolute;
     left: 120px;
     height: 60px;
@@ -72,10 +68,10 @@
     border-left: 0px;
     border-right: 3px;
     border-style: solid;
-    border-color: rgb(0,79,139);
-  }
+    border-color: rgb(0, 79, 139);
+}
 
-  #Login {
+#Login {
     position: absolute;
     top: 3px;
     right: 0px;
@@ -87,10 +83,10 @@
     border-left: 3px;
     border-right: 0px;
     border-style: solid;
-    border-color: rgb(0,79,139);
-  }
+    border-color: rgb(0, 79, 139);
+}
 
-  #Upload{
+#Upload {
     position: absolute;
     top: 3px;
     right: 120px;
@@ -102,5 +98,5 @@
     border-left: 3px;
     border-right: 0px;
     border-style: solid;
-    border-color: rgb(0,79,139);
-  }
+    border-color: rgb(0, 79, 139);
+}

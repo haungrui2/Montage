@@ -81,79 +81,79 @@ const InnerContainer = styled.div`
 `;
 
 const backdropVariants = {
-  expanded: {
-    width: "233%",
-    height: "1050px",
-    borderRadius: "20%",
-    transform: "rotate(60deg)"
-  },
-  collapsed: {
-    width: "160%",
-    height: "550px",
-    borderRadius: "50%",
-    transform: "rotate(60deg)"
-  }
+    expanded: {
+        width: "233%",
+        height: "1050px",
+        borderRadius: "20%",
+        transform: "rotate(60deg)"
+    },
+    collapsed: {
+        width: "160%",
+        height: "550px",
+        borderRadius: "50%",
+        transform: "rotate(60deg)"
+    }
 }
 
 const expandingTransition = {
-  type: "spring",
-  duration: 2.3,
-  stiffness: 30,
+    type: "spring",
+    duration: 2.3,
+    stiffness: 30,
 }
 
 export function LoginIndex(props) {
-  const [isExpanded, setExpanded] = useState(false);
-  const [active, setActive] = useState("login");
+    const [isExpanded, setExpanded] = useState(false);
+    const [active, setActive] = useState("login");
 
-  const playExpandingAnimation = () => {
-    setExpanded(true);
-    setTimeout(() => {
-      setExpanded(false);
-    }, expandingTransition.duration * 1000 - 1500);
-  }
+    const playExpandingAnimation = () => {
+        setExpanded(true);
+        setTimeout(() => {
+            setExpanded(false);
+        }, expandingTransition.duration * 1000 - 1500);
+    }
 
-  const switchToSignup = () => {
-    playExpandingAnimation();
-    setTimeout(() => {
-      setActive("signup");
-    }, 400);
-  }
+    const switchToSignup = () => {
+        playExpandingAnimation();
+        setTimeout(() => {
+            setActive("signup");
+        }, 400);
+    }
 
-  const switchToLogin = () => {
-    playExpandingAnimation();
-    setTimeout(() => {
-      setActive("login");
-    }, 400);
-  }
+    const switchToLogin = () => {
+        playExpandingAnimation();
+        setTimeout(() => {
+            setActive("login");
+        }, 400);
+    }
 
-  const contextValue = {switchToSignup, switchToLogin};
+    const contextValue = {switchToSignup, switchToLogin};
 
-  return (
-    <LoginContext.Provider value={contextValue}>
-    <BoxContainer>
-      <TopContainer>
-        <BackDrop
-        initial={false}
-        animate={isExpanded ? "expanded" : "collapsed"}
-        variants={backdropVariants}
-        transition={expandingTransition}
-        />
-        {active === "login" && <HeaderContainer>
-          <HeaderText>Welcome</HeaderText>
-          <HeaderText>Back</HeaderText>
-          <SmallText>Please sign-in to continue!</SmallText>
-        </HeaderContainer>}
-        {active === "signup" && <HeaderContainer>
-          <HeaderText>Create</HeaderText>
-          <HeaderText>Account</HeaderText>
-          <SmallText>Please sign-up to continue!</SmallText>
-        </HeaderContainer>}
-      </TopContainer>
-      <InnerContainer>
-        {active === "login" && <LoginForm />}
-        {active === "signup" && <RegisterForm />}
-      </InnerContainer>
-    </BoxContainer>
-    </LoginContext.Provider>
-  )
+    return (
+        <LoginContext.Provider value={contextValue}>
+            <BoxContainer>
+                <TopContainer>
+                    <BackDrop
+                        initial={false}
+                        animate={isExpanded ? "expanded" : "collapsed"}
+                        variants={backdropVariants}
+                        transition={expandingTransition}
+                    />
+                    {active === "login" && <HeaderContainer>
+                        <HeaderText>Welcome</HeaderText>
+                        <HeaderText>Back</HeaderText>
+                        <SmallText>Please sign-in to continue!</SmallText>
+                    </HeaderContainer>}
+                    {active === "signup" && <HeaderContainer>
+                        <HeaderText>Create</HeaderText>
+                        <HeaderText>Account</HeaderText>
+                        <SmallText>Please sign-up to continue!</SmallText>
+                    </HeaderContainer>}
+                </TopContainer>
+                <InnerContainer>
+                    {active === "login" && <LoginForm/>}
+                    {active === "signup" && <RegisterForm/>}
+                </InnerContainer>
+            </BoxContainer>
+        </LoginContext.Provider>
+    )
 }

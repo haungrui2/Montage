@@ -1,15 +1,15 @@
 let profileData = {
-  data: ""
+    data: ""
 }
 
-const profile = ( state=profileData, action ) => {
-  switch(action.type) {
-    case "getUserData" :
-      return {
-        data: action.payload
-      };
-    default:
-        return state;
+const profile = (state = profileData, action) => {
+    switch (action.type) {
+        case "getUserData" :
+            return {
+                data: action.payload
+            };
+        default:
+            return state;
     }
 }
 
