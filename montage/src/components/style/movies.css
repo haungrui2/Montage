@@ -29,6 +29,7 @@
   object-fit: cover;
   object-position: center;
   display: table-cell;
+  cursor: pointer;
 }
 
 .movieImg-wrapper:hover > img.zoom {
