@@ -22,6 +22,7 @@ function UserProfile() {
     useEffect(() => {
         getProfileData();
         dispatch(getMoviesAsync())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const profileData = useSelector(state => state.persistReducer.profile.data);
@@ -69,7 +70,7 @@ function UserProfile() {
                             }}>
                                 <div className="profileFavouriteMovieTitle">{filteredMovie.MovieTitle}</div>
                                 <div className="img-wrapper-User">
-                                    <img className="zoom" src={filteredMovie.imageData}/>
+                                    <img className="zoom" src={filteredMovie.imageData} alt="PosterImage"/>
                                 </div>
                             </div>
                         ))}

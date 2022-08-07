@@ -41,8 +41,10 @@ const deleteComment = async (deleteData) => {
     return data;
 };
 
-export default {
+let CommentServices = {
     getComments,
     addComment,
     deleteComment
 };
+
+export default CommentServices;

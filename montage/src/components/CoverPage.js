@@ -28,6 +28,7 @@ export default function CoverPage() {
         } else {
             dispatch(randomMovieAsync())
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 

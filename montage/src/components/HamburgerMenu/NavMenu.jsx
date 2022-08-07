@@ -39,9 +39,25 @@ const NavLink = styled(motion.li)`
     margin-top: 5px;
   }
 
+  p {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: all 200ms ease-in-out;
+    margin-left: -5px;
+    margin-top: 5px;
+  }
+
   &:hover {
     filter: brightness(1.1);
     a {
+      transition: all 0.2s ease-in-out;
+      color: white;
+    }
+  }
+  &:hover {
+    filter: brightness(1.1);
+    p {
       transition: all 0.2s ease-in-out;
       color: white;
     }
@@ -65,7 +81,6 @@ export function NavMenu({isOpen}) {
     const navigate = useNavigate();
     const userId = useSelector(state => state.persistReducer.userIdReducer.uid);
     const userLoginState = useSelector(state => state.persistReducer.userIdReducer.isLogin);
-    const userState = useSelector(state => state.persistReducer.userIdReducer);
 
     let adminDisplay = "none";
 
@@ -104,28 +119,28 @@ export function NavMenu({isOpen}) {
                                  show: {...variants.show, transition: {delay: 0.1, duration: 0.2}},
                                  hide: {...variants.hide, transition: {delay: 0.05, duration: 0.05}},
                              }} onClick={jumpToMain}>
-                        <a>Home</a>
+                        <p>Home</p>
                     </NavLink>
                     <NavLink initial={false} animate={isOpen ? "show" : "hide"}
                              variants={{
                                  show: {...variants.show, transition: {delay: 0.2, duration: 0.2}},
                                  hide: {...variants.hide, transition: {delay: 0.1, duration: 0.05}},
                              }}>
-                        <a href="/" onClick={handleLogout}>Logout</a>
+                        <p onClick={handleLogout}>Logout</p>
                     </NavLink>
                     <NavLink initial={false} animate={isOpen ? "show" : "hide"}
                              variants={{
                                  show: {...variants.show, transition: {delay: 0.3, duration: 0.2}},
                                  hide: {...variants.hide, transition: {delay: 0.15, duration: 0.05}},
                              }} onClick={jumpToProfile}>
-                        <a>Profile</a>
+                        <p>Profile</p>
                     </NavLink>
                     <NavLink initial={false} animate={isOpen ? "show" : "hide"}
                              variants={{
                                  show: {...variants.show, transition: {delay: 0.4, duration: 0.2}},
                                  hide: {...variants.hide, transition: {delay: 0.2, duration: 0.05}},
                              }} style={{display: adminDisplay}} onClick={jumpToUpload}>
-                        <a>Upload</a>
+                        <p>Upload</p>
                     </NavLink>
                 </NavList>
             ) : (
@@ -135,7 +150,7 @@ export function NavMenu({isOpen}) {
                                  show: {...variants.show, transition: {delay: 0.1, duration: 0.2}},
                                  hide: {...variants.hide, transition: {delay: 0.05, duration: 0.05}},
                              }} onClick={jumpToMain}>
-                        <a>Home</a>
+                        <p>Home</p>
                     </NavLink>
                     <NavLink initial={false} animate={isOpen ? "show" : "hide"}
                              variants={{
