@@ -1,69 +1,68 @@
-
 li {
-	display:inline-block;
-  border-right:2px solid #ddd;
-  height: 25px;
-  width:auto;
-  padding-left:1em;
-  padding-right:1em;
-  margin-bottom:.5em
+    display: inline-block;
+    border-right: 2px solid #ddd;
+    height: 25px;
+    width: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-bottom: .5em
 }
 
 .genre-tag:hover {
-    color:#0000ff;
+    color: #0000ff;
     background-color: #ddd;
 }
 
-.genreListContainer{
+.genreListContainer {
     position: relative;
     width: 1200px;
-		color: white;
+    color: white;
 }
 
-.yearListContainer{
-    display:inline-block;
+.yearListContainer {
+    display: inline-block;
     position: relative;
     width: 1200px;
-		color: white;
+    color: white;
 }
 
-.yearBoxContainer{
-    border-right:2px solid #ddd;
+.yearBoxContainer {
+    border-right: 2px solid #ddd;
     position: relative;
     float: left;
     height: 30px;
     width: 110px;
 }
 
-.genreBoxContainer{
-    border-right:2px solid #ddd;
+.genreBoxContainer {
+    border-right: 2px solid #ddd;
     position: relative;
     float: left;
     height: 30px;
     width: 150px;
 }
 
-.yearBoxContainer2{
-    border-right:2px solid #ddd;
+.yearBoxContainer2 {
+    border-right: 2px solid #ddd;
     position: relative;
     float: left;
     height: 30px;
     width: 180px;
 }
 
-.yearBoxContainer:hover{
+.yearBoxContainer:hover {
     background-color: rgb(209, 209, 209);
 }
 
 
-.year-tag-box{
+.year-tag-box {
     position: absolute;
     left: 0px;
     width: 15px;
     height: 15px;
 }
 
-.year-tag-label{
+.year-tag-label {
     height: 37px;
     padding: 0px, 10px;
     font-size: 15px;
@@ -74,7 +73,7 @@ li {
 
 }
 
-.yearInputBox{
+.yearInputBox {
     position: relative;
     resize: none;
     left: 20px;
@@ -82,34 +81,34 @@ li {
     width: 70px;
 }
 
-#SearchButton1{
+#SearchButton1 {
     display: flex;
     position: absolute;
     margin-left: 1070px;
-		margin-top: -10px;
-		color: #f5c851;
-		background-color: white;
-		height: 40px;
-		width: 80px;
-		align-items: center;
-		cursor: pointer;
-		border-radius: 7px;
-		border: none;
-		outline: none;
-		font-weight: 1000;
-		font-size: 20px;
-	}
-
-#SearchButton1:hover {
-  filter: brightness(1.1);
+    margin-top: -10px;
+    color: #f5c851;
+    background-color: white;
+    height: 40px;
+    width: 90px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    font-weight: 1000;
+    font-size: 20px;
 }
 
-.Search{
+#SearchButton1:hover {
+    filter: brightness(1.1);
+}
+
+.Search {
     margin-bottom: 50px;
-		background-color: #f5c851;
-		background-size: cover;
-		color: white;
-		font-weight: 600;
-		padding-left: 1rem;
-		margin-left: 115px;
+    background-color: #f5c851;
+    background-size: cover;
+    color: white;
+    font-weight: 600;
+    padding-left: 1rem;
+    margin-left: 115px;
 }

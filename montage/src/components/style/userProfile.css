@@ -1,14 +1,13 @@
 .UserProfile {
-  background-color: #ffeecd;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5c851;
 }
 
 .profileUserInformation {
     position: relative;
     height: auto;
-}
-
-.ProfileImage {
-  margin-left: -180px;
+    left: 280px;
 }
 
 .ProfileImage:hover #profileUploadText {
@@ -20,98 +19,85 @@
 }
 
 .profileAvatar {
-    position: relative;
+    position: absolute;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-top: 30px;
+    top: 30px;
 }
 
 #profileUploadLabel {
-    position: relative;
+    position: absolute;
     background-color: rgba(255, 255, 255, 0.0);
     width: 150px;
     height: 150px;
     border-radius: 50%;
     cursor: pointer;
     display: block;
-    margin-top: -155px;
+    top: 30px;
 }
 
 #profileUploadText {
-    position: relative;
+    position: absolute;
     color: rgba(255, 255, 255, 0.0);
     font-size: 20px;
-    margin-left: 40px;
+    left: 40px;
     top: 60px;
 }
 
 .profileInformation {
     position: relative;
+    top: 200px;
 }
 
 .profileName {
-  margin-left: 30px;
-  font-size: 30px;
-  margin-top: -120px;
+  left: 30px;
+  font-size: 24px;
 }
 
 .profileEmail {
-  margin-left: 30px;
-  font-size: 30px;
-  margin-top: -20px;
-}
-
-.profileFavouriteMovie {
-    display: flex;
+  left: 30px;
+  font-size: 24px;
+  top: -20px;
 }
 
 .display_title {
   display: absolute;
-  margin-left: -300px;
-  font-size: 30px;
-  margin-top: -10px;
+  left: -300px;
+  font-size: 24px;
+  top: -10px;
 }
 
 .profileFavouriteMovieCard {
-    position: flex;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    cursor: pointer;
+  float: left;
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .profileFavouriteMovieTitle {
-    position: relative;
-    max-width: 150px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: left;
-    font-size: 20px;
-    margin-left: -230px;
-    font-weight: bold;
-    margin-top: 50px;
-    overflow: hidden;
-}
-
-.img-wrapper-User {
+  margin: 0;
+  padding: 0;
+  top: -10px;
+  left: 20px;
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  cursor: pointer;
-  margin-left: -17rem;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  justify-content: space-between;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
 
 .img-wrapper-User > img {
   display: block;
-  height: 340px;
-  width: 240px;
+  height: 240px;
+  width: 180px;
   border-radius: 1.8rem;
-  margin-left: 2rem;
+  left: 1rem;
+  margin: 10px;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 
 .img-wrapper-User:hover > img.zoom {

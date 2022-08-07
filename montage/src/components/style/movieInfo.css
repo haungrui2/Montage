@@ -9,8 +9,8 @@
 
 .MovieInfoContainer{
   position: relative;
-  margin-top: 130px;
-  margin-left: 300px;
+  top: 130px;
+  left: 300px;
 }
 
 .MovieInfoPoster{
@@ -19,14 +19,14 @@
     width: 340px;
     display:block;
     border-radius: 1.8rem;
-    margin-left: -100px;
-    margin-top: -20px;
+    left: -100px;
+    top: -100px;
 }
 
 .TitleYearContainer{
     position: relative;
-    margin-top: -90px;
-    margin-left: -80px;
+    top: -90px;
+    left: -80px;
     color: white;
     font-weight: bold;
 }
@@ -47,8 +47,8 @@
     font-size: 20px;
     color: white;
     font-weight: 600;
-    margin-top: -470px;
-    margin-left: 270px;
+    top: -570px;
+    left: 270px;
 }
 
 .MovieInfoRating{
@@ -56,18 +56,19 @@
     font-size: 50px;
     color: white;
     font-weight: 700;
-    margin-left: 790px;
-    margin-top: -320px;
+    left: 790px;
+    top: -750px;
 }
 
 .MovieInfoDescription{
-    position: relative;
+    position: absolute;
     max-width: 750px;
     color: white;
     font-size: 20px;
     font-weight: 600;
-    margin-left: 270px;
-    margin-top: 370px;
+    height: 100px;
+    left: 270px;
+    top: 300px;
 }
 
 .MovieInfoDirector{
@@ -96,8 +97,8 @@
   outline: none;
   font-weight: 1000;
   font-size: 30px;
-  margin-top: -30px;
-  margin-left: 810px;
+  top: -20px;
+  left: 810px;
 }
 
 .MovieInfoLikeButtonLiked:hover {
@@ -119,8 +120,8 @@
   outline: none;
   font-weight: 1000;
   font-size: 30px;
-  margin-top: -30px;
-  margin-left: 810px;
+  top: -20px;
+  left: 810px;
 }
 
 .MovieInfoLikeButtonNotLiked:hover {

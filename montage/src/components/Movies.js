@@ -17,7 +17,7 @@ export default function Movies() {
         navigate('/MovieInfo');
     }
 
-    let a = movies.map((movie, index) => (
+    let movieCards = movies.map((movie, index) => (
       <div key={movie.movieId}>
         <div className="MovieCard" onClick={() => {jumpToMovieInfo();
           dispatch(getMovieAsync(movie.movieId));
@@ -32,7 +32,9 @@ export default function Movies() {
     return (
         <div className = "Movies" >
             <Search/>
-            {a}
+            <div className="movieCardContainer">
+            {movieCards}
+            </div>
         </div>
     )
 }
