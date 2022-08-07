@@ -20,9 +20,7 @@
   margin: 10px;
 }
 
-
 .movieImg-wrapper > img {
-  display: flex;
   width: 240px;
   height: 320px;
   border-radius: 1.8rem;

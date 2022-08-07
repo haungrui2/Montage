@@ -68,7 +68,7 @@ The further improvement of this application aims to finish the incomplete stretc
 **Contributions:**<br />
 Andy Huang: Andy achieved Login and Signup functionalities for both the front and back end. He also engaged in constructing the navbar component and hamburger menu, and contributed a lot to the decoration of the user interface.<br />
 Aure Ma: Aure helped take the user information from the back end and store it in the front end reducer. She also helped in constructing the user profile page.<br />
-Edward Hu: Edward achieved comment and rate functionalities for both the front and back end. He constructed the search functionality in the back end and helped improve the recommendation algorithm. He also provided a lot of help in the construction of many components such as uploading and debugging a lot of them.<br />
+Edward Hu: Edward achieved comment and rate functionalities for both the front and back end and constructed the persist store for user information. He constructed the search functionality in the back end and helped improve the recommendation algorithm. He also provided a lot of help in the construction of many components such as uploading and debugging a lot of them.<br />
 Ronnie Zhu: Ronnie achieved view, recommend, upload, edit movies, and set up user personal preferences for both the front and back end. He also constructed the front end of search functionality and navbar, and engaged in a lot of user interface construction and debugging. He is the main uploader of the different movies on the website.<br />
 <br />
 **Sketched Prototypes**:<br />

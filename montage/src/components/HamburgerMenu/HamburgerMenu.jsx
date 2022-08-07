@@ -26,56 +26,56 @@ const MenuContainer = styled(motion.div)`
 `;
 
 const menuVariants = {
-  open: {
-    transform: "translateX(3%)"
-  },
-  closed: {
-    transform: "translateX(103%)",
-  }
+    open: {
+        transform: "translateX(3%)"
+    },
+    closed: {
+        transform: "translateX(103%)",
+    }
 };
 
 const menuTransition = {
-  type: "spring",
-  duration: 1,
-  stiffness: 33,
-  delay: 0.1
+    type: "spring",
+    duration: 1,
+    stiffness: 33,
+    delay: 0.1
 };
 
 let useClickOutside = (handler) => {
-  let domNode = useRef();
+    let domNode = useRef();
 
-  useEffect(() => {
-    let maybeHandler = (e) => {
-      if (!domNode.current.contains(e.target)) {
-        handler();
-      }
-    };
-    document.addEventListener("mousedown", maybeHandler);
-    return () => {
-      document.removeEventListener("mousedown", maybeHandler);
-    };
-  });
-  return domNode;
+    useEffect(() => {
+        let maybeHandler = (e) => {
+            if (!domNode.current.contains(e.target)) {
+                handler();
+            }
+        };
+        document.addEventListener("mousedown", maybeHandler);
+        return () => {
+            document.removeEventListener("mousedown", maybeHandler);
+        };
+    });
+    return domNode;
 };
 
 export function HamburgerMenu(props) {
-  const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setOpen(!isOpen);
-  }
+    const toggleMenu = () => {
+        setOpen(!isOpen);
+    }
 
-  let domNode = useClickOutside(() => {
-    setOpen(false);
-  });
+    let domNode = useClickOutside(() => {
+        setOpen(false);
+    });
 
-  return (
-    <HamburgerMenuContainer ref={domNode}>
-     <MenuToggle toggle={toggleMenu} isOpen={isOpen} />
-     <MenuContainer initial={false} animate={isOpen ? "open" : "closed"}
-     variants={menuVariants} transition={menuTransition}>
-      <NavMenu isOpen={isOpen} />
-     </MenuContainer>
-    </HamburgerMenuContainer>
-  );
+    return (
+        <HamburgerMenuContainer ref={domNode}>
+            <MenuToggle toggle={toggleMenu} isOpen={isOpen}/>
+            <MenuContainer initial={false} animate={isOpen ? "open" : "closed"}
+                           variants={menuVariants} transition={menuTransition}>
+                <NavMenu isOpen={isOpen}/>
+            </MenuContainer>
+        </HamburgerMenuContainer>
+    );
 }
