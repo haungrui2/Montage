@@ -6,4 +6,4 @@ export const actionTypes = {
     EDIT_MOVIE: 'movies/editMovie',
     EDIT_LIKEDMOVIES: 'users/editFavouriteMovies',
     EDIT_RECOMMEND: 'users/recommend'
-  };
+};

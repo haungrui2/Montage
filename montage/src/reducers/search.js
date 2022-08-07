@@ -7,7 +7,7 @@ let searchInformation = {
 }
 
 const search = (initialState = searchInformation, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'DeleteQuickChangeSearchMovieTitle':
             return {...initialState, qucikSearchMovieTitle: ""};
         case 'OnChangeQuickSearchMovieTitle':
@@ -19,7 +19,10 @@ const search = (initialState = searchInformation, action) => {
         case 'OnChangeSearchMovieGenre':
             let findIndex = initialState.MovieGenre.indexOf(action.payload);
             if (findIndex !== -1) {
-                return {...initialState, MovieGenre: [...initialState.MovieGenre.slice(0, findIndex), ...initialState.MovieGenre.slice(findIndex+1)]};
+                return {
+                    ...initialState,
+                    MovieGenre: [...initialState.MovieGenre.slice(0, findIndex), ...initialState.MovieGenre.slice(findIndex + 1)]
+                };
             } else {
                 return {...initialState, MovieGenre: initialState.MovieGenre.concat(action.payload)};
             }
