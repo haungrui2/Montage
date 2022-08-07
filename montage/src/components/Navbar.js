@@ -28,7 +28,7 @@ export default function Navbar() {
     return (
         <Nav>
             <NavLink to="/">
-                <img className="image" src={logo} alt="logo image"/>
+                <img className="image" src={logo} alt="logo"/>
             </NavLink>
             <NavMenu>
                 <NavLink to="/Movies" onClick={() => {
@@ -63,8 +63,6 @@ export default function Navbar() {
 }
 
 function qucikSearchQueryGenerator(state) {
-    return "?MovieTitle=" + state.qucikSearchMovieTitle + "&MovieYear="
-        + "&MovieRate=" + "&MovieGenre1=" + "&MovieGenre2=" + "&MovieGenre3=" +
-        "&MovieGenre4=" + "&MovieGenre5=";
+    return "?MovieTitle=" + state.qucikSearchMovieTitle;
 }
 
