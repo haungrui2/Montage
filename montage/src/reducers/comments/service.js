@@ -1,9 +1,9 @@
 const getComments = async (movieTitle) => {
     const response = await fetch('http://localhost:3001/comments/' + movieTitle, {
-      method: 'GET'
+        method: 'GET'
     });
     return response.json();
-  };
+};
 
 const addComment = async (comment) => {
     const response = await fetch('http://localhost:3001/comments', {
@@ -41,8 +41,10 @@ const deleteComment = async (deleteData) => {
     return data;
 };
 
-  export default {
-      getComments,
-      addComment,
-      deleteComment
-  };
+let CommentServices = {
+    getComments,
+    addComment,
+    deleteComment
+};
+
+export default CommentServices;
